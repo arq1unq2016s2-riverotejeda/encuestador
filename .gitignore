@@ -1,2 +1,7 @@
+/survey/.idea/*
 .idea/*
 *.iml
+survey/*iml
+survey/.gradle/*
+survey/build/*
+
