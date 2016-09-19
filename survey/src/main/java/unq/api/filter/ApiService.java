@@ -1,6 +1,7 @@
 package unq.api.filter;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import spark.servlet.SparkApplication;
 import unq.api.controller.SurveyController;
 
@@ -9,7 +10,7 @@ import unq.api.controller.SurveyController;
  */
 public class ApiService implements SparkApplication {
 
-    public static Logger LOGGER = Logger.getLogger("ApiService");
+    public static Logger LOGGER = LogManager.getLogger(ApiService.class);
 
     SurveyController surveyController;
 
