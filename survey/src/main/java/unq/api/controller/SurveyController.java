@@ -1,5 +1,12 @@
 package unq.api.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import unq.api.model.Student;
+import unq.utils.GsonFactory;
+import javax.servlet.http.HttpServletResponse;
+
+
 import static spark.Spark.*;
 
 
@@ -9,11 +16,27 @@ import static spark.Spark.*;
  */
 public class SurveyController {
 
-    public void initSurveyEndopints(){
-        get("/hello", (request, response) -> "hola mundooo");
+    public static Logger LOGGER = LoggerFactory.getLogger(SurveyController.class);
 
-        get("/hello/:name", (request, response) -> {
-            return "Hello: " + request.params(":name");
+
+    public static void initSurveyEndopints(){
+        port(9090);
+
+        get("/student/:name", (request, response) -> {
+            response.type("application/json");
+            Student student = new Student("legajo", request.params("name"));
+            return GsonFactory.toJson(student);
+        });
+
+        post("/student", (request, response) -> {
+            response.type("application/json");
+            try {
+                Student student = GsonFactory.fromJson(request.body(), Student.class);
+                LOGGER.info(student.getName());
+            } catch (Exception e) {
+
+            }
+            return HttpServletResponse.SC_OK;
         });
     }
 }

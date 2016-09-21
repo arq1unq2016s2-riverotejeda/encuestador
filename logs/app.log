@@ -1,0 +1,50 @@
+2016-09-19 20:37:02 [main] INFO  unq.api.filter.ApiService - Starting services configuration
+2016-09-19 20:37:02 [main] INFO  unq.api.filter.ApiService - Finish services configuration
+2016-09-19 20:37:02 [Thread-0] INFO  org.eclipse.jetty.util.log - Logging initialized @816ms
+2016-09-19 20:37:02 [Thread-0] INFO  s.e.jetty.EmbeddedJettyServer - == Spark has ignited ...
+2016-09-19 20:37:02 [Thread-0] INFO  s.e.jetty.EmbeddedJettyServer - >> Listening on 0.0.0.0:9090
+2016-09-19 20:37:02 [Thread-0] INFO  org.eclipse.jetty.server.Server - jetty-9.3.6.v20151106
+2016-09-19 20:37:02 [Thread-0] INFO  o.e.jetty.server.ServerConnector - Started ServerConnector@5d1fea1b{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-09-19 20:37:02 [Thread-0] INFO  org.eclipse.jetty.server.Server - Started @1013ms
+2016-09-19 20:55:08 [main] INFO  unq.api.filter.ApiService - Starting services configuration
+2016-09-19 20:55:09 [main] INFO  unq.api.filter.ApiService - Finish services configuration
+2016-09-19 20:55:09 [Thread-0] INFO  org.eclipse.jetty.util.log - Logging initialized @855ms
+2016-09-19 20:55:09 [Thread-0] INFO  s.e.jetty.EmbeddedJettyServer - == Spark has ignited ...
+2016-09-19 20:55:09 [Thread-0] INFO  s.e.jetty.EmbeddedJettyServer - >> Listening on 0.0.0.0:9090
+2016-09-19 20:55:09 [Thread-0] INFO  org.eclipse.jetty.server.Server - jetty-9.3.6.v20151106
+2016-09-19 20:55:09 [Thread-0] INFO  o.e.jetty.server.ServerConnector - Started ServerConnector@6c71545{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-09-19 20:55:09 [Thread-0] INFO  org.eclipse.jetty.server.Server - Started @1101ms
+2016-09-19 20:56:00 [qtp443113030-19] INFO  spark.http.matching.MatcherFilter - The requested route [/favicon.ico] has not been mapped in Spark
+2016-09-19 21:03:15 [main] INFO  unq.api.filter.ApiService - Starting services configuration
+2016-09-19 21:03:15 [main] INFO  unq.api.filter.ApiService - Finish services configuration
+2016-09-19 21:03:15 [Thread-0] INFO  org.eclipse.jetty.util.log - Logging initialized @975ms
+2016-09-19 21:03:15 [Thread-0] INFO  s.e.jetty.EmbeddedJettyServer - == Spark has ignited ...
+2016-09-19 21:03:15 [Thread-0] INFO  s.e.jetty.EmbeddedJettyServer - >> Listening on 0.0.0.0:9090
+2016-09-19 21:03:15 [Thread-0] INFO  org.eclipse.jetty.server.Server - jetty-9.3.6.v20151106
+2016-09-19 21:03:15 [Thread-0] INFO  o.e.jetty.server.ServerConnector - Started ServerConnector@75da4fbb{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-09-19 21:03:15 [Thread-0] INFO  org.eclipse.jetty.server.Server - Started @1199ms
+2016-09-19 21:32:22 [main] INFO  unq.api.filter.ApiService - Starting services configuration
+2016-09-19 21:32:22 [main] INFO  unq.api.filter.ApiService - Finish services configuration
+2016-09-19 21:32:22 [Thread-0] INFO  org.eclipse.jetty.util.log - Logging initialized @875ms
+2016-09-19 21:32:22 [Thread-0] INFO  s.e.jetty.EmbeddedJettyServer - == Spark has ignited ...
+2016-09-19 21:32:22 [Thread-0] INFO  s.e.jetty.EmbeddedJettyServer - >> Listening on 0.0.0.0:9090
+2016-09-19 21:32:22 [Thread-0] INFO  org.eclipse.jetty.server.Server - jetty-9.3.6.v20151106
+2016-09-19 21:32:22 [Thread-0] INFO  o.e.jetty.server.ServerConnector - Started ServerConnector@e993598{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-09-19 21:32:22 [Thread-0] INFO  org.eclipse.jetty.server.Server - Started @1063ms
+2016-09-19 21:33:19 [main] INFO  unq.api.filter.ApiService - Starting services configuration
+2016-09-19 21:33:19 [main] INFO  unq.api.filter.ApiService - Finish services configuration
+2016-09-19 21:33:19 [Thread-0] INFO  org.eclipse.jetty.util.log - Logging initialized @842ms
+2016-09-19 21:33:19 [Thread-0] INFO  s.e.jetty.EmbeddedJettyServer - == Spark has ignited ...
+2016-09-19 21:33:19 [Thread-0] INFO  s.e.jetty.EmbeddedJettyServer - >> Listening on 0.0.0.0:9090
+2016-09-19 21:33:19 [Thread-0] INFO  org.eclipse.jetty.server.Server - jetty-9.3.6.v20151106
+2016-09-19 21:33:19 [Thread-0] INFO  o.e.jetty.server.ServerConnector - Started ServerConnector@6cc6e416{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-09-19 21:33:19 [Thread-0] INFO  org.eclipse.jetty.server.Server - Started @1047ms
+2016-09-19 23:50:04 [main] INFO  unq.api.filter.ApiService - Starting services configuration
+2016-09-19 23:50:04 [main] INFO  unq.api.filter.ApiService - Finish services configuration
+2016-09-19 23:50:04 [Thread-0] INFO  org.eclipse.jetty.util.log - Logging initialized @1212ms
+2016-09-19 23:50:04 [Thread-0] INFO  s.e.jetty.EmbeddedJettyServer - == Spark has ignited ...
+2016-09-19 23:50:04 [Thread-0] INFO  s.e.jetty.EmbeddedJettyServer - >> Listening on 0.0.0.0:9090
+2016-09-19 23:50:04 [Thread-0] INFO  org.eclipse.jetty.server.Server - jetty-9.3.6.v20151106
+2016-09-19 23:50:04 [Thread-0] INFO  o.e.jetty.server.ServerConnector - Started ServerConnector@33203a16{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-09-19 23:50:04 [Thread-0] INFO  org.eclipse.jetty.server.Server - Started @1434ms
+2016-09-19 23:51:06 [qtp1411626300-18] INFO  unq.api.controller.SurveyController - marina

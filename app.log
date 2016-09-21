@@ -1,0 +1,16 @@
+2016-09-19 20:18:13,500 INFO [--746itn008865] [main] [] : %PARSER_ERROR[maskEncConverter]
+2016-09-19 20:18:13,616 INFO [--746itn008865] [main] [] : %PARSER_ERROR[maskEncConverter]
+2016-09-19 20:18:13,660 INFO [--746itn008865] [Thread-0] [] : %PARSER_ERROR[maskEncConverter]
+2016-09-19 20:18:13,767 INFO [--746itn008865] [Thread-0] [] : %PARSER_ERROR[maskEncConverter]
+2016-09-19 20:18:13,768 INFO [--746itn008865] [Thread-0] [] : %PARSER_ERROR[maskEncConverter]
+2016-09-19 20:18:13,774 INFO [--746itn008865] [Thread-0] [] : %PARSER_ERROR[maskEncConverter]
+2016-09-19 20:18:14,108 INFO [--746itn008865] [Thread-0] [] : %PARSER_ERROR[maskEncConverter]
+2016-09-19 20:18:14,109 INFO [--746itn008865] [Thread-0] [] : %PARSER_ERROR[maskEncConverter]
+20:20:31.867 [main] INFO  unq.api.filter.ApiService - Starting services configuration
+20:20:31.989 [main] INFO  unq.api.filter.ApiService - Finish services configuration
+20:20:32.032 [Thread-0] INFO  org.eclipse.jetty.util.log - Logging initialized @909ms
+20:20:32.122 [Thread-0] INFO  s.e.jetty.EmbeddedJettyServer - == Spark has ignited ...
+20:20:32.123 [Thread-0] INFO  s.e.jetty.EmbeddedJettyServer - >> Listening on 0.0.0.0:9090
+20:20:32.129 [Thread-0] INFO  org.eclipse.jetty.server.Server - jetty-9.3.6.v20151106
+20:20:32.213 [Thread-0] INFO  o.e.jetty.server.ServerConnector - Started ServerConnector@c4a91f{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+20:20:32.213 [Thread-0] INFO  org.eclipse.jetty.server.Server - Started @1097ms
