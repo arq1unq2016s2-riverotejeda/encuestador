@@ -20,7 +20,7 @@ repositories {
     mavenLocal()
 }
 
-mainClassName = 'unq.api.filter.ApiService'
+mainClassName = 'unq.api.service.ApiService'
 
 dependencies {
 
@@ -29,8 +29,7 @@ dependencies {
     compile('com.sparkjava:spark-core:2.5')
 
     compile('ch.qos.logback:logback-classic:1.1.7')
-
-    compile 'org.mongodb:mongo-java-driver:2.12.3'
+    compile 'org.mongodb:mongodb-driver:3.3.0'
     compile 'com.google.code.gson:gson:2.7'
 
 /*

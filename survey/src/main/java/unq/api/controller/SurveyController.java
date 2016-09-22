@@ -4,6 +4,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import unq.api.model.Student;
 import unq.utils.GsonFactory;
+import unq.utils.WebServiceConfiguration;
+
 import javax.servlet.http.HttpServletResponse;
 
 
@@ -20,7 +22,6 @@ public class SurveyController {
 
 
     public static void initSurveyEndopints(){
-        port(9090);
 
         get("/student/:name", (request, response) -> {
             response.type("application/json");
