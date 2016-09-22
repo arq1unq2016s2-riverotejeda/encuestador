@@ -4,4 +4,6 @@
 survey/*iml
 survey/.gradle/*
 survey/build/*
+survey/classes/*
+*.gradle
 
