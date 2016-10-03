@@ -3,8 +3,10 @@ package unq.api.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import unq.api.model.Student;
+import unq.api.model.catalogs.Subject;
+import unq.api.service.SurveyService;
+import unq.api.service.impl.SurveyServiceImpl;
 import unq.utils.GsonFactory;
-import unq.utils.WebServiceConfiguration;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -20,12 +22,13 @@ public class SurveyController {
 
     public static Logger LOGGER = LoggerFactory.getLogger(SurveyController.class);
 
+    private static SurveyService surveyService = new SurveyServiceImpl();
 
     public static void initSurveyEndopints(){
 
-        get("/student/:name", (request, response) -> {
+        get("/student/:legajo", (request, response) -> {
             response.type("application/json");
-            Student student = new Student("legajo", request.params("name"));
+            Student student = surveyService.getStudentByID(request.params("legajo"));
             return GsonFactory.toJson(student);
         });
 
@@ -34,10 +37,33 @@ public class SurveyController {
             try {
                 Student student = GsonFactory.fromJson(request.body(), Student.class);
                 LOGGER.info(student.getName());
+                surveyService.saveStudent(student);
             } catch (Exception e) {
+                LOGGER.error("Error while trying to save student", e);
+                return HttpServletResponse.SC_INTERNAL_SERVER_ERROR;
 
             }
             return HttpServletResponse.SC_OK;
         });
+
+        get("/subjects", (request, response) -> {
+            response.type("application/json");
+            return GsonFactory.toJson(surveyService.getAllSubjects());
+        });
+
+        post("/subject", (request, response) -> {
+            response.type("application/json");
+            try {
+                Subject subject = GsonFactory.fromJson(request.body(), Subject.class);
+                surveyService.saveSubject(subject);
+            } catch (Exception e) {
+                LOGGER.error("Error while trying to save student", e);
+                return HttpServletResponse.SC_INTERNAL_SERVER_ERROR;
+
+            }
+            return HttpServletResponse.SC_OK;
+        });
+
+
     }
 }

@@ -1,37 +1,31 @@
 package unq.client;
 
+import com.despegar.integration.mongo.connector.MongoCollectionFactory;
+import com.despegar.integration.mongo.connector.MongoDBConnection;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import com.mongodb.MongoClient;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
-import org.bson.Document;
-import static com.mongodb.client.model.Filters.*;
+import java.net.UnknownHostException;
 
 /**
  * Created by mrivero on 21/9/16.
  */
 public class MongoDBClient {
 
-    MongoClient mongoClient = new MongoClient( "localhost" , 27017 );
+    public static Logger LOGGER = LoggerFactory.getLogger(MongoDBClient.class);
 
-    MongoDatabase database = mongoClient.getDatabase("unq");
 
-    public void insertData(Document dataToInsert){
-        MongoCollection<Document> surveyCollection = database.getCollection("suervey");
-        surveyCollection.insertOne(dataToInsert);
-    }
+    public static MongoCollectionFactory init(){
+        MongoDBConnection connection;
+        try {
+            connection = new MongoDBConnection("unq", "localhost:27017");
+            LOGGER.info("Successfully connected to the database");
+        } catch (UnknownHostException e) {
+            LOGGER.error("Error trying to connect to MongoDB");
+            throw new RuntimeException("Error trying to connect to Mongo", e);
+        }
 
-    public void updateData(Document dataToUpdate){
-        //TODO
-    }
-
-    public void deleteData(Document dataToDelete){
-        //TODO
-    }
-
-    public void getData(Document filter){
-        MongoCollection<Document> surveyCollection = database.getCollection("suervey");
-        surveyCollection.find(eq("field", filter.getInteger("value")));
+        return new MongoCollectionFactory(connection);
     }
 
 }
