@@ -3,7 +3,8 @@ package unq.api.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import unq.api.model.Student;
-import unq.api.model.catalogs.Subject;
+import unq.api.model.Subject;
+import unq.api.model.Survey;
 import unq.api.service.SurveyService;
 import unq.api.service.impl.SurveyServiceImpl;
 import unq.utils.GsonFactory;
@@ -36,7 +37,6 @@ public class SurveyController {
             response.type("application/json");
             try {
                 Student student = GsonFactory.fromJson(request.body(), Student.class);
-                LOGGER.info(student.getName());
                 surveyService.saveStudent(student);
             } catch (Exception e) {
                 LOGGER.error("Error while trying to save student", e);
@@ -63,6 +63,25 @@ public class SurveyController {
             }
             return HttpServletResponse.SC_OK;
         });
+
+        get("/survey/:studentID", (request, response) -> {
+            response.type("application/json");
+            return GsonFactory.toJson(surveyService.getSurveyByStudent(request.params("studentID")));
+        });
+
+        post("/survey", (request, response) -> {
+            response.type("application/json");
+            try {
+                Survey survey = GsonFactory.fromJson(request.body(), Survey.class);
+                surveyService.saveSurvey(survey);
+            } catch (Exception e) {
+                LOGGER.error("Error while trying to save a survey", e);
+                return HttpServletResponse.SC_INTERNAL_SERVER_ERROR;
+
+            }
+            return HttpServletResponse.SC_OK;
+        });
+
 
 
     }

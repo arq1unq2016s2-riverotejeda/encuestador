@@ -1,26 +1,323 @@
-2016-10-02 20:17:34 [main] INFO  unq.api.service.ApiService - Starting services configuration
-2016-10-02 20:17:34 [main] INFO  org.mongodb.driver.cluster - Cluster created with settings {hosts=[localhost:27017], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
-2016-10-02 20:17:34 [main] INFO  org.mongodb.driver.cluster - Adding discovered server localhost:27017 to client view of cluster
-2016-10-02 20:17:35 [main] INFO  unq.client.MongoDBClient - Successfully connected to the database
-2016-10-02 20:17:35 [cluster-ClusterId{value='57f1958e46f0d904521fa475', description='null'}-localhost:27017] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:1, serverValue:2}] to localhost:27017
-2016-10-02 20:17:35 [cluster-ClusterId{value='57f1958e46f0d904521fa475', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 0]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=1607686}
-2016-10-02 20:17:35 [cluster-ClusterId{value='57f1958e46f0d904521fa475', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Discovered cluster type of STANDALONE
-2016-10-02 20:17:35 [main] INFO  unq.api.service.ApiService - Finish services configuration
-2016-10-02 20:17:35 [Thread-1] INFO  org.eclipse.jetty.util.log - Logging initialized @2357ms
-2016-10-02 20:17:35 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - == Spark has ignited ...
-2016-10-02 20:17:35 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - >> Listening on 0.0.0.0:9090
-2016-10-02 20:17:35 [Thread-1] INFO  org.eclipse.jetty.server.Server - jetty-9.3.6.v20151106
-2016-10-02 20:17:35 [Thread-1] INFO  o.e.jetty.server.ServerConnector - Started ServerConnector@522ac72f{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
-2016-10-02 20:17:35 [Thread-1] INFO  org.eclipse.jetty.server.Server - Started @2512ms
-2016-10-02 20:43:01 [qtp89672907-22] ERROR unq.api.controller.SurveyController - Error while trying to save student
-com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1 path $
+2016-10-09 15:01:28 [main] INFO  unq.api.service.ApiService - Starting services configuration
+2016-10-09 15:01:29 [main] INFO  org.mongodb.driver.cluster - Cluster created with settings {hosts=[localhost:27017], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2016-10-09 15:01:29 [main] INFO  org.mongodb.driver.cluster - Adding discovered server localhost:27017 to client view of cluster
+2016-10-09 15:01:29 [cluster-ClusterId{value='57fa85f9443a31026ef4680e', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Exception in monitor thread while connecting to server localhost:27017
+com.mongodb.MongoSocketOpenException: Exception opening socket
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:63)
+	at com.mongodb.connection.InternalStreamConnection.open(InternalStreamConnection.java:115)
+	at com.mongodb.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:116)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: java.net.ConnectException: Connection refused
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at com.mongodb.connection.SocketStreamHelper.initialize(SocketStreamHelper.java:50)
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:58)
+	... 3 common frames omitted
+2016-10-09 15:01:29 [main] INFO  unq.client.MongoDBClient - Successfully connected to the database
+2016-10-09 15:01:30 [main] INFO  unq.api.service.ApiService - Finish services configuration
+2016-10-09 15:01:30 [Thread-1] INFO  org.eclipse.jetty.util.log - Logging initialized @2966ms
+2016-10-09 15:01:30 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - == Spark has ignited ...
+2016-10-09 15:01:30 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - >> Listening on 0.0.0.0:9090
+2016-10-09 15:01:30 [Thread-1] INFO  org.eclipse.jetty.server.Server - jetty-9.3.6.v20151106
+2016-10-09 15:01:30 [Thread-1] INFO  o.e.jetty.server.ServerConnector - Started ServerConnector@43d80c27{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-09 15:01:30 [Thread-1] INFO  org.eclipse.jetty.server.Server - Started @3174ms
+2016-10-09 15:08:10 [main] INFO  unq.api.service.ApiService - Starting services configuration
+2016-10-09 15:08:10 [main] INFO  org.mongodb.driver.cluster - Cluster created with settings {hosts=[localhost:27017], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2016-10-09 15:08:10 [main] INFO  org.mongodb.driver.cluster - Adding discovered server localhost:27017 to client view of cluster
+2016-10-09 15:08:10 [main] INFO  unq.client.MongoDBClient - Successfully connected to the database
+2016-10-09 15:08:10 [cluster-ClusterId{value='57fa878a443a31028fea6b57', description='null'}-localhost:27017] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:1, serverValue:2}] to localhost:27017
+2016-10-09 15:08:10 [cluster-ClusterId{value='57fa878a443a31028fea6b57', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 0]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=1771627}
+2016-10-09 15:08:10 [cluster-ClusterId{value='57fa878a443a31028fea6b57', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Discovered cluster type of STANDALONE
+2016-10-09 15:08:11 [main] INFO  unq.api.service.ApiService - Finish services configuration
+2016-10-09 15:08:11 [Thread-1] INFO  org.eclipse.jetty.util.log - Logging initialized @1428ms
+2016-10-09 15:08:11 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - == Spark has ignited ...
+2016-10-09 15:08:11 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - >> Listening on 0.0.0.0:9090
+2016-10-09 15:08:11 [Thread-1] INFO  org.eclipse.jetty.server.Server - jetty-9.3.6.v20151106
+2016-10-09 15:08:11 [Thread-1] INFO  o.e.jetty.server.ServerConnector - Started ServerConnector@7cb9aa18{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-09 15:08:11 [Thread-1] INFO  org.eclipse.jetty.server.Server - Started @1606ms
+2016-10-09 15:50:41 [qtp1484229909-21] INFO  unq.api.controller.SurveyController - Marina
+2016-10-09 15:50:42 [qtp1484229909-21] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:2, serverValue:4}] to localhost:27017
+2016-10-09 15:51:13 [qtp1484229909-22] INFO  unq.api.controller.SurveyController - Marina
+2016-10-09 16:00:04 [qtp1484229909-16] INFO  unq.repository.MongoDBDAO - Starting saving survey object
+2016-10-09 16:00:04 [qtp1484229909-16] INFO  unq.repository.MongoDBDAO - Finish saving survey object
+2016-10-09 16:00:41 [qtp1484229909-22] INFO  unq.repository.MongoDBDAO - Starting saving survey object
+2016-10-09 16:00:41 [qtp1484229909-22] INFO  unq.repository.MongoDBDAO - Finish saving survey object
+2016-10-09 16:00:59 [qtp1484229909-17] INFO  unq.repository.MongoDBDAO - Starting saving survey object
+2016-10-09 16:00:59 [qtp1484229909-17] INFO  unq.repository.MongoDBDAO - Finish saving survey object
+2016-10-09 16:01:30 [qtp1484229909-16] INFO  unq.repository.MongoDBDAO - Starting saving survey object
+2016-10-09 16:01:30 [qtp1484229909-16] INFO  unq.repository.MongoDBDAO - Finish saving survey object
+2016-10-09 16:01:43 [qtp1484229909-22] INFO  unq.repository.MongoDBDAO - Starting saving survey object
+2016-10-09 16:01:43 [qtp1484229909-22] INFO  unq.repository.MongoDBDAO - Finish saving survey object
+2016-10-09 16:02:05 [qtp1484229909-17] INFO  unq.repository.MongoDBDAO - Starting saving survey object
+2016-10-09 16:02:05 [qtp1484229909-17] INFO  unq.repository.MongoDBDAO - Finish saving survey object
+2016-10-09 16:02:34 [qtp1484229909-16] INFO  unq.repository.MongoDBDAO - Starting saving survey object
+2016-10-09 16:02:34 [qtp1484229909-16] INFO  unq.repository.MongoDBDAO - Finish saving survey object
+2016-10-09 16:03:08 [qtp1484229909-20] INFO  unq.repository.MongoDBDAO - Starting saving survey object
+2016-10-09 16:03:08 [qtp1484229909-20] INFO  unq.repository.MongoDBDAO - Finish saving survey object
+2016-10-09 16:38:18 [main] INFO  unq.api.service.ApiService - Starting services configuration
+2016-10-09 16:38:18 [main] INFO  org.mongodb.driver.cluster - Cluster created with settings {hosts=[localhost:27017], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2016-10-09 16:38:18 [main] INFO  org.mongodb.driver.cluster - Adding discovered server localhost:27017 to client view of cluster
+2016-10-09 16:38:18 [main] INFO  unq.client.MongoDBClient - Successfully connected to the database
+2016-10-09 16:38:18 [cluster-ClusterId{value='57fa9caa443a3102ea055694', description='null'}-localhost:27017] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:1, serverValue:5}] to localhost:27017
+2016-10-09 16:38:18 [cluster-ClusterId{value='57fa9caa443a3102ea055694', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 0]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=857246}
+2016-10-09 16:38:18 [cluster-ClusterId{value='57fa9caa443a3102ea055694', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Discovered cluster type of STANDALONE
+2016-10-09 16:38:19 [main] INFO  unq.api.service.ApiService - Finish services configuration
+2016-10-09 16:38:19 [Thread-1] INFO  org.eclipse.jetty.util.log - Logging initialized @1409ms
+2016-10-09 16:38:19 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - == Spark has ignited ...
+2016-10-09 16:38:19 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - >> Listening on 0.0.0.0:9090
+2016-10-09 16:38:19 [Thread-1] INFO  org.eclipse.jetty.server.Server - jetty-9.3.6.v20151106
+2016-10-09 16:38:19 [Thread-1] INFO  o.e.jetty.server.ServerConnector - Started ServerConnector@7240acfc{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-09 16:38:19 [Thread-1] INFO  org.eclipse.jetty.server.Server - Started @1608ms
+2016-10-09 16:39:16 [qtp1059092522-19] INFO  spark.http.matching.MatcherFilter - The requested route [/subject] has not been mapped in Spark
+2016-10-09 16:39:28 [qtp1059092522-21] INFO  unq.repository.MongoDBDAO - Starting saving survey object
+2016-10-09 16:39:28 [qtp1059092522-21] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:2, serverValue:6}] to localhost:27017
+2016-10-09 16:39:28 [qtp1059092522-21] INFO  unq.repository.MongoDBDAO - Finish saving survey object
+2016-10-09 18:20:27 [main] INFO  unq.api.service.ApiService - Starting services configuration
+2016-10-09 18:20:27 [main] INFO  org.mongodb.driver.cluster - Cluster created with settings {hosts=[localhost:27017], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2016-10-09 18:20:27 [main] INFO  org.mongodb.driver.cluster - Adding discovered server localhost:27017 to client view of cluster
+2016-10-09 18:20:27 [main] INFO  unq.client.MongoDBClient - Successfully connected to the database
+2016-10-09 18:20:27 [cluster-ClusterId{value='57fab49b443a310336f93399', description='null'}-localhost:27017] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:1, serverValue:7}] to localhost:27017
+2016-10-09 18:20:27 [cluster-ClusterId{value='57fab49b443a310336f93399', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 0]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=932974}
+2016-10-09 18:20:27 [cluster-ClusterId{value='57fab49b443a310336f93399', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Discovered cluster type of STANDALONE
+2016-10-09 18:20:28 [main] INFO  unq.api.service.ApiService - Finish services configuration
+2016-10-09 18:20:28 [Thread-1] INFO  org.eclipse.jetty.util.log - Logging initialized @1731ms
+2016-10-09 18:20:28 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - == Spark has ignited ...
+2016-10-09 18:20:28 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - >> Listening on 0.0.0.0:9090
+2016-10-09 18:20:28 [Thread-1] INFO  org.eclipse.jetty.server.Server - jetty-9.3.6.v20151106
+2016-10-09 18:20:28 [Thread-1] INFO  o.e.jetty.server.ServerConnector - Started ServerConnector@3a430fbf{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-09 18:20:28 [Thread-1] INFO  org.eclipse.jetty.server.Server - Started @1882ms
+2016-10-09 18:29:58 [main] INFO  unq.api.service.ApiService - Starting services configuration
+2016-10-09 18:29:58 [main] INFO  org.mongodb.driver.cluster - Cluster created with settings {hosts=[localhost:27017], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2016-10-09 18:29:58 [main] INFO  org.mongodb.driver.cluster - Adding discovered server localhost:27017 to client view of cluster
+2016-10-09 18:29:58 [main] INFO  unq.client.MongoDBClient - Successfully connected to the database
+2016-10-09 18:29:58 [cluster-ClusterId{value='57fab6d6443a31034889c075', description='null'}-localhost:27017] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:1, serverValue:8}] to localhost:27017
+2016-10-09 18:29:58 [cluster-ClusterId{value='57fab6d6443a31034889c075', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 0]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=962315}
+2016-10-09 18:29:58 [cluster-ClusterId{value='57fab6d6443a31034889c075', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Discovered cluster type of STANDALONE
+2016-10-09 18:29:58 [main] INFO  unq.api.service.ApiService - Finish services configuration
+2016-10-09 18:29:58 [Thread-1] INFO  org.eclipse.jetty.util.log - Logging initialized @1383ms
+2016-10-09 18:29:58 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - == Spark has ignited ...
+2016-10-09 18:29:58 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - >> Listening on 0.0.0.0:9090
+2016-10-09 18:29:58 [Thread-1] INFO  org.eclipse.jetty.server.Server - jetty-9.3.6.v20151106
+2016-10-09 18:29:58 [Thread-1] INFO  o.e.jetty.server.ServerConnector - Started ServerConnector@776af22e{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-09 18:29:58 [Thread-1] INFO  org.eclipse.jetty.server.Server - Started @1549ms
+2016-10-09 19:32:02 [main] INFO  unq.api.service.ApiService - Starting services configuration
+2016-10-09 19:32:03 [main] INFO  org.mongodb.driver.cluster - Cluster created with settings {hosts=[localhost:27017], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2016-10-09 19:32:03 [main] INFO  org.mongodb.driver.cluster - Adding discovered server localhost:27017 to client view of cluster
+2016-10-09 19:32:03 [main] INFO  unq.client.MongoDBClient - Successfully connected to the database
+2016-10-09 19:32:03 [cluster-ClusterId{value='57fac563443a310428965e78', description='null'}-localhost:27017] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:1, serverValue:9}] to localhost:27017
+2016-10-09 19:32:03 [cluster-ClusterId{value='57fac563443a310428965e78', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 0]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=808887}
+2016-10-09 19:32:03 [cluster-ClusterId{value='57fac563443a310428965e78', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Discovered cluster type of STANDALONE
+2016-10-09 19:32:03 [main] INFO  unq.api.service.ApiService - Finish services configuration
+2016-10-09 19:32:03 [Thread-1] INFO  org.eclipse.jetty.util.log - Logging initialized @1515ms
+2016-10-09 19:32:03 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - == Spark has ignited ...
+2016-10-09 19:32:03 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - >> Listening on 0.0.0.0:9090
+2016-10-09 19:32:03 [Thread-1] INFO  org.eclipse.jetty.server.Server - jetty-9.3.6.v20151106
+2016-10-09 19:32:03 [Thread-1] INFO  o.e.jetty.server.ServerConnector - Started ServerConnector@7d846b58{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-09 19:32:03 [Thread-1] INFO  org.eclipse.jetty.server.Server - Started @1700ms
+2016-10-09 19:37:10 [qtp527076914-21] ERROR unq.api.controller.SurveyController - Error while trying to save student
+com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Expected ':' at line 3 column 15 path $.dates.
+	at com.google.gson.Gson.fromJson(Gson.java:902)
+	at com.google.gson.Gson.fromJson(Gson.java:852)
+	at com.google.gson.Gson.fromJson(Gson.java:801)
+	at com.google.gson.Gson.fromJson(Gson.java:773)
+	at unq.utils.GsonFactory.fromJson(GsonFactory.java:16)
+	at unq.api.controller.SurveyController.lambda$initSurveyEndopints$3(SurveyController.java:57)
+	at spark.RouteImpl$1.handle(RouteImpl.java:61)
+	at spark.http.matching.Routes.execute(Routes.java:61)
+	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:126)
+	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:189)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:119)
+	at org.eclipse.jetty.server.Server.handle(Server.java:517)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:308)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:242)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:261)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:95)
+	at org.eclipse.jetty.io.SelectChannelEndPoint$2.run(SelectChannelEndPoint.java:75)
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.produceAndRun(ExecuteProduceConsume.java:213)
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.run(ExecuteProduceConsume.java:147)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:654)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:572)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: com.google.gson.stream.MalformedJsonException: Expected ':' at line 3 column 15 path $.dates.
+	at com.google.gson.stream.JsonReader.syntaxError(JsonReader.java:1559)
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:530)
+	at com.google.gson.stream.JsonReader.peek(JsonReader.java:425)
+	at com.google.gson.internal.bind.CollectionTypeAdapterFactory$Adapter.read(CollectionTypeAdapterFactory.java:74)
+	at com.google.gson.internal.bind.CollectionTypeAdapterFactory$Adapter.read(CollectionTypeAdapterFactory.java:61)
+	at com.google.gson.internal.bind.TypeAdapterRuntimeTypeWrapper.read(TypeAdapterRuntimeTypeWrapper.java:41)
+	at com.google.gson.internal.bind.MapTypeAdapterFactory$Adapter.read(MapTypeAdapterFactory.java:187)
+	at com.google.gson.internal.bind.MapTypeAdapterFactory$Adapter.read(MapTypeAdapterFactory.java:145)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$1.read(ReflectiveTypeAdapterFactory.java:129)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:220)
+	at com.google.gson.Gson.fromJson(Gson.java:887)
+	... 23 common frames omitted
+2016-10-09 19:37:31 [qtp527076914-20] INFO  u.api.service.impl.SurveyServiceImpl - Starting saveing subject
+2016-10-09 19:37:31 [qtp527076914-20] INFO  unq.repository.MongoDBDAO - Starting saving subject object
+2016-10-09 19:37:31 [qtp527076914-20] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:2, serverValue:10}] to localhost:27017
+2016-10-09 19:37:31 [qtp527076914-20] INFO  unq.repository.MongoDBDAO - Finish saving subject object
+2016-10-09 19:39:36 [qtp527076914-17] ERROR unq.api.controller.SurveyController - Error while trying to save student
+com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Expected name at line 3 column 58 path $.dates
+	at com.google.gson.Gson.fromJson(Gson.java:902)
+	at com.google.gson.Gson.fromJson(Gson.java:852)
+	at com.google.gson.Gson.fromJson(Gson.java:801)
+	at com.google.gson.Gson.fromJson(Gson.java:773)
+	at unq.utils.GsonFactory.fromJson(GsonFactory.java:16)
+	at unq.api.controller.SurveyController.lambda$initSurveyEndopints$3(SurveyController.java:57)
+	at spark.RouteImpl$1.handle(RouteImpl.java:61)
+	at spark.http.matching.Routes.execute(Routes.java:61)
+	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:126)
+	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:189)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:119)
+	at org.eclipse.jetty.server.Server.handle(Server.java:517)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:308)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:242)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:261)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:95)
+	at org.eclipse.jetty.io.SelectChannelEndPoint$2.run(SelectChannelEndPoint.java:75)
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.produceAndRun(ExecuteProduceConsume.java:213)
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.run(ExecuteProduceConsume.java:147)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:654)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:572)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: com.google.gson.stream.MalformedJsonException: Expected name at line 3 column 58 path $.dates
+	at com.google.gson.stream.JsonReader.syntaxError(JsonReader.java:1559)
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:513)
+	at com.google.gson.stream.JsonReader.hasNext(JsonReader.java:414)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:214)
+	at com.google.gson.Gson.fromJson(Gson.java:887)
+	... 23 common frames omitted
+2016-10-09 19:39:51 [qtp527076914-16] ERROR unq.api.controller.SurveyController - Error while trying to save student
+com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Expected name at line 3 column 10 path $.dates.
+	at com.google.gson.Gson.fromJson(Gson.java:902)
+	at com.google.gson.Gson.fromJson(Gson.java:852)
+	at com.google.gson.Gson.fromJson(Gson.java:801)
+	at com.google.gson.Gson.fromJson(Gson.java:773)
+	at unq.utils.GsonFactory.fromJson(GsonFactory.java:16)
+	at unq.api.controller.SurveyController.lambda$initSurveyEndopints$3(SurveyController.java:57)
+	at spark.RouteImpl$1.handle(RouteImpl.java:61)
+	at spark.http.matching.Routes.execute(Routes.java:61)
+	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:126)
+	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:189)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:119)
+	at org.eclipse.jetty.server.Server.handle(Server.java:517)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:308)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:242)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:261)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:95)
+	at org.eclipse.jetty.io.SelectChannelEndPoint$2.run(SelectChannelEndPoint.java:75)
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.produceAndRun(ExecuteProduceConsume.java:213)
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.run(ExecuteProduceConsume.java:147)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:654)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:572)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: com.google.gson.stream.MalformedJsonException: Expected name at line 3 column 10 path $.dates.
+	at com.google.gson.stream.JsonReader.syntaxError(JsonReader.java:1559)
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:513)
+	at com.google.gson.stream.JsonReader.hasNext(JsonReader.java:414)
+	at com.google.gson.internal.bind.MapTypeAdapterFactory$Adapter.read(MapTypeAdapterFactory.java:184)
+	at com.google.gson.internal.bind.MapTypeAdapterFactory$Adapter.read(MapTypeAdapterFactory.java:145)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$1.read(ReflectiveTypeAdapterFactory.java:129)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:220)
+	at com.google.gson.Gson.fromJson(Gson.java:887)
+	... 23 common frames omitted
+2016-10-09 19:40:23 [qtp527076914-19] INFO  u.api.service.impl.SurveyServiceImpl - Starting saveing subject
+2016-10-09 19:40:23 [qtp527076914-19] INFO  unq.repository.MongoDBDAO - Starting saving subject object
+2016-10-09 19:40:23 [qtp527076914-19] INFO  unq.repository.MongoDBDAO - Finish saving subject object
+2016-10-09 19:41:24 [qtp527076914-20] INFO  u.api.service.impl.SurveyServiceImpl - Starting saveing subject
+2016-10-09 19:41:24 [qtp527076914-20] INFO  unq.repository.MongoDBDAO - Starting saving subject object
+2016-10-09 19:41:24 [qtp527076914-20] INFO  unq.repository.MongoDBDAO - Finish saving subject object
+2016-10-09 19:41:50 [qtp527076914-17] INFO  u.api.service.impl.SurveyServiceImpl - Starting saveing subject
+2016-10-09 19:41:50 [qtp527076914-17] INFO  unq.repository.MongoDBDAO - Starting saving subject object
+2016-10-09 19:41:50 [qtp527076914-17] INFO  unq.repository.MongoDBDAO - Finish saving subject object
+2016-10-09 19:42:10 [qtp527076914-16] INFO  u.api.service.impl.SurveyServiceImpl - Starting saveing subject
+2016-10-09 19:42:10 [qtp527076914-16] INFO  unq.repository.MongoDBDAO - Starting saving subject object
+2016-10-09 19:42:10 [qtp527076914-16] INFO  unq.repository.MongoDBDAO - Finish saving subject object
+2016-10-09 19:42:35 [qtp527076914-23] INFO  u.api.service.impl.SurveyServiceImpl - Starting saveing subject
+2016-10-09 19:42:35 [qtp527076914-23] INFO  unq.repository.MongoDBDAO - Starting saving subject object
+2016-10-09 19:42:35 [qtp527076914-23] INFO  unq.repository.MongoDBDAO - Finish saving subject object
+2016-10-09 19:42:57 [qtp527076914-17] INFO  u.api.service.impl.SurveyServiceImpl - Starting saveing subject
+2016-10-09 19:42:57 [qtp527076914-17] INFO  unq.repository.MongoDBDAO - Starting saving subject object
+2016-10-09 19:42:57 [qtp527076914-17] INFO  unq.repository.MongoDBDAO - Finish saving subject object
+2016-10-09 19:45:14 [qtp527076914-16] INFO  u.api.service.impl.SurveyServiceImpl - Starting saveing subject
+2016-10-09 19:45:14 [qtp527076914-16] INFO  unq.repository.MongoDBDAO - Starting saving subject object
+2016-10-09 19:45:14 [qtp527076914-16] INFO  unq.repository.MongoDBDAO - Finish saving subject object
+2016-10-09 19:46:19 [main] INFO  unq.api.service.ApiService - Starting services configuration
+2016-10-09 19:46:19 [main] INFO  org.mongodb.driver.cluster - Cluster created with settings {hosts=[localhost:27017], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2016-10-09 19:46:19 [main] INFO  org.mongodb.driver.cluster - Adding discovered server localhost:27017 to client view of cluster
+2016-10-09 19:46:19 [main] INFO  unq.client.MongoDBClient - Successfully connected to the database
+2016-10-09 19:46:19 [cluster-ClusterId{value='57fac8bb443a3104344e6162', description='null'}-localhost:27017] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:1, serverValue:11}] to localhost:27017
+2016-10-09 19:46:19 [cluster-ClusterId{value='57fac8bb443a3104344e6162', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 0]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=929566}
+2016-10-09 19:46:19 [cluster-ClusterId{value='57fac8bb443a3104344e6162', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Discovered cluster type of STANDALONE
+2016-10-09 19:46:20 [main] INFO  unq.api.service.ApiService - Finish services configuration
+2016-10-09 19:46:20 [Thread-1] INFO  org.eclipse.jetty.util.log - Logging initialized @1418ms
+2016-10-09 19:46:20 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - == Spark has ignited ...
+2016-10-09 19:46:20 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - >> Listening on 0.0.0.0:9090
+2016-10-09 19:46:20 [Thread-1] INFO  org.eclipse.jetty.server.Server - jetty-9.3.6.v20151106
+2016-10-09 19:46:20 [Thread-1] INFO  o.e.jetty.server.ServerConnector - Started ServerConnector@395697d4{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-09 19:46:20 [Thread-1] INFO  org.eclipse.jetty.server.Server - Started @1587ms
+2016-10-09 19:46:44 [qtp222611814-20] INFO  u.api.service.impl.SurveyServiceImpl - Start building subjects
+2016-10-09 19:46:44 [qtp222611814-20] INFO  unq.repository.MongoDBDAO - Getting subjects from database
+2016-10-09 19:46:44 [qtp222611814-20] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:2, serverValue:12}] to localhost:27017
+2016-10-09 19:46:44 [qtp222611814-20] INFO  u.api.service.impl.SurveyServiceImpl - All subject finished successfully
+2016-10-09 19:55:28 [qtp222611814-22] INFO  u.api.service.impl.SurveyServiceImpl - Saving survey for student 23328
+2016-10-09 19:55:28 [qtp222611814-22] INFO  unq.repository.MongoDBDAO - Starting saving survey object
+2016-10-09 19:55:28 [qtp222611814-22] INFO  unq.repository.MongoDBDAO - Finish saving survey object
+2016-10-09 19:59:17 [main] INFO  unq.api.service.ApiService - Starting services configuration
+2016-10-09 19:59:18 [main] INFO  org.mongodb.driver.cluster - Cluster created with settings {hosts=[localhost:27017], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2016-10-09 19:59:18 [main] INFO  org.mongodb.driver.cluster - Adding discovered server localhost:27017 to client view of cluster
+2016-10-09 19:59:18 [main] INFO  unq.client.MongoDBClient - Successfully connected to the database
+2016-10-09 19:59:18 [cluster-ClusterId{value='57facbc6443a31043da47aa3', description='null'}-localhost:27017] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:1, serverValue:13}] to localhost:27017
+2016-10-09 19:59:18 [cluster-ClusterId{value='57facbc6443a31043da47aa3', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 0]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=1539834}
+2016-10-09 19:59:18 [cluster-ClusterId{value='57facbc6443a31043da47aa3', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Discovered cluster type of STANDALONE
+2016-10-09 19:59:19 [main] INFO  unq.api.service.ApiService - Finish services configuration
+2016-10-09 19:59:19 [Thread-1] INFO  org.eclipse.jetty.util.log - Logging initialized @3317ms
+2016-10-09 19:59:19 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - == Spark has ignited ...
+2016-10-09 19:59:19 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - >> Listening on 0.0.0.0:9090
+2016-10-09 19:59:19 [Thread-1] INFO  org.eclipse.jetty.server.Server - jetty-9.3.6.v20151106
+2016-10-09 19:59:19 [Thread-1] INFO  o.e.jetty.server.ServerConnector - Started ServerConnector@2b9839ca{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-09 19:59:19 [Thread-1] INFO  org.eclipse.jetty.server.Server - Started @3679ms
+2016-10-09 20:00:02 [qtp141736182-22] INFO  u.api.service.impl.SurveyServiceImpl - Saving survey for student 23328
+2016-10-09 20:00:02 [qtp141736182-22] INFO  unq.repository.MongoDBDAO - Starting saving survey object
+2016-10-09 20:01:09 [main] INFO  unq.api.service.ApiService - Starting services configuration
+2016-10-09 20:01:10 [main] INFO  org.mongodb.driver.cluster - Cluster created with settings {hosts=[localhost:27017], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2016-10-09 20:01:10 [main] INFO  org.mongodb.driver.cluster - Adding discovered server localhost:27017 to client view of cluster
+2016-10-09 20:01:10 [main] INFO  unq.client.MongoDBClient - Successfully connected to the database
+2016-10-09 20:01:10 [cluster-ClusterId{value='57facc36443a31044172d6f3', description='null'}-localhost:27017] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:1, serverValue:14}] to localhost:27017
+2016-10-09 20:01:10 [cluster-ClusterId{value='57facc36443a31044172d6f3', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 0]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=1177050}
+2016-10-09 20:01:10 [cluster-ClusterId{value='57facc36443a31044172d6f3', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Discovered cluster type of STANDALONE
+2016-10-09 20:01:11 [main] INFO  unq.api.service.ApiService - Finish services configuration
+2016-10-09 20:01:11 [Thread-1] INFO  org.eclipse.jetty.util.log - Logging initialized @2922ms
+2016-10-09 20:01:11 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - == Spark has ignited ...
+2016-10-09 20:01:11 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - >> Listening on 0.0.0.0:9090
+2016-10-09 20:01:11 [Thread-1] INFO  org.eclipse.jetty.server.Server - jetty-9.3.6.v20151106
+2016-10-09 20:01:11 [Thread-1] INFO  o.e.jetty.server.ServerConnector - Started ServerConnector@be79fc{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-09 20:01:11 [Thread-1] INFO  org.eclipse.jetty.server.Server - Started @3207ms
+2016-10-09 20:01:16 [qtp619618287-22] ERROR unq.api.controller.SurveyController - Error while trying to save a survey
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 7 column 13 path $.selected_subjects[0].status
 	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:224)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$1.read(ReflectiveTypeAdapterFactory.java:129)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:220)
+	at com.google.gson.internal.bind.TypeAdapterRuntimeTypeWrapper.read(TypeAdapterRuntimeTypeWrapper.java:41)
+	at com.google.gson.internal.bind.CollectionTypeAdapterFactory$Adapter.read(CollectionTypeAdapterFactory.java:82)
+	at com.google.gson.internal.bind.CollectionTypeAdapterFactory$Adapter.read(CollectionTypeAdapterFactory.java:61)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$1.read(ReflectiveTypeAdapterFactory.java:129)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:220)
 	at com.google.gson.Gson.fromJson(Gson.java:887)
 	at com.google.gson.Gson.fromJson(Gson.java:852)
 	at com.google.gson.Gson.fromJson(Gson.java:801)
 	at com.google.gson.Gson.fromJson(Gson.java:773)
 	at unq.utils.GsonFactory.fromJson(GsonFactory.java:16)
-	at unq.api.controller.SurveyController.lambda$initSurveyEndopints$1(SurveyController.java:38)
+	at unq.api.controller.SurveyController.lambda$initSurveyEndopints$5(SurveyController.java:75)
 	at spark.RouteImpl$1.handle(RouteImpl.java:61)
 	at spark.http.matching.Routes.execute(Routes.java:61)
 	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:126)
@@ -39,33 +336,26 @@ com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected B
 	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:654)
 	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:572)
 	at java.lang.Thread.run(Thread.java:745)
-Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1 path $
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 7 column 13 path $.selected_subjects[0].status
 	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:385)
 	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:213)
-	... 24 common frames omitted
-2016-10-02 20:49:18 [main] INFO  unq.api.service.ApiService - Starting services configuration
-2016-10-02 20:49:19 [main] INFO  org.mongodb.driver.cluster - Cluster created with settings {hosts=[localhost:27017], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
-2016-10-02 20:49:19 [main] INFO  org.mongodb.driver.cluster - Adding discovered server localhost:27017 to client view of cluster
-2016-10-02 20:49:19 [main] INFO  unq.client.MongoDBClient - Successfully connected to the database
-2016-10-02 20:49:19 [cluster-ClusterId{value='57f19cff46f0d9049799b6a5', description='null'}-localhost:27017] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:1, serverValue:3}] to localhost:27017
-2016-10-02 20:49:19 [cluster-ClusterId{value='57f19cff46f0d9049799b6a5', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 0]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=3285522}
-2016-10-02 20:49:19 [cluster-ClusterId{value='57f19cff46f0d9049799b6a5', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Discovered cluster type of STANDALONE
-2016-10-02 20:49:20 [main] INFO  unq.api.service.ApiService - Finish services configuration
-2016-10-02 20:49:20 [Thread-1] INFO  org.eclipse.jetty.util.log - Logging initialized @2143ms
-2016-10-02 20:49:20 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - == Spark has ignited ...
-2016-10-02 20:49:20 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - >> Listening on 0.0.0.0:9090
-2016-10-02 20:49:20 [Thread-1] INFO  org.eclipse.jetty.server.Server - jetty-9.3.6.v20151106
-2016-10-02 20:49:20 [Thread-1] INFO  o.e.jetty.server.ServerConnector - Started ServerConnector@4dd98d28{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
-2016-10-02 20:49:20 [Thread-1] INFO  org.eclipse.jetty.server.Server - Started @2471ms
-2016-10-02 20:49:42 [qtp1842208796-20] ERROR unq.api.controller.SurveyController - Error while trying to save student
-com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1 path $
+	... 31 common frames omitted
+2016-10-09 20:03:38 [qtp619618287-23] ERROR unq.api.controller.SurveyController - Error while trying to save a survey
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 7 column 13 path $.selected_subjects[0].status
 	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:224)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$1.read(ReflectiveTypeAdapterFactory.java:129)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:220)
+	at com.google.gson.internal.bind.TypeAdapterRuntimeTypeWrapper.read(TypeAdapterRuntimeTypeWrapper.java:41)
+	at com.google.gson.internal.bind.CollectionTypeAdapterFactory$Adapter.read(CollectionTypeAdapterFactory.java:82)
+	at com.google.gson.internal.bind.CollectionTypeAdapterFactory$Adapter.read(CollectionTypeAdapterFactory.java:61)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$1.read(ReflectiveTypeAdapterFactory.java:129)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:220)
 	at com.google.gson.Gson.fromJson(Gson.java:887)
 	at com.google.gson.Gson.fromJson(Gson.java:852)
 	at com.google.gson.Gson.fromJson(Gson.java:801)
 	at com.google.gson.Gson.fromJson(Gson.java:773)
 	at unq.utils.GsonFactory.fromJson(GsonFactory.java:16)
-	at unq.api.controller.SurveyController.lambda$initSurveyEndopints$1(SurveyController.java:38)
+	at unq.api.controller.SurveyController.lambda$initSurveyEndopints$5(SurveyController.java:75)
 	at spark.RouteImpl$1.handle(RouteImpl.java:61)
 	at spark.http.matching.Routes.execute(Routes.java:61)
 	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:126)
@@ -84,33 +374,26 @@ com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected B
 	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:654)
 	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:572)
 	at java.lang.Thread.run(Thread.java:745)
-Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1 path $
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 7 column 13 path $.selected_subjects[0].status
 	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:385)
 	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:213)
-	... 24 common frames omitted
-2016-10-02 20:50:32 [main] INFO  unq.api.service.ApiService - Starting services configuration
-2016-10-02 20:50:32 [main] INFO  org.mongodb.driver.cluster - Cluster created with settings {hosts=[localhost:27017], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
-2016-10-02 20:50:32 [main] INFO  org.mongodb.driver.cluster - Adding discovered server localhost:27017 to client view of cluster
-2016-10-02 20:50:33 [main] INFO  unq.client.MongoDBClient - Successfully connected to the database
-2016-10-02 20:50:33 [cluster-ClusterId{value='57f19d4846f0d9049a641742', description='null'}-localhost:27017] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:1, serverValue:4}] to localhost:27017
-2016-10-02 20:50:33 [cluster-ClusterId{value='57f19d4846f0d9049a641742', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 0]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=846125}
-2016-10-02 20:50:33 [cluster-ClusterId{value='57f19d4846f0d9049a641742', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Discovered cluster type of STANDALONE
-2016-10-02 20:50:33 [main] INFO  unq.api.service.ApiService - Finish services configuration
-2016-10-02 20:50:33 [Thread-1] INFO  org.eclipse.jetty.util.log - Logging initialized @3217ms
-2016-10-02 20:50:34 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - == Spark has ignited ...
-2016-10-02 20:50:34 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - >> Listening on 0.0.0.0:9090
-2016-10-02 20:50:34 [Thread-1] INFO  org.eclipse.jetty.server.Server - jetty-9.3.6.v20151106
-2016-10-02 20:50:34 [Thread-1] INFO  o.e.jetty.server.ServerConnector - Started ServerConnector@7d0e3038{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
-2016-10-02 20:50:34 [Thread-1] INFO  org.eclipse.jetty.server.Server - Started @3429ms
-2016-10-02 20:52:14 [qtp1030788674-22] ERROR unq.api.controller.SurveyController - Error while trying to save student
-com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1 path $
+	... 31 common frames omitted
+2016-10-09 20:05:20 [qtp619618287-19] ERROR unq.api.controller.SurveyController - Error while trying to save a survey
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 7 column 13 path $.selected_subjects[0].status
 	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:224)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$1.read(ReflectiveTypeAdapterFactory.java:129)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:220)
+	at com.google.gson.internal.bind.TypeAdapterRuntimeTypeWrapper.read(TypeAdapterRuntimeTypeWrapper.java:41)
+	at com.google.gson.internal.bind.CollectionTypeAdapterFactory$Adapter.read(CollectionTypeAdapterFactory.java:82)
+	at com.google.gson.internal.bind.CollectionTypeAdapterFactory$Adapter.read(CollectionTypeAdapterFactory.java:61)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$1.read(ReflectiveTypeAdapterFactory.java:129)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:220)
 	at com.google.gson.Gson.fromJson(Gson.java:887)
 	at com.google.gson.Gson.fromJson(Gson.java:852)
 	at com.google.gson.Gson.fromJson(Gson.java:801)
 	at com.google.gson.Gson.fromJson(Gson.java:773)
 	at unq.utils.GsonFactory.fromJson(GsonFactory.java:16)
-	at unq.api.controller.SurveyController.lambda$initSurveyEndopints$1(SurveyController.java:38)
+	at unq.api.controller.SurveyController.lambda$initSurveyEndopints$5(SurveyController.java:75)
 	at spark.RouteImpl$1.handle(RouteImpl.java:61)
 	at spark.http.matching.Routes.execute(Routes.java:61)
 	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:126)
@@ -129,58 +412,26 @@ com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected B
 	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:654)
 	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:572)
 	at java.lang.Thread.run(Thread.java:745)
-Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1 path $
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 7 column 13 path $.selected_subjects[0].status
 	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:385)
 	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:213)
-	... 24 common frames omitted
-2016-10-02 20:53:29 [qtp1030788674-23] INFO  unq.api.controller.SurveyController - Marina
-2016-10-02 20:53:29 [qtp1030788674-23] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:2, serverValue:5}] to localhost:27017
-2016-10-02 20:53:30 [qtp1030788674-23] ERROR unq.api.controller.SurveyController - Error while trying to save student
-java.lang.ClassCastException: java.lang.String cannot be cast to unq.api.model.Student
-	at unq.repository.MongoDBDAO.saveStudent(MongoDBDAO.java:42)
-	at unq.api.service.impl.SurveyServiceImpl.saveStudent(SurveyServiceImpl.java:18)
-	at unq.api.controller.SurveyController.lambda$initSurveyEndopints$1(SurveyController.java:40)
-	at spark.RouteImpl$1.handle(RouteImpl.java:61)
-	at spark.http.matching.Routes.execute(Routes.java:61)
-	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:126)
-	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50)
-	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:189)
-	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
-	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:119)
-	at org.eclipse.jetty.server.Server.handle(Server.java:517)
-	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:308)
-	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:242)
-	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:261)
-	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:95)
-	at org.eclipse.jetty.io.SelectChannelEndPoint$2.run(SelectChannelEndPoint.java:75)
-	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.produceAndRun(ExecuteProduceConsume.java:213)
-	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.run(ExecuteProduceConsume.java:147)
-	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:654)
-	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:572)
-	at java.lang.Thread.run(Thread.java:745)
-2016-10-02 20:56:10 [main] INFO  unq.api.service.ApiService - Starting services configuration
-2016-10-02 20:56:11 [main] INFO  org.mongodb.driver.cluster - Cluster created with settings {hosts=[localhost:27017], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
-2016-10-02 20:56:11 [main] INFO  org.mongodb.driver.cluster - Adding discovered server localhost:27017 to client view of cluster
-2016-10-02 20:56:11 [main] INFO  unq.client.MongoDBClient - Successfully connected to the database
-2016-10-02 20:56:11 [cluster-ClusterId{value='57f19e9b46f0d9049d5aaacd', description='null'}-localhost:27017] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:1, serverValue:6}] to localhost:27017
-2016-10-02 20:56:11 [cluster-ClusterId{value='57f19e9b46f0d9049d5aaacd', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 0]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=1510161}
-2016-10-02 20:56:11 [cluster-ClusterId{value='57f19e9b46f0d9049d5aaacd', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Discovered cluster type of STANDALONE
-2016-10-02 20:56:12 [main] INFO  unq.api.service.ApiService - Finish services configuration
-2016-10-02 20:56:12 [Thread-1] INFO  org.eclipse.jetty.util.log - Logging initialized @3109ms
-2016-10-02 20:56:12 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - == Spark has ignited ...
-2016-10-02 20:56:12 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - >> Listening on 0.0.0.0:9090
-2016-10-02 20:56:12 [Thread-1] INFO  org.eclipse.jetty.server.Server - jetty-9.3.6.v20151106
-2016-10-02 20:56:12 [Thread-1] INFO  o.e.jetty.server.ServerConnector - Started ServerConnector@7bf630{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
-2016-10-02 20:56:12 [Thread-1] INFO  org.eclipse.jetty.server.Server - Started @3445ms
-2016-10-02 20:57:09 [qtp1942504061-21] ERROR unq.api.controller.SurveyController - Error while trying to save student
-com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1 path $
+	... 31 common frames omitted
+2016-10-09 20:05:47 [qtp619618287-18] ERROR unq.api.controller.SurveyController - Error while trying to save a survey
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 7 column 12 path $.selected_subjects[0].status
 	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:224)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$1.read(ReflectiveTypeAdapterFactory.java:129)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:220)
+	at com.google.gson.internal.bind.TypeAdapterRuntimeTypeWrapper.read(TypeAdapterRuntimeTypeWrapper.java:41)
+	at com.google.gson.internal.bind.CollectionTypeAdapterFactory$Adapter.read(CollectionTypeAdapterFactory.java:82)
+	at com.google.gson.internal.bind.CollectionTypeAdapterFactory$Adapter.read(CollectionTypeAdapterFactory.java:61)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$1.read(ReflectiveTypeAdapterFactory.java:129)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:220)
 	at com.google.gson.Gson.fromJson(Gson.java:887)
 	at com.google.gson.Gson.fromJson(Gson.java:852)
 	at com.google.gson.Gson.fromJson(Gson.java:801)
 	at com.google.gson.Gson.fromJson(Gson.java:773)
 	at unq.utils.GsonFactory.fromJson(GsonFactory.java:16)
-	at unq.api.controller.SurveyController.lambda$initSurveyEndopints$1(SurveyController.java:39)
+	at unq.api.controller.SurveyController.lambda$initSurveyEndopints$5(SurveyController.java:75)
 	at spark.RouteImpl$1.handle(RouteImpl.java:61)
 	at spark.http.matching.Routes.execute(Routes.java:61)
 	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:126)
@@ -199,19 +450,26 @@ com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected B
 	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:654)
 	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:572)
 	at java.lang.Thread.run(Thread.java:745)
-Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1 path $
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 7 column 12 path $.selected_subjects[0].status
 	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:385)
 	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:213)
-	... 24 common frames omitted
-2016-10-02 20:59:07 [qtp1942504061-24] ERROR unq.api.controller.SurveyController - Error while trying to save student
-com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1 path $
+	... 31 common frames omitted
+2016-10-09 20:07:23 [qtp619618287-22] ERROR unq.api.controller.SurveyController - Error while trying to save a survey
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 7 column 12 path $.selected_subjects[0].status
 	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:224)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$1.read(ReflectiveTypeAdapterFactory.java:129)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:220)
+	at com.google.gson.internal.bind.TypeAdapterRuntimeTypeWrapper.read(TypeAdapterRuntimeTypeWrapper.java:41)
+	at com.google.gson.internal.bind.CollectionTypeAdapterFactory$Adapter.read(CollectionTypeAdapterFactory.java:82)
+	at com.google.gson.internal.bind.CollectionTypeAdapterFactory$Adapter.read(CollectionTypeAdapterFactory.java:61)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$1.read(ReflectiveTypeAdapterFactory.java:129)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:220)
 	at com.google.gson.Gson.fromJson(Gson.java:887)
 	at com.google.gson.Gson.fromJson(Gson.java:852)
 	at com.google.gson.Gson.fromJson(Gson.java:801)
 	at com.google.gson.Gson.fromJson(Gson.java:773)
 	at unq.utils.GsonFactory.fromJson(GsonFactory.java:16)
-	at unq.api.controller.SurveyController.lambda$initSurveyEndopints$1(SurveyController.java:39)
+	at unq.api.controller.SurveyController.lambda$initSurveyEndopints$5(SurveyController.java:75)
 	at spark.RouteImpl$1.handle(RouteImpl.java:61)
 	at spark.http.matching.Routes.execute(Routes.java:61)
 	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:126)
@@ -230,41 +488,26 @@ com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected B
 	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:654)
 	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:572)
 	at java.lang.Thread.run(Thread.java:745)
-Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1 path $
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 7 column 12 path $.selected_subjects[0].status
 	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:385)
 	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:213)
-	... 24 common frames omitted
-2016-10-02 21:01:00 [qtp1942504061-18] INFO  unq.api.controller.SurveyController - Marina
-2016-10-02 21:01:58 [main] INFO  unq.api.service.ApiService - Starting services configuration
-2016-10-02 21:01:58 [main] INFO  org.mongodb.driver.cluster - Cluster created with settings {hosts=[localhost:27017], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
-2016-10-02 21:01:58 [main] INFO  org.mongodb.driver.cluster - Adding discovered server localhost:27017 to client view of cluster
-2016-10-02 21:01:59 [main] INFO  unq.client.MongoDBClient - Successfully connected to the database
-2016-10-02 21:01:59 [cluster-ClusterId{value='57f19ff646f0d904a56e0b10', description='null'}-localhost:27017] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:1, serverValue:7}] to localhost:27017
-2016-10-02 21:01:59 [cluster-ClusterId{value='57f19ff646f0d904a56e0b10', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 0]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=898696}
-2016-10-02 21:01:59 [cluster-ClusterId{value='57f19ff646f0d904a56e0b10', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Discovered cluster type of STANDALONE
-2016-10-02 21:01:59 [main] INFO  unq.api.service.ApiService - Finish services configuration
-2016-10-02 21:01:59 [Thread-1] INFO  org.eclipse.jetty.util.log - Logging initialized @2325ms
-2016-10-02 21:01:59 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - == Spark has ignited ...
-2016-10-02 21:01:59 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - >> Listening on 0.0.0.0:9090
-2016-10-02 21:01:59 [Thread-1] INFO  org.eclipse.jetty.server.Server - jetty-9.3.6.v20151106
-2016-10-02 21:01:59 [Thread-1] INFO  o.e.jetty.server.ServerConnector - Started ServerConnector@720964d8{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
-2016-10-02 21:01:59 [Thread-1] INFO  org.eclipse.jetty.server.Server - Started @2582ms
-2016-10-02 21:02:06 [qtp62832981-21] INFO  unq.api.controller.SurveyController - Marina
-2016-10-02 21:02:06 [qtp62832981-21] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:2, serverValue:8}] to localhost:27017
-2016-10-02 21:02:06 [qtp62832981-21] ERROR unq.api.controller.SurveyController - Error while trying to save student
-java.lang.IllegalArgumentException: No suitable constructor found for type [simple type, class unq.api.model.Student]: can not instantiate from JSON object (need to add/enable type information?)
- at [Source: N/A; line: -1, column: -1]
-	at com.fasterxml.jackson.databind.ObjectMapper._convert(ObjectMapper.java:2704)
-	at com.fasterxml.jackson.databind.ObjectMapper.convertValue(ObjectMapper.java:2646)
-	at com.despegar.integration.mongo.connector.MongoDao.serialize(MongoDao.java:399)
-	at com.despegar.integration.mongo.connector.MongoDao.serialize(MongoDao.java:389)
-	at com.despegar.integration.mongo.connector.MongoDao.findOne(MongoDao.java:107)
-	at com.despegar.integration.mongo.connector.MongoDao.updateOrInsert(MongoDao.java:278)
-	at com.despegar.integration.mongo.connector.MongoDao.updateOrInsert(MongoDao.java:272)
-	at com.despegar.integration.mongo.connector.MongoCollection.save(MongoCollection.java:95)
-	at unq.repository.MongoDBDAO.saveStudent(MongoDBDAO.java:42)
-	at unq.api.service.impl.SurveyServiceImpl.saveStudent(SurveyServiceImpl.java:18)
-	at unq.api.controller.SurveyController.lambda$initSurveyEndopints$1(SurveyController.java:39)
+	... 31 common frames omitted
+2016-10-09 20:07:33 [qtp619618287-23] ERROR unq.api.controller.SurveyController - Error while trying to save a survey
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 7 column 12 path $.selected_subjects[0].status
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:224)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$1.read(ReflectiveTypeAdapterFactory.java:129)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:220)
+	at com.google.gson.internal.bind.TypeAdapterRuntimeTypeWrapper.read(TypeAdapterRuntimeTypeWrapper.java:41)
+	at com.google.gson.internal.bind.CollectionTypeAdapterFactory$Adapter.read(CollectionTypeAdapterFactory.java:82)
+	at com.google.gson.internal.bind.CollectionTypeAdapterFactory$Adapter.read(CollectionTypeAdapterFactory.java:61)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$1.read(ReflectiveTypeAdapterFactory.java:129)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:220)
+	at com.google.gson.Gson.fromJson(Gson.java:887)
+	at com.google.gson.Gson.fromJson(Gson.java:852)
+	at com.google.gson.Gson.fromJson(Gson.java:801)
+	at com.google.gson.Gson.fromJson(Gson.java:773)
+	at unq.utils.GsonFactory.fromJson(GsonFactory.java:16)
+	at unq.api.controller.SurveyController.lambda$initSurveyEndopints$5(SurveyController.java:75)
 	at spark.RouteImpl$1.handle(RouteImpl.java:61)
 	at spark.http.matching.Routes.execute(Routes.java:61)
 	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:126)
@@ -283,35 +526,30 @@ java.lang.IllegalArgumentException: No suitable constructor found for type [simp
 	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:654)
 	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:572)
 	at java.lang.Thread.run(Thread.java:745)
-Caused by: com.fasterxml.jackson.databind.JsonMappingException: No suitable constructor found for type [simple type, class unq.api.model.Student]: can not instantiate from JSON object (need to add/enable type information?)
- at [Source: N/A; line: -1, column: -1]
-	at com.fasterxml.jackson.databind.JsonMappingException.from(JsonMappingException.java:164)
-	at com.fasterxml.jackson.databind.deser.BeanDeserializerBase.deserializeFromObjectUsingNonDefault(BeanDeserializerBase.java:1078)
-	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserializeFromObject(BeanDeserializer.java:268)
-	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:124)
-	at com.fasterxml.jackson.databind.ObjectMapper._convert(ObjectMapper.java:2699)
-	... 28 common frames omitted
-2016-10-02 21:09:32 [main] INFO  unq.api.service.ApiService - Starting services configuration
-2016-10-02 21:09:32 [main] INFO  org.mongodb.driver.cluster - Cluster created with settings {hosts=[localhost:27017], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
-2016-10-02 21:09:32 [main] INFO  org.mongodb.driver.cluster - Adding discovered server localhost:27017 to client view of cluster
-2016-10-02 21:09:33 [main] INFO  unq.client.MongoDBClient - Successfully connected to the database
-2016-10-02 21:09:33 [cluster-ClusterId{value='57f1a1bc46f0d904b0f8e64b', description='null'}-localhost:27017] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:1, serverValue:9}] to localhost:27017
-2016-10-02 21:09:33 [cluster-ClusterId{value='57f1a1bc46f0d904b0f8e64b', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 0]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=1337705}
-2016-10-02 21:09:33 [cluster-ClusterId{value='57f1a1bc46f0d904b0f8e64b', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Discovered cluster type of STANDALONE
-2016-10-02 21:09:34 [main] INFO  unq.api.service.ApiService - Finish services configuration
-2016-10-02 21:09:34 [Thread-1] INFO  org.eclipse.jetty.util.log - Logging initialized @3603ms
-2016-10-02 21:09:34 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - == Spark has ignited ...
-2016-10-02 21:09:34 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - >> Listening on 0.0.0.0:9090
-2016-10-02 21:09:34 [Thread-1] INFO  org.eclipse.jetty.server.Server - jetty-9.3.6.v20151106
-2016-10-02 21:09:34 [Thread-1] INFO  o.e.jetty.server.ServerConnector - Started ServerConnector@1c1c8e8a{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
-2016-10-02 21:09:34 [Thread-1] INFO  org.eclipse.jetty.server.Server - Started @3886ms
-2016-10-02 21:09:57 [qtp592792029-21] INFO  unq.api.controller.SurveyController - Marina
-2016-10-02 21:09:57 [qtp592792029-21] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:2, serverValue:10}] to localhost:27017
-2016-10-02 21:09:58 [qtp592792029-21] ERROR unq.api.controller.SurveyController - Error while trying to save student
-java.lang.ClassCastException: java.lang.String cannot be cast to unq.api.model.Student
-	at unq.repository.MongoDBDAO.saveStudent(MongoDBDAO.java:42)
-	at unq.api.service.impl.SurveyServiceImpl.saveStudent(SurveyServiceImpl.java:18)
-	at unq.api.controller.SurveyController.lambda$initSurveyEndopints$1(SurveyController.java:39)
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 7 column 12 path $.selected_subjects[0].status
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:385)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:213)
+	... 31 common frames omitted
+2016-10-09 20:08:20 [qtp619618287-18] INFO  u.api.service.impl.SurveyServiceImpl - Saving survey for student 23328
+2016-10-09 20:08:20 [qtp619618287-18] INFO  unq.repository.MongoDBDAO - Starting saving survey object
+2016-10-09 20:08:20 [qtp619618287-18] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:2, serverValue:15}] to localhost:27017
+2016-10-09 20:08:20 [qtp619618287-18] INFO  unq.repository.MongoDBDAO - Finish saving survey object
+2016-10-09 20:08:51 [qtp619618287-21] ERROR unq.api.controller.SurveyController - Error while trying to save a survey
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 7 column 13 path $.selected_subjects[0].status
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:224)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$1.read(ReflectiveTypeAdapterFactory.java:129)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:220)
+	at com.google.gson.internal.bind.TypeAdapterRuntimeTypeWrapper.read(TypeAdapterRuntimeTypeWrapper.java:41)
+	at com.google.gson.internal.bind.CollectionTypeAdapterFactory$Adapter.read(CollectionTypeAdapterFactory.java:82)
+	at com.google.gson.internal.bind.CollectionTypeAdapterFactory$Adapter.read(CollectionTypeAdapterFactory.java:61)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$1.read(ReflectiveTypeAdapterFactory.java:129)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:220)
+	at com.google.gson.Gson.fromJson(Gson.java:887)
+	at com.google.gson.Gson.fromJson(Gson.java:852)
+	at com.google.gson.Gson.fromJson(Gson.java:801)
+	at com.google.gson.Gson.fromJson(Gson.java:773)
+	at unq.utils.GsonFactory.fromJson(GsonFactory.java:16)
+	at unq.api.controller.SurveyController.lambda$initSurveyEndopints$5(SurveyController.java:75)
 	at spark.RouteImpl$1.handle(RouteImpl.java:61)
 	at spark.http.matching.Routes.execute(Routes.java:61)
 	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:126)
@@ -330,21 +568,18 @@ java.lang.ClassCastException: java.lang.String cannot be cast to unq.api.model.S
 	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:654)
 	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:572)
 	at java.lang.Thread.run(Thread.java:745)
-2016-10-02 21:10:44 [qtp592792029-24] INFO  unq.api.controller.SurveyController - Marina
-2016-10-02 21:11:17 [qtp592792029-24] ERROR unq.api.controller.SurveyController - Error while trying to save student
-java.lang.IllegalArgumentException: No suitable constructor found for type [simple type, class unq.api.model.Student]: can not instantiate from JSON object (need to add/enable type information?)
- at [Source: N/A; line: -1, column: -1]
-	at com.fasterxml.jackson.databind.ObjectMapper._convert(ObjectMapper.java:2704)
-	at com.fasterxml.jackson.databind.ObjectMapper.convertValue(ObjectMapper.java:2646)
-	at com.despegar.integration.mongo.connector.MongoDao.serialize(MongoDao.java:399)
-	at com.despegar.integration.mongo.connector.MongoDao.serialize(MongoDao.java:389)
-	at com.despegar.integration.mongo.connector.MongoDao.findOne(MongoDao.java:107)
-	at com.despegar.integration.mongo.connector.MongoDao.updateOrInsert(MongoDao.java:278)
-	at com.despegar.integration.mongo.connector.MongoDao.updateOrInsert(MongoDao.java:272)
-	at com.despegar.integration.mongo.connector.MongoCollection.save(MongoCollection.java:95)
-	at unq.repository.MongoDBDAO.saveStudent(MongoDBDAO.java:42)
-	at unq.api.service.impl.SurveyServiceImpl.saveStudent(SurveyServiceImpl.java:18)
-	at unq.api.controller.SurveyController.lambda$initSurveyEndopints$1(SurveyController.java:39)
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 7 column 13 path $.selected_subjects[0].status
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:385)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:213)
+	... 31 common frames omitted
+2016-10-09 20:09:45 [qtp619618287-18] ERROR unq.api.controller.SurveyController - Error while trying to save a survey
+com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Expected ':' at line 7 column 22 path $.selected_subjects[0].status.APPROVED
+	at com.google.gson.Gson.fromJson(Gson.java:902)
+	at com.google.gson.Gson.fromJson(Gson.java:852)
+	at com.google.gson.Gson.fromJson(Gson.java:801)
+	at com.google.gson.Gson.fromJson(Gson.java:773)
+	at unq.utils.GsonFactory.fromJson(GsonFactory.java:16)
+	at unq.api.controller.SurveyController.lambda$initSurveyEndopints$5(SurveyController.java:75)
 	at spark.RouteImpl$1.handle(RouteImpl.java:61)
 	at spark.http.matching.Routes.execute(Routes.java:61)
 	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:126)
@@ -363,29 +598,28 @@ java.lang.IllegalArgumentException: No suitable constructor found for type [simp
 	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:654)
 	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:572)
 	at java.lang.Thread.run(Thread.java:745)
-Caused by: com.fasterxml.jackson.databind.JsonMappingException: No suitable constructor found for type [simple type, class unq.api.model.Student]: can not instantiate from JSON object (need to add/enable type information?)
- at [Source: N/A; line: -1, column: -1]
-	at com.fasterxml.jackson.databind.JsonMappingException.from(JsonMappingException.java:164)
-	at com.fasterxml.jackson.databind.deser.BeanDeserializerBase.deserializeFromObjectUsingNonDefault(BeanDeserializerBase.java:1078)
-	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserializeFromObject(BeanDeserializer.java:268)
-	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:124)
-	at com.fasterxml.jackson.databind.ObjectMapper._convert(ObjectMapper.java:2699)
-	... 28 common frames omitted
-2016-10-02 21:11:39 [qtp592792029-18] INFO  unq.api.controller.SurveyController - Marina
-2016-10-02 21:11:52 [qtp592792029-18] ERROR unq.api.controller.SurveyController - Error while trying to save student
-java.lang.IllegalArgumentException: No suitable constructor found for type [simple type, class unq.api.model.Student]: can not instantiate from JSON object (need to add/enable type information?)
- at [Source: N/A; line: -1, column: -1]
-	at com.fasterxml.jackson.databind.ObjectMapper._convert(ObjectMapper.java:2704)
-	at com.fasterxml.jackson.databind.ObjectMapper.convertValue(ObjectMapper.java:2646)
-	at com.despegar.integration.mongo.connector.MongoDao.serialize(MongoDao.java:399)
-	at com.despegar.integration.mongo.connector.MongoDao.serialize(MongoDao.java:389)
-	at com.despegar.integration.mongo.connector.MongoDao.findOne(MongoDao.java:107)
-	at com.despegar.integration.mongo.connector.MongoDao.updateOrInsert(MongoDao.java:278)
-	at com.despegar.integration.mongo.connector.MongoDao.updateOrInsert(MongoDao.java:272)
-	at com.despegar.integration.mongo.connector.MongoCollection.save(MongoCollection.java:95)
-	at unq.repository.MongoDBDAO.saveStudent(MongoDBDAO.java:42)
-	at unq.api.service.impl.SurveyServiceImpl.saveStudent(SurveyServiceImpl.java:18)
-	at unq.api.controller.SurveyController.lambda$initSurveyEndopints$1(SurveyController.java:39)
+Caused by: com.google.gson.stream.MalformedJsonException: Expected ':' at line 7 column 22 path $.selected_subjects[0].status.APPROVED
+	at com.google.gson.stream.JsonReader.syntaxError(JsonReader.java:1559)
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:530)
+	at com.google.gson.stream.JsonReader.skipValue(JsonReader.java:1224)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:218)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$1.read(ReflectiveTypeAdapterFactory.java:129)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:220)
+	at com.google.gson.internal.bind.TypeAdapterRuntimeTypeWrapper.read(TypeAdapterRuntimeTypeWrapper.java:41)
+	at com.google.gson.internal.bind.CollectionTypeAdapterFactory$Adapter.read(CollectionTypeAdapterFactory.java:82)
+	at com.google.gson.internal.bind.CollectionTypeAdapterFactory$Adapter.read(CollectionTypeAdapterFactory.java:61)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$1.read(ReflectiveTypeAdapterFactory.java:129)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:220)
+	at com.google.gson.Gson.fromJson(Gson.java:887)
+	... 23 common frames omitted
+2016-10-09 20:10:12 [qtp619618287-21] ERROR unq.api.controller.SurveyController - Error while trying to save a survey
+com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Expected ':' at line 7 column 24 path $.selected_subjects[0].status.APPROVED
+	at com.google.gson.Gson.fromJson(Gson.java:902)
+	at com.google.gson.Gson.fromJson(Gson.java:852)
+	at com.google.gson.Gson.fromJson(Gson.java:801)
+	at com.google.gson.Gson.fromJson(Gson.java:773)
+	at unq.utils.GsonFactory.fromJson(GsonFactory.java:16)
+	at unq.api.controller.SurveyController.lambda$initSurveyEndopints$5(SurveyController.java:75)
 	at spark.RouteImpl$1.handle(RouteImpl.java:61)
 	at spark.http.matching.Routes.execute(Routes.java:61)
 	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:126)
@@ -404,35 +638,48 @@ java.lang.IllegalArgumentException: No suitable constructor found for type [simp
 	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:654)
 	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:572)
 	at java.lang.Thread.run(Thread.java:745)
-Caused by: com.fasterxml.jackson.databind.JsonMappingException: No suitable constructor found for type [simple type, class unq.api.model.Student]: can not instantiate from JSON object (need to add/enable type information?)
- at [Source: N/A; line: -1, column: -1]
-	at com.fasterxml.jackson.databind.JsonMappingException.from(JsonMappingException.java:164)
-	at com.fasterxml.jackson.databind.deser.BeanDeserializerBase.deserializeFromObjectUsingNonDefault(BeanDeserializerBase.java:1078)
-	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserializeFromObject(BeanDeserializer.java:268)
-	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:124)
-	at com.fasterxml.jackson.databind.ObjectMapper._convert(ObjectMapper.java:2699)
-	... 28 common frames omitted
-2016-10-02 21:18:01 [main] INFO  unq.api.service.ApiService - Starting services configuration
-2016-10-02 21:18:01 [main] INFO  org.mongodb.driver.cluster - Cluster created with settings {hosts=[localhost:27017], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
-2016-10-02 21:18:01 [main] INFO  org.mongodb.driver.cluster - Adding discovered server localhost:27017 to client view of cluster
-2016-10-02 21:18:02 [main] INFO  unq.client.MongoDBClient - Successfully connected to the database
-2016-10-02 21:18:02 [cluster-ClusterId{value='57f1a3b946f0d904dc1e1f04', description='null'}-localhost:27017] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:1, serverValue:11}] to localhost:27017
-2016-10-02 21:18:02 [cluster-ClusterId{value='57f1a3b946f0d904dc1e1f04', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 0]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=3932604}
-2016-10-02 21:18:02 [cluster-ClusterId{value='57f1a3b946f0d904dc1e1f04', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Discovered cluster type of STANDALONE
-2016-10-02 21:18:02 [main] INFO  unq.api.service.ApiService - Finish services configuration
-2016-10-02 21:18:02 [Thread-1] INFO  org.eclipse.jetty.util.log - Logging initialized @2851ms
-2016-10-02 21:18:03 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - == Spark has ignited ...
-2016-10-02 21:18:03 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - >> Listening on 0.0.0.0:9090
-2016-10-02 21:18:03 [Thread-1] INFO  org.eclipse.jetty.server.Server - jetty-9.3.6.v20151106
-2016-10-02 21:18:03 [Thread-1] INFO  o.e.jetty.server.ServerConnector - Started ServerConnector@674f2b79{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
-2016-10-02 21:18:03 [Thread-1] INFO  org.eclipse.jetty.server.Server - Started @3103ms
-2016-10-02 21:18:26 [qtp1181738988-21] INFO  unq.api.controller.SurveyController - Marina
-2016-10-02 21:18:26 [qtp1181738988-21] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:2, serverValue:12}] to localhost:27017
-2016-10-02 21:18:27 [qtp1181738988-21] ERROR unq.api.controller.SurveyController - Error while trying to save student
-java.lang.ClassCastException: java.lang.String cannot be cast to unq.api.model.Student
-	at unq.repository.MongoDBDAO.saveStudent(MongoDBDAO.java:42)
-	at unq.api.service.impl.SurveyServiceImpl.saveStudent(SurveyServiceImpl.java:18)
-	at unq.api.controller.SurveyController.lambda$initSurveyEndopints$1(SurveyController.java:39)
+Caused by: com.google.gson.stream.MalformedJsonException: Expected ':' at line 7 column 24 path $.selected_subjects[0].status.APPROVED
+	at com.google.gson.stream.JsonReader.syntaxError(JsonReader.java:1559)
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:530)
+	at com.google.gson.stream.JsonReader.skipValue(JsonReader.java:1224)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:218)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$1.read(ReflectiveTypeAdapterFactory.java:129)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:220)
+	at com.google.gson.internal.bind.TypeAdapterRuntimeTypeWrapper.read(TypeAdapterRuntimeTypeWrapper.java:41)
+	at com.google.gson.internal.bind.CollectionTypeAdapterFactory$Adapter.read(CollectionTypeAdapterFactory.java:82)
+	at com.google.gson.internal.bind.CollectionTypeAdapterFactory$Adapter.read(CollectionTypeAdapterFactory.java:61)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$1.read(ReflectiveTypeAdapterFactory.java:129)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:220)
+	at com.google.gson.Gson.fromJson(Gson.java:887)
+	... 23 common frames omitted
+2016-10-09 20:10:38 [qtp619618287-24] INFO  u.api.service.impl.SurveyServiceImpl - Saving survey for student 23328
+2016-10-09 20:10:38 [qtp619618287-24] INFO  unq.repository.MongoDBDAO - Starting saving survey object
+2016-10-09 20:10:38 [qtp619618287-24] INFO  unq.repository.MongoDBDAO - Finish saving survey object
+2016-10-09 20:12:18 [qtp619618287-18] INFO  u.api.service.impl.SurveyServiceImpl - Saving survey for student 23328
+2016-10-09 20:12:18 [qtp619618287-18] INFO  unq.repository.MongoDBDAO - Starting saving survey object
+2016-10-09 20:12:18 [qtp619618287-18] INFO  unq.repository.MongoDBDAO - Finish saving survey object
+2016-10-09 20:12:22 [main] INFO  unq.api.service.ApiService - Starting services configuration
+2016-10-09 20:12:22 [main] INFO  org.mongodb.driver.cluster - Cluster created with settings {hosts=[localhost:27017], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2016-10-09 20:12:22 [main] INFO  org.mongodb.driver.cluster - Adding discovered server localhost:27017 to client view of cluster
+2016-10-09 20:12:23 [main] INFO  unq.client.MongoDBClient - Successfully connected to the database
+2016-10-09 20:12:23 [cluster-ClusterId{value='57faced6443a310447c13319', description='null'}-localhost:27017] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:1, serverValue:16}] to localhost:27017
+2016-10-09 20:12:23 [cluster-ClusterId{value='57faced6443a310447c13319', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 0]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=852598}
+2016-10-09 20:12:23 [cluster-ClusterId{value='57faced6443a310447c13319', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Discovered cluster type of STANDALONE
+2016-10-09 20:12:23 [main] INFO  unq.api.service.ApiService - Finish services configuration
+2016-10-09 20:12:23 [Thread-1] INFO  org.eclipse.jetty.util.log - Logging initialized @2354ms
+2016-10-09 20:12:23 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - == Spark has ignited ...
+2016-10-09 20:12:23 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - >> Listening on 0.0.0.0:9090
+2016-10-09 20:12:23 [Thread-1] INFO  org.eclipse.jetty.server.Server - jetty-9.3.6.v20151106
+2016-10-09 20:12:24 [Thread-1] INFO  o.e.jetty.server.ServerConnector - Started ServerConnector@6a2ee938{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-09 20:12:24 [Thread-1] INFO  org.eclipse.jetty.server.Server - Started @2576ms
+2016-10-09 20:12:40 [qtp1530555061-22] ERROR unq.api.controller.SurveyController - Error while trying to save a survey
+com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Expected name at line 7 column 4 path $.selected_subjects[0].subject
+	at com.google.gson.Gson.fromJson(Gson.java:902)
+	at com.google.gson.Gson.fromJson(Gson.java:852)
+	at com.google.gson.Gson.fromJson(Gson.java:801)
+	at com.google.gson.Gson.fromJson(Gson.java:773)
+	at unq.utils.GsonFactory.fromJson(GsonFactory.java:16)
+	at unq.api.controller.SurveyController.lambda$initSurveyEndopints$5(SurveyController.java:75)
 	at spark.RouteImpl$1.handle(RouteImpl.java:61)
 	at spark.http.matching.Routes.execute(Routes.java:61)
 	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:126)
@@ -451,12 +698,51 @@ java.lang.ClassCastException: java.lang.String cannot be cast to unq.api.model.S
 	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:654)
 	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:572)
 	at java.lang.Thread.run(Thread.java:745)
-2016-10-02 21:19:17 [qtp1181738988-23] INFO  unq.api.controller.SurveyController - Marina
-2016-10-02 21:20:18 [qtp1181738988-23] ERROR unq.api.controller.SurveyController - Error while trying to save student
-java.lang.ClassCastException: java.lang.String cannot be cast to unq.api.model.Student
-	at unq.repository.MongoDBDAO.saveStudent(MongoDBDAO.java:42)
-	at unq.api.service.impl.SurveyServiceImpl.saveStudent(SurveyServiceImpl.java:18)
-	at unq.api.controller.SurveyController.lambda$initSurveyEndopints$1(SurveyController.java:39)
+Caused by: com.google.gson.stream.MalformedJsonException: Expected name at line 7 column 4 path $.selected_subjects[0].subject
+	at com.google.gson.stream.JsonReader.syntaxError(JsonReader.java:1559)
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:513)
+	at com.google.gson.stream.JsonReader.hasNext(JsonReader.java:414)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:214)
+	at com.google.gson.internal.bind.TypeAdapterRuntimeTypeWrapper.read(TypeAdapterRuntimeTypeWrapper.java:41)
+	at com.google.gson.internal.bind.CollectionTypeAdapterFactory$Adapter.read(CollectionTypeAdapterFactory.java:82)
+	at com.google.gson.internal.bind.CollectionTypeAdapterFactory$Adapter.read(CollectionTypeAdapterFactory.java:61)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$1.read(ReflectiveTypeAdapterFactory.java:129)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:220)
+	at com.google.gson.Gson.fromJson(Gson.java:887)
+	... 23 common frames omitted
+2016-10-09 20:13:41 [qtp1530555061-24] INFO  u.api.service.impl.SurveyServiceImpl - Saving survey for student 23328
+2016-10-09 20:13:41 [qtp1530555061-24] INFO  unq.repository.MongoDBDAO - Starting saving survey object
+2016-10-09 20:15:21 [main] INFO  unq.api.service.ApiService - Starting services configuration
+2016-10-09 20:15:21 [main] INFO  org.mongodb.driver.cluster - Cluster created with settings {hosts=[localhost:27017], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2016-10-09 20:15:21 [main] INFO  org.mongodb.driver.cluster - Adding discovered server localhost:27017 to client view of cluster
+2016-10-09 20:15:21 [main] INFO  unq.client.MongoDBClient - Successfully connected to the database
+2016-10-09 20:15:21 [cluster-ClusterId{value='57facf89443a31044a6910f0', description='null'}-localhost:27017] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:1, serverValue:17}] to localhost:27017
+2016-10-09 20:15:21 [cluster-ClusterId{value='57facf89443a31044a6910f0', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 0]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=869321}
+2016-10-09 20:15:21 [cluster-ClusterId{value='57facf89443a31044a6910f0', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Discovered cluster type of STANDALONE
+2016-10-09 20:15:22 [main] INFO  unq.api.service.ApiService - Finish services configuration
+2016-10-09 20:15:22 [Thread-1] INFO  org.eclipse.jetty.util.log - Logging initialized @2151ms
+2016-10-09 20:15:22 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - == Spark has ignited ...
+2016-10-09 20:15:22 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - >> Listening on 0.0.0.0:9090
+2016-10-09 20:15:22 [Thread-1] INFO  org.eclipse.jetty.server.Server - jetty-9.3.6.v20151106
+2016-10-09 20:15:22 [Thread-1] INFO  o.e.jetty.server.ServerConnector - Started ServerConnector@1b1d5080{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-09 20:15:22 [Thread-1] INFO  org.eclipse.jetty.server.Server - Started @2326ms
+2016-10-09 20:15:49 [qtp1355296423-22] INFO  u.api.service.impl.SurveyServiceImpl - Saving survey for student 23328
+2016-10-09 20:18:49 [qtp1355296423-23] ERROR unq.api.controller.SurveyController - Error while trying to save a survey
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 7 column 15 path $.selected_subjects[0].status
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:224)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$1.read(ReflectiveTypeAdapterFactory.java:129)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:220)
+	at com.google.gson.internal.bind.TypeAdapterRuntimeTypeWrapper.read(TypeAdapterRuntimeTypeWrapper.java:41)
+	at com.google.gson.internal.bind.CollectionTypeAdapterFactory$Adapter.read(CollectionTypeAdapterFactory.java:82)
+	at com.google.gson.internal.bind.CollectionTypeAdapterFactory$Adapter.read(CollectionTypeAdapterFactory.java:61)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$1.read(ReflectiveTypeAdapterFactory.java:129)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:220)
+	at com.google.gson.Gson.fromJson(Gson.java:887)
+	at com.google.gson.Gson.fromJson(Gson.java:852)
+	at com.google.gson.Gson.fromJson(Gson.java:801)
+	at com.google.gson.Gson.fromJson(Gson.java:773)
+	at unq.utils.GsonFactory.fromJson(GsonFactory.java:16)
+	at unq.api.controller.SurveyController.lambda$initSurveyEndopints$5(SurveyController.java:75)
 	at spark.RouteImpl$1.handle(RouteImpl.java:61)
 	at spark.http.matching.Routes.execute(Routes.java:61)
 	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:126)
@@ -475,19 +761,318 @@ java.lang.ClassCastException: java.lang.String cannot be cast to unq.api.model.S
 	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:654)
 	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:572)
 	at java.lang.Thread.run(Thread.java:745)
-2016-10-02 21:23:08 [main] INFO  unq.api.service.ApiService - Starting services configuration
-2016-10-02 21:23:08 [main] INFO  org.mongodb.driver.cluster - Cluster created with settings {hosts=[localhost:27017], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
-2016-10-02 21:23:08 [main] INFO  org.mongodb.driver.cluster - Adding discovered server localhost:27017 to client view of cluster
-2016-10-02 21:23:09 [main] INFO  unq.client.MongoDBClient - Successfully connected to the database
-2016-10-02 21:23:09 [cluster-ClusterId{value='57f1a4ec46f0d904e2147917', description='null'}-localhost:27017] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:1, serverValue:13}] to localhost:27017
-2016-10-02 21:23:09 [cluster-ClusterId{value='57f1a4ec46f0d904e2147917', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 0]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=970809}
-2016-10-02 21:23:09 [cluster-ClusterId{value='57f1a4ec46f0d904e2147917', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Discovered cluster type of STANDALONE
-2016-10-02 21:23:09 [main] INFO  unq.api.service.ApiService - Finish services configuration
-2016-10-02 21:23:09 [Thread-1] INFO  org.eclipse.jetty.util.log - Logging initialized @2446ms
-2016-10-02 21:23:09 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - == Spark has ignited ...
-2016-10-02 21:23:09 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - >> Listening on 0.0.0.0:9090
-2016-10-02 21:23:09 [Thread-1] INFO  org.eclipse.jetty.server.Server - jetty-9.3.6.v20151106
-2016-10-02 21:23:10 [Thread-1] INFO  o.e.jetty.server.ServerConnector - Started ServerConnector@4e6c6e57{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
-2016-10-02 21:23:10 [Thread-1] INFO  org.eclipse.jetty.server.Server - Started @2721ms
-2016-10-02 21:23:22 [qtp62832981-21] INFO  unq.api.controller.SurveyController - Marina
-2016-10-02 21:23:23 [qtp62832981-21] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:2, serverValue:14}] to localhost:27017
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 7 column 15 path $.selected_subjects[0].status
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:385)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:213)
+	... 31 common frames omitted
+2016-10-09 20:19:47 [qtp1355296423-22] ERROR unq.api.controller.SurveyController - Error while trying to save a survey
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was NUMBER at line 7 column 13 path $.selected_subjects[0].status
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:224)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$1.read(ReflectiveTypeAdapterFactory.java:129)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:220)
+	at com.google.gson.internal.bind.TypeAdapterRuntimeTypeWrapper.read(TypeAdapterRuntimeTypeWrapper.java:41)
+	at com.google.gson.internal.bind.CollectionTypeAdapterFactory$Adapter.read(CollectionTypeAdapterFactory.java:82)
+	at com.google.gson.internal.bind.CollectionTypeAdapterFactory$Adapter.read(CollectionTypeAdapterFactory.java:61)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$1.read(ReflectiveTypeAdapterFactory.java:129)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:220)
+	at com.google.gson.Gson.fromJson(Gson.java:887)
+	at com.google.gson.Gson.fromJson(Gson.java:852)
+	at com.google.gson.Gson.fromJson(Gson.java:801)
+	at com.google.gson.Gson.fromJson(Gson.java:773)
+	at unq.utils.GsonFactory.fromJson(GsonFactory.java:16)
+	at unq.api.controller.SurveyController.lambda$initSurveyEndopints$5(SurveyController.java:75)
+	at spark.RouteImpl$1.handle(RouteImpl.java:61)
+	at spark.http.matching.Routes.execute(Routes.java:61)
+	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:126)
+	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:189)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:119)
+	at org.eclipse.jetty.server.Server.handle(Server.java:517)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:308)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:242)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:261)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:95)
+	at org.eclipse.jetty.io.SelectChannelEndPoint$2.run(SelectChannelEndPoint.java:75)
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.produceAndRun(ExecuteProduceConsume.java:213)
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.run(ExecuteProduceConsume.java:147)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:654)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:572)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was NUMBER at line 7 column 13 path $.selected_subjects[0].status
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:385)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:213)
+	... 31 common frames omitted
+2016-10-09 20:20:02 [qtp1355296423-23] ERROR unq.api.controller.SurveyController - Error while trying to save a survey
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 7 column 13 path $.selected_subjects[0].status
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:224)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$1.read(ReflectiveTypeAdapterFactory.java:129)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:220)
+	at com.google.gson.internal.bind.TypeAdapterRuntimeTypeWrapper.read(TypeAdapterRuntimeTypeWrapper.java:41)
+	at com.google.gson.internal.bind.CollectionTypeAdapterFactory$Adapter.read(CollectionTypeAdapterFactory.java:82)
+	at com.google.gson.internal.bind.CollectionTypeAdapterFactory$Adapter.read(CollectionTypeAdapterFactory.java:61)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$1.read(ReflectiveTypeAdapterFactory.java:129)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:220)
+	at com.google.gson.Gson.fromJson(Gson.java:887)
+	at com.google.gson.Gson.fromJson(Gson.java:852)
+	at com.google.gson.Gson.fromJson(Gson.java:801)
+	at com.google.gson.Gson.fromJson(Gson.java:773)
+	at unq.utils.GsonFactory.fromJson(GsonFactory.java:16)
+	at unq.api.controller.SurveyController.lambda$initSurveyEndopints$5(SurveyController.java:75)
+	at spark.RouteImpl$1.handle(RouteImpl.java:61)
+	at spark.http.matching.Routes.execute(Routes.java:61)
+	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:126)
+	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:189)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:119)
+	at org.eclipse.jetty.server.Server.handle(Server.java:517)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:308)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:242)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:261)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:95)
+	at org.eclipse.jetty.io.SelectChannelEndPoint$2.run(SelectChannelEndPoint.java:75)
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.produceAndRun(ExecuteProduceConsume.java:213)
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.run(ExecuteProduceConsume.java:147)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:654)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:572)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 7 column 13 path $.selected_subjects[0].status
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:385)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:213)
+	... 31 common frames omitted
+2016-10-09 20:22:54 [main] INFO  unq.api.service.ApiService - Starting services configuration
+2016-10-09 20:22:54 [main] INFO  org.mongodb.driver.cluster - Cluster created with settings {hosts=[localhost:27017], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2016-10-09 20:22:54 [main] INFO  org.mongodb.driver.cluster - Adding discovered server localhost:27017 to client view of cluster
+2016-10-09 20:22:55 [main] INFO  unq.client.MongoDBClient - Successfully connected to the database
+2016-10-09 20:22:55 [cluster-ClusterId{value='57fad14e443a31045c6498d2', description='null'}-localhost:27017] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:1, serverValue:18}] to localhost:27017
+2016-10-09 20:22:55 [cluster-ClusterId{value='57fad14e443a31045c6498d2', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 0]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=2921160}
+2016-10-09 20:22:55 [cluster-ClusterId{value='57fad14e443a31045c6498d2', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Discovered cluster type of STANDALONE
+2016-10-09 20:22:55 [main] INFO  unq.api.service.ApiService - Finish services configuration
+2016-10-09 20:22:55 [Thread-1] INFO  org.eclipse.jetty.util.log - Logging initialized @1996ms
+2016-10-09 20:22:55 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - == Spark has ignited ...
+2016-10-09 20:22:55 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - >> Listening on 0.0.0.0:9090
+2016-10-09 20:22:55 [Thread-1] INFO  org.eclipse.jetty.server.Server - jetty-9.3.6.v20151106
+2016-10-09 20:22:55 [Thread-1] INFO  o.e.jetty.server.ServerConnector - Started ServerConnector@727bfa3{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-09 20:22:55 [Thread-1] INFO  org.eclipse.jetty.server.Server - Started @2182ms
+2016-10-09 20:23:00 [qtp940096894-22] ERROR unq.api.controller.SurveyController - Error while trying to save a survey
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 7 column 13 path $.selected_subjects[0].status
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:224)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$1.read(ReflectiveTypeAdapterFactory.java:129)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:220)
+	at com.google.gson.internal.bind.TypeAdapterRuntimeTypeWrapper.read(TypeAdapterRuntimeTypeWrapper.java:41)
+	at com.google.gson.internal.bind.CollectionTypeAdapterFactory$Adapter.read(CollectionTypeAdapterFactory.java:82)
+	at com.google.gson.internal.bind.CollectionTypeAdapterFactory$Adapter.read(CollectionTypeAdapterFactory.java:61)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$1.read(ReflectiveTypeAdapterFactory.java:129)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:220)
+	at com.google.gson.Gson.fromJson(Gson.java:887)
+	at com.google.gson.Gson.fromJson(Gson.java:852)
+	at com.google.gson.Gson.fromJson(Gson.java:801)
+	at com.google.gson.Gson.fromJson(Gson.java:773)
+	at unq.utils.GsonFactory.fromJson(GsonFactory.java:16)
+	at unq.api.controller.SurveyController.lambda$initSurveyEndopints$5(SurveyController.java:75)
+	at spark.RouteImpl$1.handle(RouteImpl.java:61)
+	at spark.http.matching.Routes.execute(Routes.java:61)
+	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:126)
+	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:189)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:119)
+	at org.eclipse.jetty.server.Server.handle(Server.java:517)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:308)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:242)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:261)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:95)
+	at org.eclipse.jetty.io.SelectChannelEndPoint$2.run(SelectChannelEndPoint.java:75)
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.produceAndRun(ExecuteProduceConsume.java:213)
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.run(ExecuteProduceConsume.java:147)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:654)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:572)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 7 column 13 path $.selected_subjects[0].status
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:385)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:213)
+	... 31 common frames omitted
+2016-10-09 20:24:59 [qtp940096894-24] ERROR unq.api.controller.SurveyController - Error while trying to save a survey
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 7 column 14 path $.selected_subjects[0].comision
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:224)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$1.read(ReflectiveTypeAdapterFactory.java:129)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:220)
+	at com.google.gson.internal.bind.TypeAdapterRuntimeTypeWrapper.read(TypeAdapterRuntimeTypeWrapper.java:41)
+	at com.google.gson.internal.bind.CollectionTypeAdapterFactory$Adapter.read(CollectionTypeAdapterFactory.java:82)
+	at com.google.gson.internal.bind.CollectionTypeAdapterFactory$Adapter.read(CollectionTypeAdapterFactory.java:61)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$1.read(ReflectiveTypeAdapterFactory.java:129)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:220)
+	at com.google.gson.Gson.fromJson(Gson.java:887)
+	at com.google.gson.Gson.fromJson(Gson.java:852)
+	at com.google.gson.Gson.fromJson(Gson.java:801)
+	at com.google.gson.Gson.fromJson(Gson.java:773)
+	at unq.utils.GsonFactory.fromJson(GsonFactory.java:16)
+	at unq.api.controller.SurveyController.lambda$initSurveyEndopints$5(SurveyController.java:75)
+	at spark.RouteImpl$1.handle(RouteImpl.java:61)
+	at spark.http.matching.Routes.execute(Routes.java:61)
+	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:126)
+	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:189)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:119)
+	at org.eclipse.jetty.server.Server.handle(Server.java:517)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:308)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:242)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:261)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:95)
+	at org.eclipse.jetty.io.SelectChannelEndPoint$2.run(SelectChannelEndPoint.java:75)
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.produceAndRun(ExecuteProduceConsume.java:213)
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.run(ExecuteProduceConsume.java:147)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:654)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:572)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 7 column 14 path $.selected_subjects[0].comision
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:385)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:213)
+	... 31 common frames omitted
+2016-10-09 20:29:49 [qtp940096894-18] ERROR unq.api.controller.SurveyController - Error while trying to save a survey
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was BEGIN_ARRAY at line 7 column 13 path $.selected_subjects[0].status
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:224)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$1.read(ReflectiveTypeAdapterFactory.java:129)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:220)
+	at com.google.gson.internal.bind.TypeAdapterRuntimeTypeWrapper.read(TypeAdapterRuntimeTypeWrapper.java:41)
+	at com.google.gson.internal.bind.CollectionTypeAdapterFactory$Adapter.read(CollectionTypeAdapterFactory.java:82)
+	at com.google.gson.internal.bind.CollectionTypeAdapterFactory$Adapter.read(CollectionTypeAdapterFactory.java:61)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$1.read(ReflectiveTypeAdapterFactory.java:129)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:220)
+	at com.google.gson.Gson.fromJson(Gson.java:887)
+	at com.google.gson.Gson.fromJson(Gson.java:852)
+	at com.google.gson.Gson.fromJson(Gson.java:801)
+	at com.google.gson.Gson.fromJson(Gson.java:773)
+	at unq.utils.GsonFactory.fromJson(GsonFactory.java:16)
+	at unq.api.controller.SurveyController.lambda$initSurveyEndopints$5(SurveyController.java:75)
+	at spark.RouteImpl$1.handle(RouteImpl.java:61)
+	at spark.http.matching.Routes.execute(Routes.java:61)
+	at spark.http.matching.MatcherFilter.doFilter(MatcherFilter.java:126)
+	at spark.embeddedserver.jetty.JettyHandler.doHandle(JettyHandler.java:50)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:189)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:119)
+	at org.eclipse.jetty.server.Server.handle(Server.java:517)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:308)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:242)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:261)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:95)
+	at org.eclipse.jetty.io.SelectChannelEndPoint$2.run(SelectChannelEndPoint.java:75)
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.produceAndRun(ExecuteProduceConsume.java:213)
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.run(ExecuteProduceConsume.java:147)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:654)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:572)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was BEGIN_ARRAY at line 7 column 13 path $.selected_subjects[0].status
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:385)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:213)
+	... 31 common frames omitted
+2016-10-09 20:32:31 [main] INFO  unq.api.service.ApiService - Starting services configuration
+2016-10-09 20:32:31 [main] INFO  org.mongodb.driver.cluster - Cluster created with settings {hosts=[localhost:27017], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2016-10-09 20:32:31 [main] INFO  org.mongodb.driver.cluster - Adding discovered server localhost:27017 to client view of cluster
+2016-10-09 20:32:31 [main] INFO  unq.client.MongoDBClient - Successfully connected to the database
+2016-10-09 20:32:31 [cluster-ClusterId{value='57fad38f443a310467bbac36', description='null'}-localhost:27017] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:1, serverValue:19}] to localhost:27017
+2016-10-09 20:32:31 [cluster-ClusterId{value='57fad38f443a310467bbac36', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 0]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=1826138}
+2016-10-09 20:32:31 [cluster-ClusterId{value='57fad38f443a310467bbac36', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Discovered cluster type of STANDALONE
+2016-10-09 20:32:32 [main] INFO  unq.api.service.ApiService - Finish services configuration
+2016-10-09 20:32:32 [Thread-1] INFO  org.eclipse.jetty.util.log - Logging initialized @2037ms
+2016-10-09 20:32:32 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - == Spark has ignited ...
+2016-10-09 20:32:32 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - >> Listening on 0.0.0.0:9090
+2016-10-09 20:32:32 [Thread-1] INFO  org.eclipse.jetty.server.Server - jetty-9.3.6.v20151106
+2016-10-09 20:32:32 [Thread-1] INFO  o.e.jetty.server.ServerConnector - Started ServerConnector@7260f05e{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-09 20:32:32 [Thread-1] INFO  org.eclipse.jetty.server.Server - Started @2183ms
+2016-10-09 20:33:02 [qtp1600480766-22] INFO  u.api.service.impl.SurveyServiceImpl - Saving survey for student 23328
+2016-10-09 20:34:49 [main] INFO  unq.api.service.ApiService - Starting services configuration
+2016-10-09 20:34:49 [main] INFO  org.mongodb.driver.cluster - Cluster created with settings {hosts=[localhost:27017], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2016-10-09 20:34:49 [main] INFO  org.mongodb.driver.cluster - Adding discovered server localhost:27017 to client view of cluster
+2016-10-09 20:34:49 [main] INFO  unq.client.MongoDBClient - Successfully connected to the database
+2016-10-09 20:34:49 [cluster-ClusterId{value='57fad419443a31046c359354', description='null'}-localhost:27017] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:1, serverValue:20}] to localhost:27017
+2016-10-09 20:34:49 [cluster-ClusterId{value='57fad419443a31046c359354', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 0]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=945905}
+2016-10-09 20:34:49 [cluster-ClusterId{value='57fad419443a31046c359354', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Discovered cluster type of STANDALONE
+2016-10-09 20:34:50 [main] INFO  unq.api.service.ApiService - Finish services configuration
+2016-10-09 20:34:50 [Thread-1] INFO  org.eclipse.jetty.util.log - Logging initialized @2068ms
+2016-10-09 20:34:50 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - == Spark has ignited ...
+2016-10-09 20:34:50 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - >> Listening on 0.0.0.0:9090
+2016-10-09 20:34:50 [Thread-1] INFO  org.eclipse.jetty.server.Server - jetty-9.3.6.v20151106
+2016-10-09 20:34:50 [Thread-1] INFO  o.e.jetty.server.ServerConnector - Started ServerConnector@658d52f9{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-09 20:34:50 [Thread-1] INFO  org.eclipse.jetty.server.Server - Started @2209ms
+2016-10-09 21:09:37 [main] INFO  unq.api.service.ApiService - Starting services configuration
+2016-10-09 21:09:38 [main] INFO  org.mongodb.driver.cluster - Cluster created with settings {hosts=[localhost:27017], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2016-10-09 21:09:38 [main] INFO  org.mongodb.driver.cluster - Adding discovered server localhost:27017 to client view of cluster
+2016-10-09 21:09:38 [main] INFO  unq.client.MongoDBClient - Successfully connected to the database
+2016-10-09 21:09:38 [cluster-ClusterId{value='57fadc42443a31048ce76127', description='null'}-localhost:27017] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:1, serverValue:21}] to localhost:27017
+2016-10-09 21:09:38 [cluster-ClusterId{value='57fadc42443a31048ce76127', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 0]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=1127971}
+2016-10-09 21:09:38 [cluster-ClusterId{value='57fadc42443a31048ce76127', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Discovered cluster type of STANDALONE
+2016-10-09 21:09:38 [main] INFO  unq.api.service.ApiService - Finish services configuration
+2016-10-09 21:09:38 [Thread-1] INFO  org.eclipse.jetty.util.log - Logging initialized @2269ms
+2016-10-09 21:09:38 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - == Spark has ignited ...
+2016-10-09 21:09:38 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - >> Listening on 0.0.0.0:9090
+2016-10-09 21:09:38 [Thread-1] INFO  org.eclipse.jetty.server.Server - jetty-9.3.6.v20151106
+2016-10-09 21:09:39 [Thread-1] INFO  o.e.jetty.server.ServerConnector - Started ServerConnector@fe93f2{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-09 21:09:39 [Thread-1] INFO  org.eclipse.jetty.server.Server - Started @2432ms
+2016-10-09 21:10:26 [qtp754839195-22] INFO  u.api.service.impl.SurveyServiceImpl - Saving survey for student 23328
+2016-10-09 21:11:04 [main] INFO  unq.api.service.ApiService - Starting services configuration
+2016-10-09 21:11:05 [main] INFO  org.mongodb.driver.cluster - Cluster created with settings {hosts=[localhost:27017], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2016-10-09 21:11:05 [main] INFO  org.mongodb.driver.cluster - Adding discovered server localhost:27017 to client view of cluster
+2016-10-09 21:11:05 [main] INFO  unq.client.MongoDBClient - Successfully connected to the database
+2016-10-09 21:11:05 [cluster-ClusterId{value='57fadc99443a3104914a701e', description='null'}-localhost:27017] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:1, serverValue:22}] to localhost:27017
+2016-10-09 21:11:05 [cluster-ClusterId{value='57fadc99443a3104914a701e', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 0]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=787947}
+2016-10-09 21:11:05 [cluster-ClusterId{value='57fadc99443a3104914a701e', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Discovered cluster type of STANDALONE
+2016-10-09 21:11:05 [main] INFO  unq.api.service.ApiService - Finish services configuration
+2016-10-09 21:11:06 [Thread-1] INFO  org.eclipse.jetty.util.log - Logging initialized @2041ms
+2016-10-09 21:11:06 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - == Spark has ignited ...
+2016-10-09 21:11:06 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - >> Listening on 0.0.0.0:9090
+2016-10-09 21:11:06 [Thread-1] INFO  org.eclipse.jetty.server.Server - jetty-9.3.6.v20151106
+2016-10-09 21:11:06 [Thread-1] INFO  o.e.jetty.server.ServerConnector - Started ServerConnector@195ef02b{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-09 21:11:06 [Thread-1] INFO  org.eclipse.jetty.server.Server - Started @2310ms
+2016-10-09 21:11:59 [qtp141736182-22] INFO  u.api.service.impl.SurveyServiceImpl - Saving survey for student 23328
+2016-10-09 21:11:59 [qtp141736182-22] INFO  unq.repository.MongoDBDAO - Starting saving survey object
+2016-10-09 21:11:59 [qtp141736182-22] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:2, serverValue:23}] to localhost:27017
+2016-10-09 21:11:59 [qtp141736182-22] INFO  unq.repository.MongoDBDAO - Finish saving survey object
+2016-10-09 21:15:15 [qtp141736182-23] INFO  u.api.service.impl.SurveyServiceImpl - Saving survey for student 23328
+2016-10-09 21:15:15 [qtp141736182-23] INFO  unq.repository.MongoDBDAO - Starting saving survey object
+2016-10-09 21:15:15 [qtp141736182-23] INFO  unq.repository.MongoDBDAO - Finish saving survey object
+2016-10-09 21:27:27 [main] INFO  unq.api.service.ApiService - Starting services configuration
+2016-10-09 21:27:27 [main] INFO  org.mongodb.driver.cluster - Cluster created with settings {hosts=[localhost:27017], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2016-10-09 21:27:27 [main] INFO  org.mongodb.driver.cluster - Adding discovered server localhost:27017 to client view of cluster
+2016-10-09 21:27:28 [main] INFO  unq.client.MongoDBClient - Successfully connected to the database
+2016-10-09 21:27:28 [cluster-ClusterId{value='57fae06f443a3104959c772f', description='null'}-localhost:27017] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:1, serverValue:24}] to localhost:27017
+2016-10-09 21:27:28 [cluster-ClusterId{value='57fae06f443a3104959c772f', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 0]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=893119}
+2016-10-09 21:27:28 [cluster-ClusterId{value='57fae06f443a3104959c772f', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Discovered cluster type of STANDALONE
+2016-10-09 21:27:28 [main] INFO  unq.api.service.ApiService - Finish services configuration
+2016-10-09 21:27:28 [Thread-1] INFO  org.eclipse.jetty.util.log - Logging initialized @2096ms
+2016-10-09 21:27:28 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - == Spark has ignited ...
+2016-10-09 21:27:28 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - >> Listening on 0.0.0.0:9090
+2016-10-09 21:27:28 [Thread-1] INFO  org.eclipse.jetty.server.Server - jetty-9.3.6.v20151106
+2016-10-09 21:27:29 [Thread-1] INFO  o.e.jetty.server.ServerConnector - Started ServerConnector@4bdc5130{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-09 21:27:29 [Thread-1] INFO  org.eclipse.jetty.server.Server - Started @2361ms
+2016-10-09 21:28:19 [main] INFO  unq.api.service.ApiService - Starting services configuration
+2016-10-09 21:28:19 [main] INFO  org.mongodb.driver.cluster - Cluster created with settings {hosts=[localhost:27017], mode=MULTIPLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2016-10-09 21:28:19 [main] INFO  org.mongodb.driver.cluster - Adding discovered server localhost:27017 to client view of cluster
+2016-10-09 21:28:19 [main] INFO  unq.client.MongoDBClient - Successfully connected to the database
+2016-10-09 21:28:19 [cluster-ClusterId{value='57fae0a3443a310499dd4a2a', description='null'}-localhost:27017] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:1, serverValue:25}] to localhost:27017
+2016-10-09 21:28:19 [cluster-ClusterId{value='57fae0a3443a310499dd4a2a', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 2, 0]}, minWireVersion=0, maxWireVersion=4, maxDocumentSize=16777216, roundTripTimeNanos=1712399}
+2016-10-09 21:28:19 [cluster-ClusterId{value='57fae0a3443a310499dd4a2a', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Discovered cluster type of STANDALONE
+2016-10-09 21:28:20 [main] INFO  unq.api.service.ApiService - Finish services configuration
+2016-10-09 21:28:20 [Thread-1] INFO  org.eclipse.jetty.util.log - Logging initialized @1907ms
+2016-10-09 21:28:20 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - == Spark has ignited ...
+2016-10-09 21:28:20 [Thread-1] INFO  s.e.jetty.EmbeddedJettyServer - >> Listening on 0.0.0.0:9090
+2016-10-09 21:28:20 [Thread-1] INFO  org.eclipse.jetty.server.Server - jetty-9.3.6.v20151106
+2016-10-09 21:28:20 [Thread-1] INFO  o.e.jetty.server.ServerConnector - Started ServerConnector@727bfa3{HTTP/1.1,[http/1.1]}{0.0.0.0:9090}
+2016-10-09 21:28:20 [Thread-1] INFO  org.eclipse.jetty.server.Server - Started @2093ms
+2016-10-09 21:28:36 [qtp940096894-22] INFO  u.api.service.impl.SurveyServiceImpl - Saving survey for student 23328
+2016-10-09 21:28:36 [qtp940096894-22] INFO  unq.repository.MongoDBDAO - Starting saving survey object
+2016-10-09 21:28:36 [qtp940096894-22] INFO  org.mongodb.driver.connection - Opened connection [connectionId{localValue:2, serverValue:26}] to localhost:27017
+2016-10-09 21:28:37 [qtp940096894-22] INFO  unq.repository.MongoDBDAO - Finish saving survey object
+2016-10-09 21:29:26 [qtp940096894-24] INFO  u.api.service.impl.SurveyServiceImpl - Saving survey for student 23328
+2016-10-09 21:29:26 [qtp940096894-24] INFO  unq.repository.MongoDBDAO - Starting saving survey object
+2016-10-09 21:29:26 [qtp940096894-24] INFO  unq.repository.MongoDBDAO - Finish saving survey object
+2016-10-09 21:29:39 [qtp940096894-19] INFO  u.api.service.impl.SurveyServiceImpl - Saving survey for student 23328
+2016-10-09 21:29:39 [qtp940096894-19] INFO  unq.repository.MongoDBDAO - Starting saving survey object
+2016-10-09 21:29:39 [qtp940096894-19] INFO  unq.repository.MongoDBDAO - Finish saving survey object
+2016-10-09 21:30:24 [qtp940096894-24] INFO  u.api.service.impl.SurveyServiceImpl - Saving survey for student 23328
+2016-10-09 21:30:24 [qtp940096894-24] INFO  unq.repository.MongoDBDAO - Starting saving survey object
+2016-10-09 21:30:24 [qtp940096894-24] INFO  unq.repository.MongoDBDAO - Finish saving survey object
+2016-10-09 21:32:12 [qtp940096894-18] INFO  u.api.service.impl.SurveyServiceImpl - Getting survey by student 23328

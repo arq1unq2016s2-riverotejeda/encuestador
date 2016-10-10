@@ -7,7 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import unq.api.model.Student;
 import unq.api.model.Survey;
-import unq.api.model.catalogs.Subject;
+import unq.api.model.Subject;
 import unq.client.MongoDBClient;
 
 import java.net.UnknownHostException;
@@ -40,7 +40,6 @@ public class MongoDBDAO {
     public String saveStudent(Student student){
         try {
             MongoCollection<Student> students = mongoCollectionFactory.buildMongoCollection("student", Student.class);
-
             return students.save(student);
 
         } catch (UnknownHostException e) {
@@ -69,7 +68,7 @@ public class MongoDBDAO {
             MongoCollection<Survey> surveys = mongoCollectionFactory.buildMongoCollection("survey", Survey.class);
 
             Query query = new Query();
-            query.equals("student.legajo", id);
+            query.equals("legajo", id);
 
             return surveys.findOne(query);
 
@@ -80,11 +79,11 @@ public class MongoDBDAO {
 
     public String saveSubject(Subject subject){
         try {
-            LOGGER.info("Starting saving survey object");
+            LOGGER.info("Starting saving subject object");
             MongoCollection<Subject> subjects = mongoCollectionFactory.buildMongoCollection("subject", Subject.class);
 
             String saved = subjects.save(subject);
-            LOGGER.info("Finish saving survey object");
+            LOGGER.info("Finish saving subject object");
 
             return saved;
 
@@ -96,11 +95,10 @@ public class MongoDBDAO {
 
     public List<Subject> getSubjects(){
         try {
-            LOGGER.info("Starting saving survey object");
+            LOGGER.info("Getting subjects from database");
             MongoCollection<Subject> subjects = mongoCollectionFactory.buildMongoCollection("subject", Subject.class);
 
             List<Subject> savedSubjects = subjects.find();
-            LOGGER.info("Finish saving survey object");
 
             return savedSubjects;
 

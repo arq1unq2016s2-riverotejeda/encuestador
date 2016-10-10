@@ -11,16 +11,24 @@ import java.util.List;
 public class Survey implements IdentifiableEntity {
 
     private String id;
-    private Student student;
+    private String studentName;
+    private String legajo;
     private List<SelectedSubject> selectedSubjects;
 
-
-    public Student getStudent() {
-        return student;
+    public String getStudentName() {
+        return studentName;
     }
 
-    public void setStudent(Student student) {
-        this.student = student;
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
+    }
+
+    public String getLegajo() {
+        return legajo;
+    }
+
+    public void setLegajo(String legajo) {
+        this.legajo = legajo;
     }
 
     public List<SelectedSubject> getSelectedSubjects() {

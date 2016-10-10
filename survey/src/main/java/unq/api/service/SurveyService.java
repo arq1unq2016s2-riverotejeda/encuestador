@@ -3,7 +3,8 @@ package unq.api.service;
 
 import unq.api.model.Student;
 import unq.api.model.Survey;
-import unq.api.model.catalogs.Subject;
+import unq.api.model.Subject;
+import unq.api.model.catalogs.SubjectOptions;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ public interface SurveyService {
     String  saveSurvey(Survey survey);
     Survey  getSurveyByStudent(String studentName);
     String saveSubject(Subject subject);
-    List<Subject> getAllSubjects();
+    List<SubjectOptions> getAllSubjects();
 
 
 }

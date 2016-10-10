@@ -15,5 +15,6 @@ public class WebServiceConfiguration {
 
     public void initConfiguration() {
         port(9090);
+        //find a way to set a base url
     }
 }

@@ -25,7 +25,8 @@ public class MongoDBClient {
             throw new RuntimeException("Error trying to connect to Mongo", e);
         }
 
-        return new MongoCollectionFactory(connection);
+        MongoCollectionFactory mongoCollectionFactory = new MongoCollectionFactory(connection);
+        return mongoCollectionFactory;
     }
 
 }

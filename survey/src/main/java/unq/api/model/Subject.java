@@ -1,10 +1,11 @@
-package unq.api.model.catalogs;
+package unq.api.model;
 
 import com.despegar.integration.mongo.entities.IdentifiableEntity;
 import org.joda.time.DateTime;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by mrivero on 2/10/16.
@@ -13,17 +14,17 @@ public class Subject implements IdentifiableEntity, Serializable{
 
     private String id;
     private String name;
-    private List<String> dates;
+    private Map<Comision, List<String>> dates;
 
     public Subject(){
         super();
     }
 
-    public List<String> getDates() {
+    public Map<Comision, List<String>> getDates() {
         return dates;
     }
 
-    public void setDates(List<String> dates) {
+    public void setDates(Map<Comision, List<String>> dates) {
         this.dates = dates;
     }
 

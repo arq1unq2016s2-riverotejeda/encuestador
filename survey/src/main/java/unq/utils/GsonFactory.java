@@ -9,7 +9,8 @@ import com.google.gson.GsonBuilder;
  */
 public class GsonFactory {
 
-    private static Gson instance = new GsonBuilder().setFieldNamingPolicy(
+    private static Gson instance = new GsonBuilder().serializeNulls() // matter of taste, just for output anyway
+    .registerTypeAdapterFactory(OptionalTypeAdapter.FACTORY).setFieldNamingPolicy(
             FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).create();
 
     public static <T> T fromJson(String json, Class<T> classOfObject){
