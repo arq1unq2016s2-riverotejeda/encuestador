@@ -164,7 +164,7 @@ POST: http://host:9090/survey
 }
 ```
 
-## Ver encuestra por lejago
+## Ver encuestra por legajo
 GET: http://host:9090/survey/:legajo
 
 Respuesta:
