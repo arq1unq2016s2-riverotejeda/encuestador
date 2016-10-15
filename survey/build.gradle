@@ -7,12 +7,16 @@ buildscript {
         mavenCentral()
         mavenLocal()
     }
+    dependencies {
+        classpath 'com.sourcemuse.gradle.plugin:gradle-mongo-plugin:0.13.0'
+    }
 }
 
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'application'
 apply plugin: 'war'
+apply plugin: 'mongo'
 
 
 repositories {
@@ -48,7 +52,16 @@ dependencies {
     }*/
 }
 
+run {
+    runWithMongoDb = true
+}
 
+mongo {
+    port 27017
+    logging 'console'
+    mongoVersion '3.2.0'
+    //storageLocation '/data/db'
+}
 
 war {
     baseName = 'survey'

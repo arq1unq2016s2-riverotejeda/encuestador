@@ -20,5 +20,4 @@ public class ApiService {
         LOGGER.info("Finish services configuration");
     }
 
-
 }
