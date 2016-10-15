@@ -1,0 +1,79 @@
+group 'unq.university.survey'
+version '0.0.1-SNAPSHOT'
+
+
+buildscript {
+    repositories {
+        mavenCentral()
+        mavenLocal()
+    }
+    dependencies {
+        classpath 'com.sourcemuse.gradle.plugin:gradle-mongo-plugin:0.13.0'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'application'
+apply plugin: 'war'
+apply plugin: 'mongo'
+
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+mainClassName = 'unq.api.service.ApiService'
+
+dependencies {
+
+    // spark framework and dependencies
+    compile('com.sparkjava:spark-core:2.5')
+    compile 'com.google.code.gson:gson:2.7'
+
+    //logs
+    compile('ch.qos.logback:logback-classic:1.1.7')
+
+    //DB
+    compile 'org.mongodb:mongodb-driver:3.3.0'
+    compile group: 'com.despegar.integration', name: 'mongo-connector', version: '1.1.10'
+
+    //Utils
+    compile group: 'joda-time', name: 'joda-time', version: '2.9.4'
+
+
+/*
+    testCompile 'junit:junit:4.10'
+
+    buildTypes{
+        debug
+        release
+    }*/
+}
+
+run {
+    runWithMongoDb = true
+}
+
+task stage {
+    dependsOn clean, build, run
+}
+
+mongo {
+    port 27017
+    logging 'console'
+    mongoVersion '3.2.0'
+    //storageLocation '/data/db'
+}
+
+war {
+    baseName = 'survey'
+}
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Survey',
+                'Implementation-Version': version
+    }
+}
