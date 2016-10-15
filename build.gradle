@@ -57,7 +57,7 @@ run {
 }
 
 task stage {
-    dependsOn clean, build, run
+    dependsOn clean, build
 }
 
 mongo {
