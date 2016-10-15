@@ -6,4 +6,6 @@ survey/.gradle/*
 survey/build/*
 survey/classes/*
 *.gradle
-
+/logs/*
+*.log
+logs/app.log
