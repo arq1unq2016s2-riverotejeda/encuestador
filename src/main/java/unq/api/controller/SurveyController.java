@@ -14,8 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import static spark.Spark.*;
 
-
-
 /**
  * Created by mrivero on 17/9/16.
  */
@@ -81,8 +79,5 @@ public class SurveyController {
             }
             return HttpServletResponse.SC_OK;
         });
-
-
-
     }
 }
