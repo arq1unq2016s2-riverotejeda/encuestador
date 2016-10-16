@@ -56,10 +56,6 @@ run {
     runWithMongoDb = true
 }
 
-task stage {
-    dependsOn clean, build
-}
-
 mongo {
     port 27017
     logging 'console'
@@ -74,6 +70,23 @@ war {
 jar {
     manifest {
         attributes 'Implementation-Title': 'Survey',
-                'Implementation-Version': version
+                'Implementation-Version': version,
+                'Main-Class': 'unq.api.service.ApiService'
     }
+}
+
+//create a single Jar with all dependencies
+task deploy(type: Jar) {
+    manifest {
+        attributes 'Implementation-Title': 'Survey',
+                'Implementation-Version': version,
+                'Main-Class': 'unq.api.service.ApiService'
+    }
+    baseName = project.name + '-all'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
+task stage {
+    dependsOn clean, deploy
 }
