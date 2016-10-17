@@ -1,1 +1,1 @@
-web: java -jar build/libs/*.jar
+web: java $JAVA_OPTS -jar build/libs/*.jar --port $PORT build/libs/*.war
