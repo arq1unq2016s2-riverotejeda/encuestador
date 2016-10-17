@@ -28,7 +28,6 @@ public class MongoDBDAO {
 
             Query query = new Query();
             query.equals("legajo", id);
-
             return students.findOne(query);
 
         } catch (UnknownHostException e) {

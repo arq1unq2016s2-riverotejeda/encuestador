@@ -7,16 +7,16 @@ buildscript {
         mavenCentral()
         mavenLocal()
     }
+    /*
     dependencies {
         classpath 'com.sourcemuse.gradle.plugin:gradle-mongo-plugin:0.13.0'
-    }
+    }*/
 }
 
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'application'
-apply plugin: 'war'
-apply plugin: 'mongo'
+//apply plugin: 'mongo'
 
 
 repositories {
@@ -36,7 +36,7 @@ dependencies {
     compile('ch.qos.logback:logback-classic:1.1.7')
 
     //DB
-    compile 'org.mongodb:mongodb-driver:3.3.0'
+    //compile 'org.mongodb:mongodb-driver:3.3.0'
     compile group: 'com.despegar.integration', name: 'mongo-connector', version: '1.1.10'
 
     //Utils
@@ -52,6 +52,7 @@ dependencies {
     }*/
 }
 
+/*
 run {
     runWithMongoDb = true
 }
@@ -61,19 +62,7 @@ mongo {
     logging 'console'
     mongoVersion '3.2.0'
     //storageLocation '/data/db'
-}
-
-war {
-    baseName = 'survey'
-}
-
-jar {
-    manifest {
-        attributes 'Implementation-Title': 'Survey',
-                'Implementation-Version': version,
-                'Main-Class': 'unq.api.service.ApiService'
-    }
-}
+}*/
 
 //create a single Jar with all dependencies
 task deploy(type: Jar) {
@@ -87,6 +76,7 @@ task deploy(type: Jar) {
     with jar
 }
 
+//Heroku task
 task stage {
     dependsOn clean, deploy
 }
