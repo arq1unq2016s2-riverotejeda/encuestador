@@ -1,6 +1,7 @@
 package unq.client;
 
 import com.despegar.integration.mongo.connector.MongoCollectionFactory;
+import com.despegar.integration.mongo.connector.MongoConnectorV2;
 import com.despegar.integration.mongo.connector.MongoDBConnection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,7 +18,7 @@ public class MongoDBClient {
     public static MongoCollectionFactory init(){
         MongoDBConnection connection;
         try {
-            connection = new MongoDBConnection("unq", "ds059316.mlab.com:59316");
+            connection = new MongoConnectorV2("unq", "ds059316.mlab.com:59316", "admin:admin");
             LOGGER.info("Successfully connected to the database");
         } catch (UnknownHostException e) {
             LOGGER.error("Error trying to connect to MongoDB");
