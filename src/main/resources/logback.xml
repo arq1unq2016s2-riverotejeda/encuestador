@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 
-    <if condition='property("env").contains("local")'>
+    <if condition='property("env").contains("prod")'>
         <then>
+            <appender name="loggly" class="ch.qos.logback.ext.loggly.LogglyAppender">
+                <endpointUrl>http://logs-01.loggly.com/inputs/e35665be-747b-436d-8b90-bd1ab81042bf/tag/logback</endpointUrl>
+                <pattern>%d{"ISO8601", UTC}  %p %t %c{0}.%M - %m%n</pattern>
+            </appender>
+
+            <root level="INFO">
+                <appender-ref ref="loggly" />
+            </root>
+        </then>
+        <else>
             <appender name="LOCALOUT" class="ch.qos.logback.core.ConsoleAppender">
                 <layout class="ch.qos.logback.classic.PatternLayout">
                     <Pattern>
@@ -35,17 +45,6 @@
             <root level="INFO">
                 <appender-ref ref="FILE-LOCALOUT" />
                 <appender-ref ref="LOCALOUT" />
-            </root>
-
-        </then>
-        <else>
-            <appender name="loggly" class="ch.qos.logback.ext.loggly.LogglyAppender">
-                <endpointUrl>http://logs-01.loggly.com/inputs/e35665be-747b-436d-8b90-bd1ab81042bf/tag/logback</endpointUrl>
-                <pattern>%d{"ISO8601", UTC}  %p %t %c{0}.%M - %m%n</pattern>
-            </appender>
-
-            <root level="INFO">
-                <appender-ref ref="loggly" />
             </root>
         </else>
     </if>
