@@ -18,7 +18,7 @@ public class WebServiceConfiguration {
     public void initConfiguration() {
         //port(9090);
         Map<String, String> value = System.getenv();
-        if (value.get("PORT").isEmpty() || value.get("PORT") == null){
+        if (value.get("PORT") == null || value.get("PORT").isEmpty()){
             port(9090);
         }
         else port(Integer.valueOf(value.get("PORT")));

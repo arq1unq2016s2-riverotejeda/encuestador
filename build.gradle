@@ -34,6 +34,9 @@ dependencies {
 
     //logs
     compile('ch.qos.logback:logback-classic:1.1.7')
+    compile group: 'org.codehaus.janino', name: 'janino', version: '3.0.6'
+    compile group: 'org.logback-extensions', name: 'logback-ext-loggly', version: '0.1.4'
+
 
     //DB
     //compile 'org.mongodb:mongodb-driver:3.3.0'
