@@ -17,7 +17,7 @@ public class ApiService {
 
     public static void main(String[] args) {
         LOGGER.info("Starting services configuration");
-        WebServiceConfiguration.getInstance().initConfiguration(EnvConfiguration.configuration.getString("port"));
+        WebServiceConfiguration.getInstance().initConfiguration();
         SurveyController.initSurveyEndopints();
         LOGGER.info("Finish services configuration");
     }

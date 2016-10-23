@@ -16,8 +16,8 @@ public class WebServiceConfiguration {
         return ourInstance;
     }
 
-    public void initConfiguration(String portConfig) {
-        Integer port = Integer.valueOf(Optional.ofNullable(System.getProperty("PORT")).orElse(portConfig));
+    public void initConfiguration() {
+        Integer port = Integer.valueOf(Optional.ofNullable(System.getenv().get("PORT")).orElse(EnvConfiguration.configuration.getString("port")));
         port(port);
 
         //find a way to set a base url
