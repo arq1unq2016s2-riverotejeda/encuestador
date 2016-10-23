@@ -1,6 +1,7 @@
 package unq.utils;
 
 import java.util.Map;
+import java.util.Optional;
 
 import static spark.Spark.port;
 
@@ -15,13 +16,12 @@ public class WebServiceConfiguration {
         return ourInstance;
     }
 
-    public void initConfiguration() {
-        //port(9090);
-        Map<String, String> value = System.getenv();
-        if (value.get("PORT") == null || value.get("PORT").isEmpty()){
-            port(9090);
-        }
-        else port(Integer.valueOf(value.get("PORT")));
+    public void initConfiguration(String portConfig) {
+        Integer port = Integer.valueOf(Optional.ofNullable(System.getProperty("PORT")).orElse(portConfig));
+        port(port);
+
         //find a way to set a base url
     }
+
+
 }

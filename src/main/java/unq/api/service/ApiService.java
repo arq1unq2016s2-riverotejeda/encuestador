@@ -1,9 +1,11 @@
 package unq.api.service;
 
 
+import com.typesafe.config.Config;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import unq.api.controller.SurveyController;
+import unq.utils.EnvConfiguration;
 import unq.utils.WebServiceConfiguration;
 
 /**
@@ -15,7 +17,7 @@ public class ApiService {
 
     public static void main(String[] args) {
         LOGGER.info("Starting services configuration");
-        WebServiceConfiguration.getInstance().initConfiguration();
+        WebServiceConfiguration.getInstance().initConfiguration(EnvConfiguration.configuration.getString("port"));
         SurveyController.initSurveyEndopints();
         LOGGER.info("Finish services configuration");
     }

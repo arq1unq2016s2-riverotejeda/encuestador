@@ -1,7 +1,6 @@
 package unq.api.model;
 
 import com.despegar.integration.mongo.entities.IdentifiableEntity;
-import org.joda.time.DateTime;
 
 import java.io.Serializable;
 import java.util.List;
