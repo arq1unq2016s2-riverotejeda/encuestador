@@ -8,8 +8,17 @@
                 <pattern>%d{"ISO8601", UTC}  %p %t %c{0}.%M - %m%n</pattern>
             </appender>
 
+            <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+                <layout class="ch.qos.logback.classic.PatternLayout">
+                    <Pattern>
+                        %d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n
+                    </Pattern>
+                </layout>
+            </appender>
+
             <root level="INFO">
                 <appender-ref ref="loggly" />
+                <appender-ref ref="console" />
             </root>
         </then>
         <else>
