@@ -3,6 +3,7 @@ package unq.utils;
 import spark.Spark;
 
 import java.util.Map;
+import java.util.Optional;
 
 import static spark.Spark.before;
 import static spark.Spark.options;
@@ -20,12 +21,9 @@ public class WebServiceConfiguration {
     }
 
     public void initConfiguration() {
-        //port(9090);
-        Map<String, String> value = System.getenv();
-        if (value.get("PORT").isEmpty() || value.get("PORT") == null){
-            port(9090);
-        }
-        else port(Integer.valueOf(value.get("PORT")));
+        Integer port = Integer.valueOf(Optional.ofNullable(System.getenv().get("PORT")).orElse(EnvConfiguration.configuration.getString("port")));
+        port(port);
+
         //find a way to set a base url
 
         options("/*", (request,response)->{
@@ -48,4 +46,6 @@ public class WebServiceConfiguration {
         });
 
     }
+
+
 }

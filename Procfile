@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -jar build/libs/*.jar $PORT
+web: java $JAVA_OPTS -jar -Denv=prod build/libs/*.jar $PORT

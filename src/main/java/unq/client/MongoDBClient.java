@@ -3,10 +3,13 @@ package unq.client;
 import com.despegar.integration.mongo.connector.MongoCollectionFactory;
 import com.despegar.integration.mongo.connector.MongoConnectorV2;
 import com.despegar.integration.mongo.connector.MongoDBConnection;
+import com.typesafe.config.Config;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import unq.utils.EnvConfiguration;
 
 import java.net.UnknownHostException;
+import java.util.Optional;
 
 /**
  * Created by mrivero on 21/9/16.
@@ -16,9 +19,22 @@ public class MongoDBClient {
     public static Logger LOGGER = LoggerFactory.getLogger(MongoDBClient.class);
 
     public static MongoCollectionFactory init(){
+        Config databaseConfig = EnvConfiguration.configuration.getConfig("database");
         MongoDBConnection connection;
         try {
-            connection = new MongoConnectorV2("unq", "ds059316.mlab.com:59316", "admin:admin");
+            Boolean enableAuth = Optional.ofNullable(databaseConfig.getBoolean("enableAuth")).orElse(Boolean.FALSE);
+            if(enableAuth){
+                LOGGER.info("Using Auth to connect to MongoDB");
+
+                connection = new MongoConnectorV2(databaseConfig.getString("name"), databaseConfig.getString("replicaSet"),
+                        databaseConfig.getString("credentials"));
+            }else{
+                LOGGER.info("Disable Auth to connect to MongoDB");
+
+                connection = new MongoDBConnection(databaseConfig.getString("name"), databaseConfig.getString("replicaSet"));
+            }
+
+
             LOGGER.info("Successfully connected to the database");
         } catch (UnknownHostException e) {
             LOGGER.error("Error trying to connect to MongoDB");
@@ -28,16 +44,5 @@ public class MongoDBClient {
         MongoCollectionFactory mongoCollectionFactory = new MongoCollectionFactory(connection);
         return mongoCollectionFactory;
     }
-
-    /*
-    public static MongoDatabase init(){
-        MongoClientURI connectionString = new MongoClientURI("mongodb://localhost:27017,localhost:27018,localhost:27019");
-        MongoClient mongoClient = new MongoClient(connectionString);
-
-        MongoDatabase database = mongoClient.getDatabase("unq");
-
-        LOGGER.info("Successfully connected to the database");
-        return database;
-    }*/
 
 }
