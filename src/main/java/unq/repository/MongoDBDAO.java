@@ -104,6 +104,14 @@ public class MongoDBDAO {
         } catch (UnknownHostException e) {
             throw new RuntimeException("Error executing Mongo query", e);
         }
+    }
 
+    public List<Survey> getSurveys(){
+        try {
+            MongoCollection<Survey> surveys = mongoCollectionFactory.buildMongoCollection("survey", Survey.class);
+            return surveys.find();
+        } catch (UnknownHostException e) {
+            throw new RuntimeException("Error executing Mongo query", e);
+        }
     }
 }

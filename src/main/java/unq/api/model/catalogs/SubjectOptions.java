@@ -21,6 +21,10 @@ public class SubjectOptions implements Serializable{
     public SubjectOptions(String subjectName, List<String> date) {
         this.subjectName = subjectName;
         this.date = date;
+<<<<<<< Updated upstream
+=======
+        this.generalOptions = date;
+>>>>>>> Stashed changes
     }
 
     public String getSubjectName() {
