@@ -115,9 +115,4 @@ public class SurveyServiceImpl implements SurveyService {
         return divisions.stream().map(subjectElection ->
                 subjectElection.getComision()+": " + String.join(", ", subjectElection.getWeekdays())).collect(Collectors.toList());
     }
-
-    class ComissionCount{
-        public String comission;
-        public Integer count;
-    }
 }

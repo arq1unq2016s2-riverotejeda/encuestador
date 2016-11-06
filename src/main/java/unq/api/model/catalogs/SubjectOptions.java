@@ -17,14 +17,13 @@ public class SubjectOptions implements Serializable{
     //Comision: horario
     List<String> date;
     List<SubjectStatus> options = Arrays.stream(SubjectStatus.values()).collect(Collectors.toList());
+    List<String> generalOptions;
 
     public SubjectOptions(String subjectName, List<String> date) {
         this.subjectName = subjectName;
         this.date = date;
-<<<<<<< Updated upstream
-=======
         this.generalOptions = date;
->>>>>>> Stashed changes
+
     }
 
     public String getSubjectName() {
