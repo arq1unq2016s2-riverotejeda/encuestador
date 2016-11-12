@@ -49,6 +49,11 @@ public class SurveyController {
             return GsonFactory.toJson(surveyService.getAllSubjects());
         });
 
+        get("/subjectsOccupation", (request, response) -> {
+            response.type("application/json");
+            return GsonFactory.toJson(surveyService.getClassOccupation());
+        });
+
         post("/subject", (request, response) -> {
             response.type("application/json");
             try {

@@ -13,18 +13,18 @@ public class Subject implements IdentifiableEntity, Serializable{
 
     private String id;
     private String name;
-    private Map<Comision, List<String>> dates;
+    private List<Division> divisions;
 
     public Subject(){
         super();
     }
 
-    public Map<Comision, List<String>> getDates() {
-        return dates;
+    public List<Division> getDivisions() {
+        return divisions;
     }
 
-    public void setDates(Map<Comision, List<String>> dates) {
-        this.dates = dates;
+    public void setDivisions(List<Division> divisions) {
+        this.divisions = divisions;
     }
 
     public String getName() {

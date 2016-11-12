@@ -19,7 +19,6 @@ public class SubjectOptions implements Serializable{
     List<SubjectStatus> options = Arrays.stream(SubjectStatus.values()).collect(Collectors.toList());
     List<String> generalOptions;
 
-
     public SubjectOptions(String subjectName, List<String> date) {
         this.subjectName = subjectName;
         this.date = date;

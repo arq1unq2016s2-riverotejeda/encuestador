@@ -12,12 +12,14 @@ Las opciones para la encuestra de pre inscripcion son:
 POST: http://host:9090/subject
 ```javascript
 {
-	name: "Probabilidad y estadistica",
-	dates: { C1: ["Miercoles de 18 a 21", "Viernes de 18 a 21"], 
-			 C2: ["Miercoles de 9 a 12", "Viernes de 9 a 12"], 
-			 C3: ["Lunes de 14 a 17", "Jueves de 16 a 19"] 
-			}
-	
+	name: "Automatas",
+	divisions: [
+    	{
+    		comision: "C1",
+     		weekdays: ["Viernes de 18 a 22"],
+	    	quota: 35
+    	}
+	]
 }
 ```
 
@@ -209,3 +211,59 @@ Respuesta:
   ]
 }
 ```
+
+## Ver porcentaje de ocupacion de materias
+GET: http://host:9090/survey/subjectsOccupation
+
+Respuesta:
+```javascript
+[
+  {
+    "subject": "Lógica y programación",
+    "comision": "C1: Lunes de 18 a 22, Jueves de 18 a 22",
+    "occupation": 1,
+    "percentage": 3
+  },
+  {
+    "subject": "Automatas",
+    "comision": "C1: Viernes de 18 a 22",
+    "occupation": 5,
+    "percentage": 14
+  },
+  {
+    "subject": "Probabilidad y estadística",
+    "comision": "C1: Lunes de 17 a 21, Jueves de 18 a 22",
+    "occupation": 1,
+    "percentage": 2
+  },
+  {
+    "subject": "Probabilidad y estadística",
+    "comision": "C2: Lunes de 8 a 12, Jueves de 8 a 12",
+    "occupation": 1,
+    "percentage": 2
+  },
+  {
+    "subject": "Caracteristicas de lenguaje de programación",
+    "comision": "C1: Lunes de 17 a 21, Jueves de 18 a 22",
+    "occupation": 1,
+    "percentage": 6
+  },
+  {
+    "subject": "Sistemas distribuidos",
+    "comision": "C1: Jueves de 17 a 21",
+    "occupation": 2,
+    "percentage": 8
+  },
+  {
+    "subject": "Ingles 2",
+    "comision": "C3: Miercoles de 14 a 18, Viernes de 14 a 18",
+    "occupation": 1,
+    "percentage": 2
+  },
+  {
+    "subject": "Ingles 2",
+    "comision": "C2: Lunes de 8 a 12, Jueves de 8 a 12",
+    "occupation": 4,
+    "percentage": 10
+  }
+]``

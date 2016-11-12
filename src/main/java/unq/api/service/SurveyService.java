@@ -1,6 +1,7 @@
 package unq.api.service;
 
 
+import unq.api.model.ClassOccupation;
 import unq.api.model.Student;
 import unq.api.model.Survey;
 import unq.api.model.Subject;
@@ -19,6 +20,5 @@ public interface SurveyService {
     Survey  getSurveyByStudent(String studentName);
     String saveSubject(Subject subject);
     List<SubjectOptions> getAllSubjects();
-
-
+    List<ClassOccupation> getClassOccupation();
 }
