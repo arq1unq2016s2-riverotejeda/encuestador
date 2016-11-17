@@ -13,6 +13,9 @@ public class Student implements IdentifiableEntity, Serializable{
     private String name;
     private String legajo;
 
+    public Student() {
+    }
+
     public Student(String name, String legajo) {
         this.name = name;
         this.legajo = legajo;

@@ -115,4 +115,21 @@ public class SurveyServiceImpl implements SurveyService {
         return divisions.stream().map(subjectElection ->
                 subjectElection.getComision()+": " + String.join(", ", subjectElection.getWeekdays())).collect(Collectors.toList());
     }
+
+
+    private boolean completedSurvey(String id){
+        Survey survey = this.mongoDAO.getSurveyByStudent(id);
+        return (survey != null);
+    }
+
+    @Override
+    public double getPercentageCompletedSurveys(){
+        List <Student> students = this.mongoDAO.getStudents();
+        int totalStudents = students.size();
+        int counter = 0;
+        for(Student student: students){
+            if (this.completedSurvey(student.getLegajo())) counter++;
+        }
+        return (counter*100)/totalStudents;
+    }
 }

@@ -106,6 +106,20 @@ public class MongoDBDAO {
         }
     }
 
+    public List<Student> getStudents(){
+        try {
+            LOGGER.info("Getting students from database");
+            MongoCollection<Student> students = mongoCollectionFactory.buildMongoCollection("student", Student.class);
+
+            List<Student> savedStudents = students.find();
+
+            return savedStudents;
+
+        } catch (UnknownHostException e) {
+            throw new RuntimeException("Error executing Mongo query", e);
+        }
+    }
+
     public List<Survey> getSurveys(){
         try {
             MongoCollection<Survey> surveys = mongoCollectionFactory.buildMongoCollection("survey", Survey.class);

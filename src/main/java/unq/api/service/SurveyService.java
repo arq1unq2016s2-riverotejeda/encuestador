@@ -21,4 +21,5 @@ public interface SurveyService {
     String saveSubject(Subject subject);
     List<SubjectOptions> getAllSubjects();
     List<ClassOccupation> getClassOccupation();
+    double getPercentageCompletedSurveys();
 }
