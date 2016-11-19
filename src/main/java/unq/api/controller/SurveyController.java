@@ -85,7 +85,7 @@ public class SurveyController {
             return HttpServletResponse.SC_OK;
         });
 
-        get("/surveyscompletition", (request, response) -> {
+        get("/surveysCompletition", (request, response) -> {
             response.type("application/json");
             return surveyService.getPercentageCompletedSurveys();
         });

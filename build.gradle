@@ -7,17 +7,11 @@ buildscript {
         mavenCentral()
         mavenLocal()
     }
-    /*
-    dependencies {
-        classpath 'com.sourcemuse.gradle.plugin:gradle-mongo-plugin:0.13.0'
-    }*/
 }
 
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'application'
-//apply plugin: 'mongo'
-
 
 repositories {
     mavenCentral()
@@ -46,27 +40,7 @@ dependencies {
     //compile group: 'joda-time', name: 'joda-time', version: '2.9.4'
     compile group: 'com.typesafe', name: 'config', version: '1.3.1'
 
-
-/*
-    testCompile 'junit:junit:4.10'
-
-    buildTypes{
-        debug
-        release
-    }*/
 }
-
-/*
-run {
-    runWithMongoDb = true
-}
-
-mongo {
-    port 27017
-    logging 'console'
-    mongoVersion '3.2.0'
-    //storageLocation '/data/db'
-}*/
 
 //create a single Jar with all dependencies
 task deploy(type: Jar) {
