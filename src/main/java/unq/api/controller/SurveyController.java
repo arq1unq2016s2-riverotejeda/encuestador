@@ -89,5 +89,11 @@ public class SurveyController {
             response.type("application/json");
             return surveyService.getPercentageCompletedSurveys();
         });
+
+        get("/surveysData", (request, response) -> {
+            response.type("application/json");
+            return surveyService.getSurveyStudentData();
+        });
+
     }
 }

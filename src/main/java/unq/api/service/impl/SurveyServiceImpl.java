@@ -132,4 +132,11 @@ public class SurveyServiceImpl implements SurveyService {
         }
         return (counter*100)/totalStudents;
     }
+
+    @Override
+    public SurveyStudentData getSurveyStudentData() {
+        List<Survey> surveys = mongoDAO.getSurveys();
+        List<Student> students = mongoDAO.getStudents();
+        return new SurveyStudentData(students.size(), surveys.size());
+    }
 }
