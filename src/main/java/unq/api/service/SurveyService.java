@@ -1,10 +1,7 @@
 package unq.api.service;
 
 
-import unq.api.model.ClassOccupation;
-import unq.api.model.Student;
-import unq.api.model.Survey;
-import unq.api.model.Subject;
+import unq.api.model.*;
 import unq.api.model.catalogs.SubjectOptions;
 
 import java.util.List;
@@ -22,4 +19,6 @@ public interface SurveyService {
     List<SubjectOptions> getAllSubjects();
     List<ClassOccupation> getClassOccupation();
     double getPercentageCompletedSurveys();
+    SurveyStudentData getSurveyStudentData();
+
 }
