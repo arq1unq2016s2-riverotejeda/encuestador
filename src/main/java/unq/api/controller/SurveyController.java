@@ -87,12 +87,12 @@ public class SurveyController {
 
         get("/surveyscompletition", (request, response) -> {
             response.type("application/json");
-            return surveyService.getPercentageCompletedSurveys();
+            return GsonFactory.toJson(surveyService.getPercentageCompletedSurveys());
         });
 
         get("/surveysData", (request, response) -> {
             response.type("application/json");
-            return surveyService.getSurveyStudentData();
+            return GsonFactory.toJson(surveyService.getSurveyStudentData());
         });
 
     }

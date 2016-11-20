@@ -124,19 +124,28 @@ public class SurveyServiceImpl implements SurveyService {
 
     @Override
     public double getPercentageCompletedSurveys(){
+        LOGGER.info("Getting percentage completed survey");
+
         List <Student> students = this.mongoDAO.getStudents();
         int totalStudents = students.size();
         int counter = 0;
         for(Student student: students){
             if (this.completedSurvey(student.getLegajo())) counter++;
         }
-        return (counter*100)/totalStudents;
+        int percentage = (counter * 100) / totalStudents;
+        
+        LOGGER.info("Finishing percentage completed survey");
+
+        return percentage;
     }
 
     @Override
     public SurveyStudentData getSurveyStudentData() {
+        LOGGER.info("Getting survey data");
         List<Survey> surveys = mongoDAO.getSurveys();
         List<Student> students = mongoDAO.getStudents();
-        return new SurveyStudentData(students.size(), surveys.size());
+        SurveyStudentData surveyStudentData = new SurveyStudentData(students.size(), surveys.size());
+        LOGGER.info("Finishing survey data");
+        return surveyStudentData;
     }
 }
