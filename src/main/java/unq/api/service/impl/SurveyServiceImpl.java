@@ -44,7 +44,7 @@ public class SurveyServiceImpl implements SurveyService {
     @Override
     public Survey getSurveyByStudent(String studentId) {
         LOGGER.info("Getting survey by student "+studentId);
-        return this.mongoDAO.getSurveyByStudent(studentId);
+        return mongoDAO.getSurveyByStudent(studentId);
     }
 
     @Override
@@ -69,8 +69,8 @@ public class SurveyServiceImpl implements SurveyService {
 
         LOGGER.info("Getting class occupation");
         List<ClassOccupation> classOccupations = new ArrayList<>();
-        List<Survey> surveys = this.mongoDAO.getSurveys();
-        List<Subject> subjects = this.mongoDAO.getSubjects();
+        List<Survey> surveys = mongoDAO.getSurveys();
+        List<Subject> subjects = mongoDAO.getSubjects();
         List<SelectedSubject> totalSelectedSubjects = new ArrayList<>();
 
         for(Survey survey: surveys){
@@ -117,20 +117,22 @@ public class SurveyServiceImpl implements SurveyService {
     }
 
 
-    private boolean completedSurvey(String id){
-        Survey survey = this.mongoDAO.getSurveyByStudent(id);
-        return (survey != null);
+    private boolean completedSurvey(String id, List<Survey> surveys){
+        Stream<Survey> studentSurvey = surveys.stream().filter(survey -> survey.getLegajo().equals(id));
+        return (studentSurvey.count()>0);
     }
 
     @Override
     public double getPercentageCompletedSurveys(){
         LOGGER.info("Getting percentage completed survey");
 
-        List <Student> students = this.mongoDAO.getStudents();
+        List <Student> students = mongoDAO.getStudents();
+        List<Survey> surveys = mongoDAO.getSurveys();
+
         int totalStudents = students.size();
         int counter = 0;
         for(Student student: students){
-            if (this.completedSurvey(student.getLegajo())) counter++;
+            if (this.completedSurvey(student.getLegajo(), surveys)) counter++;
         }
         int percentage = (counter * 100) / totalStudents;
         
