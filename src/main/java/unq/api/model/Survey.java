@@ -13,7 +13,16 @@ public class Survey implements IdentifiableEntity {
     private String id;
     private String studentName;
     private String legajo;
+    private String token;
     private List<SelectedSubject> selectedSubjects;
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
 
     public String getStudentName() {
         return studentName;

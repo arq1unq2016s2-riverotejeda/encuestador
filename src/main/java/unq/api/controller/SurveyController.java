@@ -2,6 +2,7 @@ package unq.api.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import unq.api.exceptions.InvalidTokenException;
 import unq.api.model.Student;
 import unq.api.model.Subject;
 import unq.api.model.Survey;
@@ -49,6 +50,11 @@ public class SurveyController {
             return GsonFactory.toJson(surveyService.getAllSubjects());
         });
 
+        get("/subjects/:token", (request, response) -> {
+            response.type("application/json");
+            return GsonFactory.toJson(surveyService.getSurveyModel(request.params("token")));
+        });
+
         get("/subjectsOccupation", (request, response) -> {
             response.type("application/json");
             return GsonFactory.toJson(surveyService.getClassOccupation());
@@ -77,10 +83,13 @@ public class SurveyController {
             try {
                 Survey survey = GsonFactory.fromJson(request.body(), Survey.class);
                 surveyService.saveSurvey(survey);
+            }catch(InvalidTokenException i){
+                LOGGER.error("Invalid token error trying to save a survey", i);
+                return HttpServletResponse.SC_NOT_ACCEPTABLE;
+
             } catch (Exception e) {
                 LOGGER.error("Error while trying to save a survey", e);
                 return HttpServletResponse.SC_INTERNAL_SERVER_ERROR;
-
             }
             return HttpServletResponse.SC_OK;
         });

@@ -12,13 +12,26 @@ public class Student implements IdentifiableEntity, Serializable{
     private String id;
     private String name;
     private String legajo;
+    private String email;
+    private String authToken;
 
     public Student() {
     }
 
-    public Student(String name, String legajo) {
-        this.name = name;
-        this.legajo = legajo;
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getAuthToken() {
+        return authToken;
+    }
+
+    public void setAuthToken(String authToken) {
+        this.authToken = authToken;
     }
 
     public void setName(String name) {

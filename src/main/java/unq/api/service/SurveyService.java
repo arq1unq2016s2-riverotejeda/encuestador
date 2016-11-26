@@ -20,5 +20,5 @@ public interface SurveyService {
     List<ClassOccupation> getClassOccupation();
     double getPercentageCompletedSurveys();
     SurveyStudentData getSurveyStudentData();
-
+    SurveyModel getSurveyModel(String token);
 }

@@ -128,4 +128,17 @@ public class MongoDBDAO {
             throw new RuntimeException("Error executing Mongo query", e);
         }
     }
+
+    public Student getStudentByToken(String token) {
+        try {
+            MongoCollection<Student> students = mongoCollectionFactory.buildMongoCollection("student", Student.class);
+
+            Query query = new Query();
+            query.equals("authToken", token);
+            return students.findOne(query);
+
+        } catch (UnknownHostException e) {
+            throw new RuntimeException("Error executing Mongo query", e);
+        }
+    }
 }
