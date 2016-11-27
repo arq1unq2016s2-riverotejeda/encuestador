@@ -65,7 +65,7 @@ public class SendEmailTLS {
 
     public static void sendEmailSurveyNotification(String studentName, String studentEmail,
                                                    String surveyUrl){
-        final String username = "urvey.unq.noreply@gmail.com";
+        final String username = "survey.unq.noreply@gmail.com";
 
 
         LOGGER.info(String.format("Starting auth for sending mail notification to user %s", username));
