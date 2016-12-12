@@ -7,8 +7,9 @@ import com.google.gson.annotations.SerializedName;
  */
 public enum SubjectStatus {
 
-    @SerializedName("not_yet") NOT_YET,
-    @SerializedName("approved") APPROVED,
-    @SerializedName("bad_schedule") BAD_SCHEDULE
+	@SerializedName("not_yet")
+	NOT_YET, @SerializedName("approved")
+	APPROVED, @SerializedName("bad_schedule")
+	BAD_SCHEDULE
 
 }
