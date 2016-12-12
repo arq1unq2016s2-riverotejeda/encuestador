@@ -1,11 +1,9 @@
 package unq.api.service;
 
-
-import com.typesafe.config.Config;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import unq.api.controller.SurveyController;
-import unq.utils.EnvConfiguration;
 import unq.utils.WebServiceConfiguration;
 
 /**
@@ -13,13 +11,13 @@ import unq.utils.WebServiceConfiguration;
  */
 public class ApiService {
 
-   public static Logger LOGGER = LoggerFactory.getLogger(ApiService.class);
+	public static Logger LOGGER = LoggerFactory.getLogger(ApiService.class);
 
-    public static void main(String[] args) {
-        LOGGER.info("Starting services configuration");
-        WebServiceConfiguration.getInstance().initConfiguration();
-        SurveyController.initSurveyEndopints();
-        LOGGER.info("Finish services configuration");
-    }
+	public static void main(String[] args) {
+		LOGGER.info("Starting services configuration");
+		WebServiceConfiguration.getInstance().initConfiguration();
+		SurveyController.initSurveyEndopints();
+		LOGGER.info("Finish services configuration");
+	}
 
 }
