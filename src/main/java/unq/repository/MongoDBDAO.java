@@ -51,6 +51,14 @@ public class MongoDBDAO {
             LOGGER.info("Starting saving survey object");
             MongoCollection<Survey> surveys = mongoCollectionFactory.buildMongoCollection("survey", Survey.class);
 
+            //Delete existing survey
+            LOGGER.info("Deleting existing survey");
+            Query query = new Query();
+            query.equals("legajo", survey.getLegajo());
+
+            boolean remove = surveys.remove(query);
+            LOGGER.info(String.format("Deleting survey %s", remove));
+
             String saved = surveys.save(survey);
             LOGGER.info("Finish saving survey object");
 

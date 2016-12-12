@@ -34,11 +34,19 @@ public class SurveyServiceImpl implements SurveyService {
         LOGGER.info(String.format("Saving student %s", student.getLegajo()));
         String token = SecurityTokenGenerator.getToken();
         student.setAuthToken(token);
+        this.validateStudent(student);
         String saved = mongoDAO.saveStudent(student);
         String url = getUrlNotification(token);
         SendEmailTLS.sendEmailSurveyNotification(student.getName(), student.getEmail(),url);
         LOGGER.info("Finish saving student and sending survey notification");
         return saved;
+    }
+
+    private void validateStudent(Student student) {
+        LOGGER.info(String.format("Validating if %s already exist", student.getId()));
+
+        Student savedStudent = mongoDAO.getStudent(student.getId());
+        Assert.isTrue(savedStudent==null, String.format("Student %s already exist", student.getId()));
     }
 
     private String getUrlNotification(String token) {
@@ -158,7 +166,9 @@ public class SurveyServiceImpl implements SurveyService {
         LOGGER.info(String.format("Getting survey model for token %s", token));
         Student studentByToken = mongoDAO.getStudentByToken(token);
         Assert.notNull(studentByToken, "Student must not be null for token");
-        return new SurveyModel(studentByToken.getName(), studentByToken.getLegajo(), this.getAllSubjects());
+        Survey completedSurvey = mongoDAO.getSurveyByStudent(studentByToken.getLegajo());
+        return new SurveyModel(studentByToken.getName(), studentByToken.getLegajo(), this.getAllSubjects(),
+                completedSurvey);
     }
 
     private boolean isSelected(SelectedSubject selectedSubject) {

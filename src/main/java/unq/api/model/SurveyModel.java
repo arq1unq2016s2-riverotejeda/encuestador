@@ -12,11 +12,13 @@ public class SurveyModel implements Serializable{
     private String studentName;
     private String legajo;
     private List<SubjectOptions> options;
+    private Survey completedSurvey;
 
-    public SurveyModel(String studentName, String legajo, List<SubjectOptions> options) {
+    public SurveyModel(String studentName, String legajo, List<SubjectOptions> options, Survey completedSurvey) {
         this.studentName = studentName;
         this.legajo = legajo;
         this.options = options;
+        this.completedSurvey = completedSurvey;
     }
 
     public String getLegajo() {
