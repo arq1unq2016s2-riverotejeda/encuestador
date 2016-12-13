@@ -7,11 +7,13 @@ import java.io.Serializable;
  */
 public class SurveyStudentData implements Serializable {
 
+	private double percentage;
 	private int cantStudents;
 	private int cantSurveys;
 
-	public SurveyStudentData(int cantStudents, int cantSurveys) {
+	public SurveyStudentData(int cantStudents, int cantSurveys, double percentage) {
 		this.cantStudents = cantStudents;
 		this.cantSurveys = cantSurveys;
+		this.percentage = percentage;
 	}
 }

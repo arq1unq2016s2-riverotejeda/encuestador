@@ -63,6 +63,7 @@ public class MongoDBDAO {
             String saved = surveys.save(survey);
             LOGGER.info("Finish saving survey object");
 
+
 			return saved;
 
 		} catch (UnknownHostException e) {
@@ -146,6 +147,31 @@ public class MongoDBDAO {
 			query.equals("authToken", token);
 			return students.findOne(query);
 
+		} catch (UnknownHostException e) {
+			throw new RuntimeException("Error executing Mongo query", e);
+		}
+	}
+
+	public Integer cantStudents(){
+		try {
+			LOGGER.info("Counting students from database");
+			MongoCollection<Student> students = mongoCollectionFactory.buildMongoCollection("student", Student.class);
+
+			Integer cantStudents = students.count(null);
+
+			return cantStudents;
+
+		} catch (UnknownHostException e) {
+			throw new RuntimeException("Error executing Mongo query", e);
+		}
+	}
+
+	public Integer cantSurveys() {
+		try {
+			LOGGER.info("Counting surveys from database");
+
+			MongoCollection<Survey> surveys = mongoCollectionFactory.buildMongoCollection("survey", Survey.class);
+			return surveys.count(null);
 		} catch (UnknownHostException e) {
 			throw new RuntimeException("Error executing Mongo query", e);
 		}

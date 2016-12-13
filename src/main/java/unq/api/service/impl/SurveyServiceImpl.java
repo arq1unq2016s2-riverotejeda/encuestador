@@ -141,32 +141,41 @@ public class SurveyServiceImpl implements SurveyService {
         return classOccupations;
     }
 
-    @Override
-    public double getPercentageCompletedSurveys(){
-        LOGGER.info("Getting percentage completed survey");
+    private double getPercentageCompletedSurveys(){
+		LOGGER.info("Getting percentage completed survey");
 
-        List <Student> students = mongoDAO.getStudents();
-        List<Survey> surveys = mongoDAO.getSurveys();
+		List <Student> students = mongoDAO.getStudents();
+		List<Survey> surveys = mongoDAO.getSurveys();
 
-        int totalStudents = students.size();
-        int counter = 0;
-        for(Student student: students){
-            if (this.completedSurvey(student.getLegajo(), surveys)) counter++;
-        }
-        int percentage = (counter * 100) / totalStudents;
+		int totalStudents = students.size();
+		int counter = 0;
+		for(Student student: students){
+			if (this.completedSurvey(student.getLegajo(), surveys)) counter++;
+		}
+		int percentage = (counter * 100) / totalStudents;
 
-        LOGGER.info("Finishing percentage completed survey");
+		LOGGER.info("Finishing percentage completed survey");
 
-        return percentage;
-    }
+		return percentage;
+	}
+
+	private double getPercentageCompletedSurveys(Integer cantStudents, Integer cantSurvey){
+		LOGGER.info("Getting percentage completed survey");
+
+		int percentage = (cantSurvey * 100) / cantStudents;
+
+		LOGGER.info("Finishing percentage completed survey");
+
+		return percentage;
+	}
 
 
     @Override
     public SurveyStudentData getSurveyStudentData() {
         LOGGER.info("Getting survey data");
-        List<Survey> surveys = mongoDAO.getSurveys();
-        List<Student> students = mongoDAO.getStudents();
-        SurveyStudentData surveyStudentData = new SurveyStudentData(students.size(), surveys.size());
+		Integer cantStudents = mongoDAO.cantStudents();
+		Integer cantSurveys = mongoDAO.cantSurveys();
+		SurveyStudentData surveyStudentData = new SurveyStudentData(cantStudents, cantSurveys, this.getPercentageCompletedSurveys(cantStudents, cantSurveys));
         LOGGER.info("Finishing survey data");
         return surveyStudentData;
     }
