@@ -1,7 +1,5 @@
 package unq.api.model;
 
-import com.despegar.integration.mongo.entities.IdentifiableEntity;
-
 import java.io.Serializable;
 
 /**
@@ -9,47 +7,47 @@ import java.io.Serializable;
  */
 public class ClassOccupation implements Serializable {
 
-    private String subject;
-    private String comision;
-    private Long occupation;
-    private Long percentage;
+	private String subject;
+	private String comision;
+	private Long occupation;
+	private Long percentage;
 
-    public ClassOccupation(String subject, String comision, Long occupation, Long percentage) {
-        this.subject = subject;
-        this.comision = comision;
-        this.occupation = occupation;
-        this.percentage = percentage;
-    }
+	public ClassOccupation(String subject, String comision, Long occupation, Long percentage) {
+		this.subject = subject;
+		this.comision = comision;
+		this.occupation = occupation;
+		this.percentage = percentage;
+	}
 
-    public Long getPercentage() {
-        return percentage;
-    }
+	public Long getPercentage() {
+		return percentage;
+	}
 
-    public void setPercentage(Long percentage) {
-        this.percentage = percentage;
-    }
+	public void setPercentage(Long percentage) {
+		this.percentage = percentage;
+	}
 
-    public String getSubject() {
-        return subject;
-    }
+	public String getSubject() {
+		return subject;
+	}
 
-    public void setSubject(String subject) {
-        this.subject = subject;
-    }
+	public void setSubject(String subject) {
+		this.subject = subject;
+	}
 
-    public String getComision() {
-        return comision;
-    }
+	public String getComision() {
+		return comision;
+	}
 
-    public void setComision(String comision) {
-        this.comision = comision;
-    }
+	public void setComision(String comision) {
+		this.comision = comision;
+	}
 
-    public Long getOccupation() {
-        return occupation;
-    }
+	public Long getOccupation() {
+		return occupation;
+	}
 
-    public void setOccupation(Long ocupation) {
-        this.occupation = ocupation;
-    }
+	public void setOccupation(Long ocupation) {
+		this.occupation = ocupation;
+	}
 }

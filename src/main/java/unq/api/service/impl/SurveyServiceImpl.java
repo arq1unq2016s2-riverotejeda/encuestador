@@ -1,24 +1,31 @@
 package unq.api.service.impl;
 
-import com.typesafe.config.Config;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import spark.utils.Assert;
 import unq.api.exceptions.InvalidTokenException;
-import unq.api.model.*;
+import unq.api.model.ClassOccupation;
+import unq.api.model.Division;
+import unq.api.model.SelectedSubject;
+import unq.api.model.Student;
+import unq.api.model.Subject;
+import unq.api.model.SubjectStatus;
+import unq.api.model.Survey;
+import unq.api.model.SurveyModel;
+import unq.api.model.SurveyStudentData;
 import unq.api.model.catalogs.SubjectOptions;
 import unq.api.service.SurveyService;
 import unq.repository.MongoDBDAO;
 import unq.utils.EnvConfiguration;
 import unq.utils.SecurityTokenGenerator;
 import unq.utils.SendEmailTLS;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * Created by mrivero on 28/9/16.
@@ -79,16 +86,19 @@ public class SurveyServiceImpl implements SurveyService {
         return mongoDAO.saveSubject(subject);
     }
 
-    @Override
-    public List<SubjectOptions> getAllSubjects() {
-        LOGGER.info("Start building subjects");
-        List<SubjectOptions> options = new ArrayList<>();
-        List<Subject> subjects = mongoDAO.getSubjects();
-        options.addAll(subjects.stream().map(subject ->
-                new SubjectOptions(subject.getName(), buildSelectionDates(subject.getDivisions()))).collect(Collectors.toList()));
-        LOGGER.info("All subject finished successfully");
-        return options;
-    }
+	@Override
+	public List<SubjectOptions> getAllSubjects() {
+		LOGGER.info("Start building subjects");
+		List<SubjectOptions> options = new ArrayList<>();
+		List<Subject> subjects = mongoDAO.getSubjects();
+		options.addAll(
+				subjects.stream()
+						.map(subject -> new SubjectOptions(subject.getName(),
+								buildSelectionDates(subject.getDivisions()), subject.getGroup()))
+						.collect(Collectors.toList()));
+		LOGGER.info("All subject finished successfully");
+		return options;
+	}
 
     @Override
     public List<ClassOccupation> getClassOccupation() {

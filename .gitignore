@@ -8,3 +8,10 @@ classes/*
 logs/*
 *.log
 app.log
+/build/
+/.gradle/
+/bin/
+.classpath
+.project
+.settings/
+

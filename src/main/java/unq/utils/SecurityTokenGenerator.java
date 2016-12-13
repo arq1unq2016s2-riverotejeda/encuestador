@@ -7,10 +7,10 @@ import java.security.SecureRandom;
  */
 public class SecurityTokenGenerator {
 
-    public static String getToken(){
-        SecureRandom random = new SecureRandom();
-        byte bytes[] = new byte[20];
-        random.nextBytes(bytes);
-        return bytes.toString();
-    }
+	public static String getToken() {
+		SecureRandom random = new SecureRandom();
+		byte bytes[] = new byte[20];
+		random.nextBytes(bytes);
+		return bytes.toString();
+	}
 }

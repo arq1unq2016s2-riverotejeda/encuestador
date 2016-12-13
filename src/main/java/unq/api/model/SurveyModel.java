@@ -1,9 +1,9 @@
 package unq.api.model;
 
-import unq.api.model.catalogs.SubjectOptions;
-
 import java.io.Serializable;
 import java.util.List;
+
+import unq.api.model.catalogs.SubjectOptions;
 
 /**
  * Created by mrivero on 26/11/16.

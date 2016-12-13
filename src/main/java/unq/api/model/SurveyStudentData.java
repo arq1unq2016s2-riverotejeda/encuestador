@@ -7,11 +7,11 @@ import java.io.Serializable;
  */
 public class SurveyStudentData implements Serializable {
 
-    private int cantStudents;
-    private int cantSurveys;
+	private int cantStudents;
+	private int cantSurveys;
 
-    public SurveyStudentData(int cantStudents, int cantSurveys) {
-        this.cantStudents = cantStudents;
-        this.cantSurveys = cantSurveys;
-    }
+	public SurveyStudentData(int cantStudents, int cantSurveys) {
+		this.cantStudents = cantStudents;
+		this.cantSurveys = cantSurveys;
+	}
 }
