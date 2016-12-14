@@ -131,7 +131,7 @@ public class SurveyServiceImpl implements SurveyService {
                 divisions.forEach(division -> {
                     long percentage = count * 100L / division.getQuota();
 
-                    classOccupations.add(new ClassOccupation(subjectName, comision,count, percentage));
+                    classOccupations.add(new ClassOccupation(subjectName, comision.split(":")[0],count, percentage));
                 });
             });
 
