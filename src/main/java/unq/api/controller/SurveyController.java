@@ -46,19 +46,19 @@ public class SurveyController {
 			return HttpServletResponse.SC_OK;
 		});
 
-		get("/subjects", (request, response) -> {
+		get("/subjects/:year", (request, response) -> {
 			response.type("application/json");
-			return GsonFactory.toJson(surveyService.getAllSubjects());
+			return GsonFactory.toJson(surveyService.getAllSubjects(request.params("year")));
 		});
 
-		get("/subjects/:token", (request, response) -> {
+		get("/subjects/:token/:year", (request, response) -> {
 			response.type("application/json");
-			return GsonFactory.toJson(surveyService.getSurveyModel(request.params("token")));
+			return GsonFactory.toJson(surveyService.getSurveyModel(request.params("token"), request.params("year")));
 		});
 
-		get("/subjectsOccupation", (request, response) -> {
+		get("/subjectsOccupation/:year", (request, response) -> {
 			response.type("application/json");
-			return GsonFactory.toJson(surveyService.getClassOccupation());
+			return GsonFactory.toJson(surveyService.getClassOccupation(request.params("year")));
 		});
 
 		post("/subject", (request, response) -> {
@@ -74,9 +74,9 @@ public class SurveyController {
 			return HttpServletResponse.SC_OK;
 		});
 
-		get("/survey/:studentID", (request, response) -> {
+		get("/survey/:studentID/:year", (request, response) -> {
 			response.type("application/json");
-			return GsonFactory.toJson(surveyService.getSurveyByStudent(request.params("studentID")));
+			return GsonFactory.toJson(surveyService.getSurveyByStudent(request.params("studentID") ,request.params("year")));
 		});
 
 		post("/survey", (request, response) -> {
@@ -95,9 +95,9 @@ public class SurveyController {
 			return HttpServletResponse.SC_OK;
 		});
 
-		get("/surveysCompletition", (request, response) -> {
+		get("/surveysCompletition/:year", (request, response) -> {
 			response.type("application/json");
-			return GsonFactory.toJson(surveyService.getSurveyStudentData());
+			return GsonFactory.toJson(surveyService.getSurveyStudentData(request.params("year")));
 		});
 
 

@@ -14,6 +14,7 @@ public class Subject implements IdentifiableEntity, Serializable {
 	private String name;
 	private List<Division> divisions;
 	private String group;
+	private String schoolYear;
 
 	public Subject() {
 		super();
@@ -51,5 +52,13 @@ public class Subject implements IdentifiableEntity, Serializable {
 
 	public void setGroup(String group) {
 		this.group = group;
+	}
+
+	public String getSchoolYear() {
+		return schoolYear;
+	}
+
+	public void setSchoolYear(String schoolYear) {
+		this.schoolYear = schoolYear;
 	}
 }

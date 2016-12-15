@@ -14,6 +14,15 @@ public class Survey implements IdentifiableEntity {
 	private String legajo;
 	private String token;
 	private List<SelectedSubject> selectedSubjects;
+	private String schoolYear;
+
+	public String getSchoolYear() {
+		return schoolYear;
+	}
+
+	public void setSchoolYear(String schoolYear) {
+		this.schoolYear = schoolYear;
+	}
 
 	public String getToken() {
 		return token;

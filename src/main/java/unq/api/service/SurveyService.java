@@ -21,15 +21,15 @@ public interface SurveyService {
 
 	String saveSurvey(Survey survey);
 
-	Survey getSurveyByStudent(String studentName);
+	Survey getSurveyByStudent(String studentName, String year);
 
 	String saveSubject(Subject subject);
 
-	List<SubjectOptions> getAllSubjects();
+	List<SubjectOptions> getAllSubjects(String year);
 
-	List<ClassOccupation> getClassOccupation();
+	List<ClassOccupation> getClassOccupation(String year);
 
-	SurveyStudentData getSurveyStudentData();
+	SurveyStudentData getSurveyStudentData(String year);
 
-	SurveyModel getSurveyModel(String token);
+	SurveyModel getSurveyModel(String token, String year);
 }

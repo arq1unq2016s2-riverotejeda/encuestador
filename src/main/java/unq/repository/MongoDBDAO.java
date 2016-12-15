@@ -72,12 +72,13 @@ public class MongoDBDAO {
 
 	}
 
-	public Survey getSurveyByStudent(String id) {
+	public Survey getSurveyByStudent(String id, String year) {
 		try {
 			MongoCollection<Survey> surveys = mongoCollectionFactory.buildMongoCollection("survey", Survey.class);
 
 			Query query = new Query();
 			query.equals("legajo", id);
+			query.equals("schoolYear", year);
 
 			return surveys.findOne(query);
 
@@ -102,12 +103,15 @@ public class MongoDBDAO {
 
 	}
 
-	public List<Subject> getSubjects() {
+	public List<Subject> getSubjects(String year) {
 		try {
 			LOGGER.info("Getting subjects from database");
 			MongoCollection<Subject> subjects = mongoCollectionFactory.buildMongoCollection("subject", Subject.class);
 
-			List<Subject> savedSubjects = subjects.find();
+			Query query = new Query();
+			query.equals("schoolYear", year);
+
+			List<Subject> savedSubjects = subjects.find(query);
 
 			return savedSubjects;
 
@@ -166,12 +170,15 @@ public class MongoDBDAO {
 		}
 	}
 
-	public Integer cantSurveys() {
+	public Integer cantSurveys(String year) {
 		try {
 			LOGGER.info("Counting surveys from database");
 
 			MongoCollection<Survey> surveys = mongoCollectionFactory.buildMongoCollection("survey", Survey.class);
-			return surveys.count(null);
+			Query query = new Query();
+			query.equals("schoolYear", year);
+
+			return surveys.count(query);
 		} catch (UnknownHostException e) {
 			throw new RuntimeException("Error executing Mongo query", e);
 		}

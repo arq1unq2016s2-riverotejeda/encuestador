@@ -19,12 +19,14 @@ POST: http://host:9090/subject
      		weekdays: ["Viernes de 18 a 22"],
 	    	quota: 35
     	}
-	]
+	],
+	group: "basic",
+	schoolYear:
 }
 ```
 
 ## Ver oferta academica
-GET: http://host:9090/subjects
+GET: http://host:9090/subjects/:year
 
 Respuesta:
 ```javascript
