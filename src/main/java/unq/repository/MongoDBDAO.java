@@ -120,6 +120,20 @@ public class MongoDBDAO {
 		}
 	}
 
+	public List<Subject> getAllSubjects() {
+		try {
+			LOGGER.info("Getting subjects from database");
+			MongoCollection<Subject> subjects = mongoCollectionFactory.buildMongoCollection("subject", Subject.class);
+			List<Subject> savedSubjects = subjects.find();
+			LOGGER.info("Finish getting subjects from database");
+
+			return savedSubjects;
+
+		} catch (UnknownHostException e) {
+			throw new RuntimeException("Error executing Mongo query", e);
+		}
+	}
+
 	public List<Student> getStudents() {
 		try {
 			LOGGER.info("Getting students from database");

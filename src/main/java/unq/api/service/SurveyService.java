@@ -32,4 +32,6 @@ public interface SurveyService {
 	SurveyStudentData getSurveyStudentData(String year);
 
 	SurveyModel getSurveyModel(String token, String year);
+
+	String getLastActiveYear();
 }

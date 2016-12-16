@@ -1,6 +1,7 @@
 package unq.api.service.impl;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -214,5 +215,20 @@ public class SurveyServiceImpl implements SurveyService {
             return;
         }
         throw new InvalidTokenException("Invalid token, user now exist for that token "+survey.getToken());
+    }
+
+    public String getLastActiveYear(){
+        LOGGER.info("Starting calculating active year");
+        List<Subject> allSubjects = mongoDAO.getAllSubjects();
+
+
+        final Comparator<Subject> comp = (p1, p2) -> Integer.compare( Integer.valueOf(p1.getSchoolYear()), Integer.valueOf(p2.getSchoolYear()));
+        Subject oldest = allSubjects.stream()
+                .max(comp)
+                .get();
+
+        LOGGER.info(String.format("Finish calculating last active year %s", oldest.getSchoolYear()));
+        return oldest.getSchoolYear();
+
     }
 }
