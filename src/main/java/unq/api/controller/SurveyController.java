@@ -106,5 +106,9 @@ public class SurveyController {
 			return GsonFactory.toJson(surveyService.getLastActiveYear());
 		});
 
+		get("/getAllYears", (request, response) -> {
+			response.type("application/json");
+			return GsonFactory.toJson(surveyService.getAllYears());
+		});
 	}
 }

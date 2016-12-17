@@ -1,6 +1,7 @@
 package unq.api.service;
 
 import java.util.List;
+import java.util.Set;
 
 import unq.api.model.ClassOccupation;
 import unq.api.model.Student;
@@ -34,4 +35,6 @@ public interface SurveyService {
 	SurveyModel getSurveyModel(String token, String year);
 
 	String getLastActiveYear();
+
+	Set<String> getAllYears();
 }

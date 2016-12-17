@@ -1,9 +1,6 @@
 package unq.api.service.impl;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -189,6 +186,20 @@ public class SurveyServiceImpl implements SurveyService {
         Survey completedSurvey = mongoDAO.getSurveyByStudent(studentByToken.getLegajo(), year);
         return new SurveyModel(studentByToken.getName(), studentByToken.getLegajo(), this.getAllSubjects(year),
                 completedSurvey);
+    }
+
+    @Override
+    public Set<String> getAllYears(){
+        LOGGER.info("Getting all years");
+        List<Subject> allSubjects = mongoDAO.getAllSubjects();
+        Set<String> years = new HashSet<String>();
+
+
+        allSubjects.stream().forEach(subject ->
+            years.add(subject.getSchoolYear()));
+
+        LOGGER.info("Finish getting all active year");
+        return years;
     }
 
     private boolean isSelected(SelectedSubject selectedSubject) {
