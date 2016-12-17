@@ -52,18 +52,6 @@ public class SurveyServiceImpl implements SurveyService {
         return saved;
     }
 
-    private void validateStudent(Student student) {
-        LOGGER.info(String.format("Validating if %s already exist", student.getLegajo()));
-
-        Student savedStudent = repositoryService.getStudent(student.getLegajo());
-        Assert.isTrue(savedStudent==null, String.format("Student %s already exist", student.getLegajo()));
-    }
-
-    private String getUrlNotification(String token) {
-        String domain = EnvConfiguration.configuration.getString("frontendDomain");
-        return domain+token;
-    }
-
     @Override
     public Student getStudentByID(String id) {
         LOGGER.info(String.format("Getting student %s", id));
@@ -118,6 +106,53 @@ public class SurveyServiceImpl implements SurveyService {
         LOGGER.info("Finish calculating class occupation");
         return classOccupations;
     }
+
+    @Override
+    public SurveyStudentData getSurveyStudentData(String year) {
+        LOGGER.info(String.format("Getting survey data for year %s", year));
+        Integer cantStudents = repositoryService.cantStudents();
+        Integer cantSurveys = repositoryService.cantSurveys(year);
+        SurveyStudentData surveyStudentData = new SurveyStudentData(cantStudents, cantSurveys, this.getPercentageCompletedSurveys(cantStudents, cantSurveys));
+        LOGGER.info("Finishing survey data");
+        return surveyStudentData;
+    }
+
+    @Override
+    public SurveyModel getSurveyModel(String token, String year) {
+        LOGGER.info(String.format("Getting survey model for token %s and year %s", token, year));
+        Student studentByToken = repositoryService.getStudentByToken(token);
+        Assert.notNull(studentByToken, "Student must not be null for token");
+        Survey completedSurvey = repositoryService.getSurveyByStudent(studentByToken.getLegajo(), year);
+        return new SurveyModel(studentByToken.getName(), studentByToken.getLegajo(), this.getAllSubjects(year),
+                completedSurvey);
+    }
+
+    @Override
+    public Set<String> getAllYears(){
+        LOGGER.info("Getting all years");
+        List<Subject> allSubjects = repositoryService.getAllSubjects();
+        Set<String> years = new HashSet<String>();
+
+
+        allSubjects.stream().forEach(subject ->
+                years.add(subject.getSchoolYear()));
+
+        LOGGER.info("Finish getting all active year");
+        return years;
+    }
+
+    private void validateStudent(Student student) {
+        LOGGER.info(String.format("Validating if %s already exist", student.getLegajo()));
+
+        Student savedStudent = repositoryService.getStudent(student.getLegajo());
+        Assert.isTrue(savedStudent==null, String.format("Student %s already exist", student.getLegajo()));
+    }
+
+    private String getUrlNotification(String token) {
+        String domain = EnvConfiguration.configuration.getString("frontendDomain");
+        return domain+token;
+    }
+
 
     private List<ClassOccupation> buildClassOccupations(String year) {
         List<ClassOccupation> classOccupations = new ArrayList<>();
@@ -177,41 +212,6 @@ public class SurveyServiceImpl implements SurveyService {
 		return percentage;
 	}
 
-
-    @Override
-    public SurveyStudentData getSurveyStudentData(String year) {
-        LOGGER.info(String.format("Getting survey data for year %s", year));
-		Integer cantStudents = repositoryService.cantStudents();
-		Integer cantSurveys = repositoryService.cantSurveys(year);
-		SurveyStudentData surveyStudentData = new SurveyStudentData(cantStudents, cantSurveys, this.getPercentageCompletedSurveys(cantStudents, cantSurveys));
-        LOGGER.info("Finishing survey data");
-        return surveyStudentData;
-    }
-
-    @Override
-    public SurveyModel getSurveyModel(String token, String year) {
-        LOGGER.info(String.format("Getting survey model for token %s and year %s", token, year));
-        Student studentByToken = repositoryService.getStudentByToken(token);
-        Assert.notNull(studentByToken, "Student must not be null for token");
-        Survey completedSurvey = repositoryService.getSurveyByStudent(studentByToken.getLegajo(), year);
-        return new SurveyModel(studentByToken.getName(), studentByToken.getLegajo(), this.getAllSubjects(year),
-                completedSurvey);
-    }
-
-    @Override
-    public Set<String> getAllYears(){
-        LOGGER.info("Getting all years");
-        List<Subject> allSubjects = repositoryService.getAllSubjects();
-        Set<String> years = new HashSet<String>();
-
-
-        allSubjects.stream().forEach(subject ->
-            years.add(subject.getSchoolYear()));
-
-        LOGGER.info("Finish getting all active year");
-        return years;
-    }
-
     private boolean isSelected(SelectedSubject selectedSubject) {
         return !selectedSubject.getStatus().toLowerCase().equals(SubjectStatus.APPROVED.name().toLowerCase()) &&
                 !selectedSubject.getStatus().toLowerCase().equals(SubjectStatus.BAD_SCHEDULE.name().toLowerCase()) &&
@@ -238,18 +238,41 @@ public class SurveyServiceImpl implements SurveyService {
         throw new InvalidTokenException("Invalid token, user now exist for that token "+survey.getToken());
     }
 
+    @Override
     public String getLastActiveYear(){
         LOGGER.info("Starting calculating active year");
-        List<Subject> allSubjects = repositoryService.getAllSubjects();
-
-
-        final Comparator<Subject> comp = (p1, p2) -> Integer.compare( Integer.valueOf(p1.getSchoolYear()), Integer.valueOf(p2.getSchoolYear()));
-        Subject oldest = allSubjects.stream()
-                .max(comp)
-                .get();
+        Subject oldest = null;
+        try {
+            oldest = this.calculateLastActiveYear.get("lastActiveYear");
+        } catch (ExecutionException e) {
+            LOGGER.error("Error trying to get las active year", e);
+            throw new RuntimeException(e);
+        }
 
         LOGGER.info(String.format("Finish calculating last active year %s", oldest.getSchoolYear()));
         return oldest.getSchoolYear();
 
+    }
+
+    private LoadingCache<String, Subject> calculateLastActiveYear = CacheBuilder.newBuilder()
+            .maximumSize(1000)
+            .expireAfterAccess(30L, TimeUnit.MINUTES)
+            .build(
+                    new CacheLoader<String, Subject>() {
+                        public Subject load(String year) throws RuntimeException {
+                            LOGGER.info("Missing key, calculating last active year");
+                            return calculateLastActiveYear();
+                        }
+                    });
+
+
+    private Subject calculateLastActiveYear() {
+        List<Subject> allSubjects = repositoryService.getAllSubjects();
+
+
+        final Comparator<Subject> comp = (p1, p2) -> Integer.compare( Integer.valueOf(p1.getSchoolYear()), Integer.valueOf(p2.getSchoolYear()));
+        return allSubjects.stream()
+                .max(comp)
+                .get();
     }
 }
