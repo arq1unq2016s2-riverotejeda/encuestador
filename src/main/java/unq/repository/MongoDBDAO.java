@@ -36,7 +36,6 @@ public class MongoDBDAO {
 		}
 	}
 
-	// TODO: Check if this works and does not duplicate rows
 	public String saveStudent(Student student) {
 		try {
 			MongoCollection<Student> students = mongoCollectionFactory.buildMongoCollection("student", Student.class);
@@ -74,13 +73,16 @@ public class MongoDBDAO {
 
 	public Survey getSurveyByStudent(String id, String year) {
 		try {
+			LOGGER.info("Getting survey by student");
 			MongoCollection<Survey> surveys = mongoCollectionFactory.buildMongoCollection("survey", Survey.class);
 
 			Query query = new Query();
 			query.equals("legajo", id);
 			query.equals("schoolYear", year);
 
-			return surveys.findOne(query);
+			Survey survey = surveys.findOne(query);
+			LOGGER.info("Finish survey by student");
+			return survey;
 
 		} catch (UnknownHostException e) {
 			throw new RuntimeException("Error executing Mongo query", e);
@@ -152,6 +154,18 @@ public class MongoDBDAO {
 		try {
 			MongoCollection<Survey> surveys = mongoCollectionFactory.buildMongoCollection("survey", Survey.class);
 			return surveys.find();
+		} catch (UnknownHostException e) {
+			throw new RuntimeException("Error executing Mongo query", e);
+		}
+	}
+
+	public List<Survey> getSurveysByYear(String year) {
+		try {
+			MongoCollection<Survey> surveys = mongoCollectionFactory.buildMongoCollection("survey", Survey.class);
+			Query query = new Query();
+			query.equals("schoolYear", year);
+
+			return surveys.find(query);
 		} catch (UnknownHostException e) {
 			throw new RuntimeException("Error executing Mongo query", e);
 		}

@@ -1,9 +1,14 @@
 package unq.api.service.impl;
 
 import java.util.*;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,8 +24,8 @@ import unq.api.model.Survey;
 import unq.api.model.SurveyModel;
 import unq.api.model.SurveyStudentData;
 import unq.api.model.catalogs.SubjectOptions;
+import unq.api.service.RepositoryService;
 import unq.api.service.SurveyService;
-import unq.repository.MongoDBDAO;
 import unq.utils.EnvConfiguration;
 import unq.utils.SecurityTokenGenerator;
 import unq.utils.SendEmailTLS;
@@ -30,7 +35,7 @@ import unq.utils.SendEmailTLS;
  */
 public class SurveyServiceImpl implements SurveyService {
 
-    private static MongoDBDAO mongoDAO = new MongoDBDAO();
+    private static RepositoryService repositoryService = new RepositoryServiceImpl();
     private static Logger LOGGER = LoggerFactory.getLogger(SurveyServiceImpl.class);
 
 
@@ -40,7 +45,7 @@ public class SurveyServiceImpl implements SurveyService {
         String token = SecurityTokenGenerator.getToken();
         student.setAuthToken(token);
         this.validateStudent(student);
-        String saved = mongoDAO.saveStudent(student);
+        String saved = repositoryService.saveStudent(student);
         String url = getUrlNotification(token);
         SendEmailTLS.sendEmailSurveyNotification(student.getName(), student.getEmail(),url);
         LOGGER.info("Finish saving student and sending survey notification");
@@ -48,10 +53,10 @@ public class SurveyServiceImpl implements SurveyService {
     }
 
     private void validateStudent(Student student) {
-        LOGGER.info(String.format("Validating if %s already exist", student.getId()));
+        LOGGER.info(String.format("Validating if %s already exist", student.getLegajo()));
 
-        Student savedStudent = mongoDAO.getStudent(student.getId());
-        Assert.isTrue(savedStudent==null, String.format("Student %s already exist", student.getId()));
+        Student savedStudent = repositoryService.getStudent(student.getLegajo());
+        Assert.isTrue(savedStudent==null, String.format("Student %s already exist", student.getLegajo()));
     }
 
     private String getUrlNotification(String token) {
@@ -62,33 +67,33 @@ public class SurveyServiceImpl implements SurveyService {
     @Override
     public Student getStudentByID(String id) {
         LOGGER.info(String.format("Getting student %s", id));
-        return mongoDAO.getStudent(id);
+        return repositoryService.getStudent(id);
     }
 
     @Override
     public String saveSurvey(Survey survey) {
         LOGGER.info(String.format("Saving survey for student %s", survey.getLegajo()));
         this.validateSurvey(survey);
-        return mongoDAO.saveSurvey(survey);
+        return repositoryService.saveSurvey(survey);
     }
 
     @Override
     public Survey getSurveyByStudent(String studentId, String year) {
         LOGGER.info(String.format("Getting survey by student %s and year %s", studentId, year));
-        return mongoDAO.getSurveyByStudent(studentId, year);
+        return repositoryService.getSurveyByStudent(studentId, year);
     }
 
     @Override
     public String saveSubject(Subject subject) {
         LOGGER.info(String.format("Starting saving subject %s", subject.getName()));
-        return mongoDAO.saveSubject(subject);
+        return repositoryService.saveSubject(subject);
     }
 
 	@Override
 	public List<SubjectOptions> getAllSubjects(String year) {
         LOGGER.info(String.format("Start building subjects for year %s", year));
 		List<SubjectOptions> options = new ArrayList<>();
-		List<Subject> subjects = mongoDAO.getSubjects(year);
+		List<Subject> subjects = repositoryService.getSubjects(year);
 		options.addAll(
 				subjects.stream()
 						.map(subject -> new SubjectOptions(subject.getName(),
@@ -102,9 +107,22 @@ public class SurveyServiceImpl implements SurveyService {
     public List<ClassOccupation> getClassOccupation(String year) {
         LOGGER.info(String.format("Getting class occupation for year %s", year));
 
+        List<ClassOccupation> classOccupations = null;
+        try {
+            classOccupations = this.calculateClassOccupation.get(year);
+        } catch (Exception e) {
+            LOGGER.error("Error trying to calculate class occupation");
+            throw new RuntimeException(e);
+        }
+
+        LOGGER.info("Finish calculating class occupation");
+        return classOccupations;
+    }
+
+    private List<ClassOccupation> buildClassOccupations(String year) {
         List<ClassOccupation> classOccupations = new ArrayList<>();
-        List<Survey> surveys = mongoDAO.getSurveys();
-        List<Subject> subjects = mongoDAO.getSubjects(year);
+        List<Survey> surveys = repositoryService.getSurveys(year);
+        List<Subject> subjects = repositoryService.getSubjects(year);
         List<SelectedSubject> totalSelectedSubjects = new ArrayList<>();
 
         for(Survey survey: surveys){
@@ -134,28 +152,20 @@ public class SurveyServiceImpl implements SurveyService {
             });
 
         });
-
-        LOGGER.info("Finish calculating class occupation");
         return classOccupations;
     }
 
-    private double getPercentageCompletedSurveys(){
-		LOGGER.info("Getting percentage completed survey");
+    private LoadingCache<String, List<ClassOccupation>> calculateClassOccupation = CacheBuilder.newBuilder()
+            .maximumSize(1000)
+            .expireAfterAccess(15L, TimeUnit.MINUTES)
+            .build(
+                    new CacheLoader<String, List<ClassOccupation>>() {
+                        public List<ClassOccupation> load(String year) throws RuntimeException {
+                            LOGGER.info("Missing key, calculating class occupation");
+                            return buildClassOccupations(year);
+                        }
+                    });
 
-		List <Student> students = mongoDAO.getStudents();
-		List<Survey> surveys = mongoDAO.getSurveys();
-
-		int totalStudents = students.size();
-		int counter = 0;
-		for(Student student: students){
-			if (this.completedSurvey(student.getLegajo(), surveys)) counter++;
-		}
-		int percentage = (counter * 100) / totalStudents;
-
-		LOGGER.info("Finishing percentage completed survey");
-
-		return percentage;
-	}
 
 	private double getPercentageCompletedSurveys(Integer cantStudents, Integer cantSurvey){
 		LOGGER.info("Getting percentage completed survey");
@@ -171,8 +181,8 @@ public class SurveyServiceImpl implements SurveyService {
     @Override
     public SurveyStudentData getSurveyStudentData(String year) {
         LOGGER.info(String.format("Getting survey data for year %s", year));
-		Integer cantStudents = mongoDAO.cantStudents();
-		Integer cantSurveys = mongoDAO.cantSurveys(year);
+		Integer cantStudents = repositoryService.cantStudents();
+		Integer cantSurveys = repositoryService.cantSurveys(year);
 		SurveyStudentData surveyStudentData = new SurveyStudentData(cantStudents, cantSurveys, this.getPercentageCompletedSurveys(cantStudents, cantSurveys));
         LOGGER.info("Finishing survey data");
         return surveyStudentData;
@@ -181,9 +191,9 @@ public class SurveyServiceImpl implements SurveyService {
     @Override
     public SurveyModel getSurveyModel(String token, String year) {
         LOGGER.info(String.format("Getting survey model for token %s and year %s", token, year));
-        Student studentByToken = mongoDAO.getStudentByToken(token);
+        Student studentByToken = repositoryService.getStudentByToken(token);
         Assert.notNull(studentByToken, "Student must not be null for token");
-        Survey completedSurvey = mongoDAO.getSurveyByStudent(studentByToken.getLegajo(), year);
+        Survey completedSurvey = repositoryService.getSurveyByStudent(studentByToken.getLegajo(), year);
         return new SurveyModel(studentByToken.getName(), studentByToken.getLegajo(), this.getAllSubjects(year),
                 completedSurvey);
     }
@@ -191,7 +201,7 @@ public class SurveyServiceImpl implements SurveyService {
     @Override
     public Set<String> getAllYears(){
         LOGGER.info("Getting all years");
-        List<Subject> allSubjects = mongoDAO.getAllSubjects();
+        List<Subject> allSubjects = repositoryService.getAllSubjects();
         Set<String> years = new HashSet<String>();
 
 
@@ -220,7 +230,7 @@ public class SurveyServiceImpl implements SurveyService {
 
     private void validateSurvey(Survey survey) {
         LOGGER.info(String.format("Starting validation for user %s", survey.getStudentName()));
-        Student studentByToken = mongoDAO.getStudentByToken(survey.getToken());
+        Student studentByToken = repositoryService.getStudentByToken(survey.getToken());
         if (null != studentByToken) {
             LOGGER.info("Token student validation ok");
             return;
@@ -230,7 +240,7 @@ public class SurveyServiceImpl implements SurveyService {
 
     public String getLastActiveYear(){
         LOGGER.info("Starting calculating active year");
-        List<Subject> allSubjects = mongoDAO.getAllSubjects();
+        List<Subject> allSubjects = repositoryService.getAllSubjects();
 
 
         final Comparator<Subject> comp = (p1, p2) -> Integer.compare( Integer.valueOf(p1.getSchoolYear()), Integer.valueOf(p2.getSchoolYear()));
