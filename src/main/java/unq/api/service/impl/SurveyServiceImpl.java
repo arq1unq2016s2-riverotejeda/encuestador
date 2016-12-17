@@ -77,7 +77,7 @@ public class SurveyServiceImpl implements SurveyService {
 
     @Override
     public Survey getSurveyByStudent(String studentId, String year) {
-        LOGGER.info(String.format("Getting survey by student %s", studentId));
+        LOGGER.info(String.format("Getting survey by student %s and year %s", studentId, year));
         return mongoDAO.getSurveyByStudent(studentId, year);
     }
 
@@ -89,7 +89,7 @@ public class SurveyServiceImpl implements SurveyService {
 
 	@Override
 	public List<SubjectOptions> getAllSubjects(String year) {
-		LOGGER.info("Start building subjects");
+        LOGGER.info(String.format("Start building subjects for year %s", year));
 		List<SubjectOptions> options = new ArrayList<>();
 		List<Subject> subjects = mongoDAO.getSubjects(year);
 		options.addAll(
@@ -103,8 +103,8 @@ public class SurveyServiceImpl implements SurveyService {
 
     @Override
     public List<ClassOccupation> getClassOccupation(String year) {
+        LOGGER.info(String.format("Getting class occupation for year %s", year));
 
-        LOGGER.info("Getting class occupation");
         List<ClassOccupation> classOccupations = new ArrayList<>();
         List<Survey> surveys = mongoDAO.getSurveys();
         List<Subject> subjects = mongoDAO.getSubjects(year);
@@ -173,7 +173,7 @@ public class SurveyServiceImpl implements SurveyService {
 
     @Override
     public SurveyStudentData getSurveyStudentData(String year) {
-        LOGGER.info("Getting survey data");
+        LOGGER.info(String.format("Getting survey data for year %s", year));
 		Integer cantStudents = mongoDAO.cantStudents();
 		Integer cantSurveys = mongoDAO.cantSurveys(year);
 		SurveyStudentData surveyStudentData = new SurveyStudentData(cantStudents, cantSurveys, this.getPercentageCompletedSurveys(cantStudents, cantSurveys));
@@ -183,7 +183,7 @@ public class SurveyServiceImpl implements SurveyService {
 
     @Override
     public SurveyModel getSurveyModel(String token, String year) {
-        LOGGER.info(String.format("Getting survey model for token %s", token));
+        LOGGER.info(String.format("Getting survey model for token %s and year %s", token, year));
         Student studentByToken = mongoDAO.getStudentByToken(token);
         Assert.notNull(studentByToken, "Student must not be null for token");
         Survey completedSurvey = mongoDAO.getSurveyByStudent(studentByToken.getLegajo(), year);
