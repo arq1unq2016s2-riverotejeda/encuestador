@@ -1,15 +1,10 @@
 package unq.api.service;
 
+import unq.api.model.*;
+import unq.api.model.catalogs.SubjectOptions;
+
 import java.util.List;
 import java.util.Set;
-
-import unq.api.model.ClassOccupation;
-import unq.api.model.Student;
-import unq.api.model.Subject;
-import unq.api.model.Survey;
-import unq.api.model.SurveyModel;
-import unq.api.model.SurveyStudentData;
-import unq.api.model.catalogs.SubjectOptions;
 
 /**
  * Created by mrivero on 21/9/16.
@@ -28,7 +23,7 @@ public interface SurveyService {
 
 	List<SubjectOptions> getAllSubjects(String year);
 
-	List<ClassOccupation> getClassOccupation(String year);
+	List<ClassStatistics> getClassOccupation(String year);
 
 	SurveyStudentData getSurveyStudentData(String year);
 

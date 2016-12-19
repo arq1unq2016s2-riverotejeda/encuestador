@@ -1,28 +1,14 @@
 package unq.api.service.impl;
 
-import java.util.*;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
+import com.google.common.collect.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import spark.utils.Assert;
 import unq.api.exceptions.InvalidTokenException;
-import unq.api.model.ClassOccupation;
-import unq.api.model.Division;
-import unq.api.model.SelectedSubject;
-import unq.api.model.Student;
-import unq.api.model.Subject;
-import unq.api.model.SubjectStatus;
-import unq.api.model.Survey;
-import unq.api.model.SurveyModel;
-import unq.api.model.SurveyStudentData;
+import unq.api.model.*;
 import unq.api.model.catalogs.SubjectOptions;
 import unq.api.service.RepositoryService;
 import unq.api.service.SurveyService;
@@ -30,10 +16,24 @@ import unq.utils.EnvConfiguration;
 import unq.utils.SecurityTokenGenerator;
 import unq.utils.SendEmailTLS;
 
+import java.util.*;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.counting;
+import static java.util.stream.Collectors.groupingBy;
+import static java.util.stream.Collectors.toMap;
+
 /**
  * Created by mrivero on 28/9/16.
  */
 public class SurveyServiceImpl implements SurveyService {
+
+    private static final String NOT_YET = "not_yet";
+    private static final String BAD_SCHEDULE = "bad_schedule";
+    private static final String APPROVED = "approved";
 
     private static RepositoryService repositoryService = new RepositoryServiceImpl();
     private static Logger LOGGER = LoggerFactory.getLogger(SurveyServiceImpl.class);
@@ -77,29 +77,29 @@ public class SurveyServiceImpl implements SurveyService {
         return repositoryService.saveSubject(subject);
     }
 
-	@Override
-	public List<SubjectOptions> getAllSubjects(String year) {
+    @Override
+    public List<SubjectOptions> getAllSubjects(String year) {
         LOGGER.info(String.format("Start building subjects for year %s", year));
-		List<SubjectOptions> options = new ArrayList<>();
-		List<Subject> subjects = repositoryService.getSubjects(year);
-		options.addAll(
-				subjects.stream()
-						.map(subject -> new SubjectOptions(subject.getName(),
-								buildSelectionDates(subject.getDivisions()), subject.getGroup()))
-						.collect(Collectors.toList()));
-		LOGGER.info("All subject finished successfully");
-		return options;
-	}
+        List<SubjectOptions> options = new ArrayList<>();
+        List<Subject> subjects = repositoryService.getSubjects(year);
+        options.addAll(
+                subjects.stream()
+                        .map(subject -> new SubjectOptions(subject.getName(),
+                                buildSelectionDates(subject.getDivisions()), subject.getGroup()))
+                        .collect(Collectors.toList()));
+        LOGGER.info("All subject finished successfully");
+        return options;
+    }
 
     @Override
-    public List<ClassOccupation> getClassOccupation(String year) {
+    public List<ClassStatistics> getClassOccupation(String year) {
         LOGGER.info(String.format("Getting class occupation for year %s", year));
 
-        List<ClassOccupation> classOccupations = null;
+        List<ClassStatistics> classOccupations = null;
         try {
-            classOccupations = this.calculateClassOccupation.get(year);
+            classOccupations = this.calculateClassOccupationV2.get(year);
         } catch (Exception e) {
-            LOGGER.error("Error trying to calculate class occupation");
+            LOGGER.error("Error trying to calculate class occupation", e);
             throw new RuntimeException(e);
         }
 
@@ -153,7 +153,7 @@ public class SurveyServiceImpl implements SurveyService {
         return domain+token;
     }
 
-
+    //TODO habria que borrar?
     private List<ClassOccupation> buildClassOccupations(String year) {
         List<ClassOccupation> classOccupations = new ArrayList<>();
         List<Survey> surveys = repositoryService.getSurveys(year);
@@ -168,16 +168,16 @@ public class SurveyServiceImpl implements SurveyService {
         }
 
         Map<String, List<SelectedSubject>> seleccionBySubject = totalSelectedSubjects.stream().collect(
-                Collectors.groupingBy(SelectedSubject::getSubject));
+                groupingBy(SelectedSubject::getSubject));
 
 
         seleccionBySubject.forEach((subjectName, value) -> {
             Map<String, Long> countComision = value.stream().collect(
-                    Collectors.groupingBy(SelectedSubject::getStatus, Collectors.counting()));
+                    groupingBy(SelectedSubject::getStatus, counting()));
 
             countComision.forEach((comision, count) -> {
-                Stream<Subject> subjectStream = subjects.stream().filter(subject -> subject.getName().equals(subjectName));
-                Stream<Division> divisions = subjectStream.collect(Collectors.toList()).get(0).getDivisions().stream().filter(
+                List<Subject> subjectStream = subjects.stream().filter(subject -> subject.getName().equals(subjectName)).collect(Collectors.toList());
+                Stream<Division> divisions = subjectStream.get(0).getDivisions().stream().filter(
                         division -> division.getComision().name().equals(comision.split(":")[0]));
                 divisions.forEach(division -> {
                     long percentage = count * 100L / division.getQuota();
@@ -190,6 +190,67 @@ public class SurveyServiceImpl implements SurveyService {
         return classOccupations;
     }
 
+
+
+    private List<ClassStatistics> buildClassOccupationsV2(String year) {
+        final List<Survey> surveys = repositoryService.getSurveys(year);
+        final List<ClassStatistics> response = Lists.newArrayList();
+
+        surveys.stream()
+                .map(Survey::getSelectedSubjects)
+                .flatMap(Collection::stream)
+                .collect(groupingBy(SelectedSubject::getSubject))
+                .forEach((subjectName, responses) -> {
+
+                    //Collect commission count and quota by subject
+                    Map<String, Long> commissionCount = responses.stream().collect(groupingBy(this::keyMapper, counting()));
+                    Map<Comision, Long> quotaBySubject = this.getQuotaBySubject(subjectName, year);
+
+                    ClassStatistics.Builder builder = new ClassStatistics.Builder().subject(subjectName);
+
+                    //Commission Data
+                    builder.c1(new CommissionOccupation(quotaBySubject.get(Comision.C1), commissionCount.get(Comision.C1.name())));
+                    builder.c2(new CommissionOccupation(quotaBySubject.get(Comision.C2), commissionCount.get(Comision.C2.name())));
+                    builder.c3(new CommissionOccupation(quotaBySubject.get(Comision.C3), commissionCount.get(Comision.C3.name())));
+                    builder.c4(new CommissionOccupation(quotaBySubject.get(Comision.C4), commissionCount.get(Comision.C4.name())));
+
+                    //Custom values
+                    builder.notYet(commissionCount.get(NOT_YET));
+                    builder.approved(commissionCount.get(APPROVED));
+                    builder.badSchedule(commissionCount.get(BAD_SCHEDULE));
+
+                    response.add(builder.build());
+                });
+        return response;
+    }
+
+    private String keyMapper(SelectedSubject selectedSubject) {
+        return selectedSubject.getStatus().split(":")[0];
+    }
+
+    /**
+     * Returns a map with the quota by commission for that subject
+     */
+    private Map<Comision, Long> getQuotaBySubject(String subjectName, String year) {
+        return repositoryService.getSubjects(year).stream()
+                .filter(subject -> subject.getName().equalsIgnoreCase(subjectName))
+                .map(Subject::getDivisions)
+                .flatMap(Collection::stream)
+                .collect(toMap(Division::getComision, Division::getQuota));
+    }
+
+    private LoadingCache<String, List<ClassStatistics>> calculateClassOccupationV2 = CacheBuilder.newBuilder()
+            .maximumSize(1000)
+            .expireAfterAccess(15L, TimeUnit.MINUTES)
+            .build(
+                    new CacheLoader<String, List<ClassStatistics>>() {
+                        public List<ClassStatistics> load(String year) throws RuntimeException {
+                            LOGGER.info("Missing key, calculating class occupation");
+                            return buildClassOccupationsV2(year);
+                        }
+                    });
+
+    //TODO habria que borrar?
     private LoadingCache<String, List<ClassOccupation>> calculateClassOccupation = CacheBuilder.newBuilder()
             .maximumSize(1000)
             .expireAfterAccess(15L, TimeUnit.MINUTES)
@@ -202,15 +263,15 @@ public class SurveyServiceImpl implements SurveyService {
                     });
 
 
-	private double getPercentageCompletedSurveys(Integer cantStudents, Integer cantSurvey){
-		LOGGER.info("Getting percentage completed survey");
+    private double getPercentageCompletedSurveys(Integer cantStudents, Integer cantSurvey){
+        LOGGER.info("Getting percentage completed survey");
 
-		int percentage = (cantSurvey * 100) / cantStudents;
+        int percentage = (cantSurvey * 100) / cantStudents;
 
-		LOGGER.info("Finishing percentage completed survey");
+        LOGGER.info("Finishing percentage completed survey");
 
-		return percentage;
-	}
+        return percentage;
+    }
 
     private boolean isSelected(SelectedSubject selectedSubject) {
         return !selectedSubject.getStatus().toLowerCase().equals(SubjectStatus.APPROVED.name().toLowerCase()) &&
